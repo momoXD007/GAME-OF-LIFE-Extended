@@ -83,6 +83,7 @@ private Spielraster raster;
 	 }
  }
 public void iteration(double infektionsRate,double resistenzRate, double heilungsRate){
+	zufall=zufallsGen.nextDouble();
 	this.bewege();
 	if(!gesund){
 		Spezie nachbarn[] = this.getNeighbours();
