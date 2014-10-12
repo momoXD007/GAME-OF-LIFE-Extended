@@ -3,6 +3,7 @@ package de.GameOfLife;
 public class Spielraster {
 private int anzInfiziert;
 private int anzResistent;
+private int anzGesund;
 private int groesse;
 
 private Spezie[][] raster =new Spezie[1][1];
@@ -48,17 +49,73 @@ private void besiedleRaster(){
 				//in jeder Reihe über die x-Koordinaten gehen
 				for(int x=0; x<groesse/2; x++){
 					curr=raster[x][y];
-					if(curr!=null){
+					if(curr!=null && !(curr.getWarDran())){
 						//ToDo: raten flexibel halten!!!!
-						curr.iteration(0.2, 0.2, 0.2);
+						if(curr.iteration(0.2, 0.2, 0.2, 0.2)){
+							//zelle ist tot-->Referenz wird gelöscht
+							raster[x][y]=null;
+						}
 					}
 				}
 			}
 		}
+		this.reseteAlleZellen();
 	}
  
+ public void aktualiesiereStats(){
+		int infiziert=0;
+		int gesund =0;
+		int resistent=0;
+	 
+	 
+	 	Spezie curr;
+		for(int y=0; y<groesse/2; y++){
+			
+		
+			//in jeder Reihe über die x-Koordinaten gehen
+			for(int x=0; x<groesse/2; x++){
+				curr=raster[x][y];
+				if(curr!=null){
+					if(curr.isGesund()){
+						gesund++;
+					}else if(curr.isResistent()){
+						resistent++;
+					}else{
+						infiziert++;
+					}
+				}
+			}
+		}
+		anzInfiziert=infiziert;
+		anzResistent=resistent;
+		anzGesund=gesund;
+ }
  
+ 
+ 
+ 
+//setzt das Attribut warDran innerhalb aller Zellen auf false
+public void reseteAlleZellen(){
+	
+		Spezie curr;
+		for(int y=0; y<groesse/2; y++){
+			
+		
+			//in jeder Reihe über die x-Koordinaten gehen
+			for(int x=0; x<groesse/2; x++){
+				curr=raster[x][y];
+				if(curr!=null){
+					curr.setWarDran(false);
+				}
+			}
+		}
+	
+	
 }
 
+
+
+
+}
 
 

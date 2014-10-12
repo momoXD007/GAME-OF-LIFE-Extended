@@ -9,7 +9,8 @@ public class Spezie {
  private double zufall=zufallsGen.nextDouble();
 private int yPos;
 private int xPos;
-private Spielraster raster; 
+private Spielraster raster;
+private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 
 
  public Spezie(boolean lGesund,boolean lResistent,int lyPos, int lxPos, Spielraster lRaster){
@@ -48,8 +49,10 @@ private Spielraster raster;
 	 
 	 return nachbarn;
  }; 
- public void sterbe(double rate){
+ public boolean sterbe(double rate){
 	 //toDo
+	 
+	 return rate>=zufall;
 	 
  };
  
@@ -82,7 +85,14 @@ private Spielraster raster;
 		 }
 	 }
  }
-public void iteration(double infektionsRate,double resistenzRate, double heilungsRate){
+ /**
+  * 
+  * @param infektionsRate wie wahrscheinlich ist es das eine Zelle eine andere benachbarte Zelle infiziert
+  * @param resistenzRate Wahrscheinlichkeit das Zelle resitenz bildet
+  * @param heilungsRate
+  * @return gibt true zurück wenn Zelle gestorben ist
+  */
+public boolean iteration(double infektionsRate,double resistenzRate, double heilungsRate, double sterbeRate){
 	zufall=zufallsGen.nextDouble();
 	this.bewege();
 	if(!gesund){
@@ -99,8 +109,38 @@ public void iteration(double infektionsRate,double resistenzRate, double heilung
 			this.heile(heilungsRate);
 		}
 	}
+
+	this.setWarDran(true);
+	
+	return sterbe(sterbeRate);
+
+
 }
- 
+public boolean getWarDran(){
+	return warDran;
 }
+public void setWarDran(boolean lWarDran){
+
+	warDran=lWarDran;
+}
+
+public boolean isGesund() {
+	return gesund;
+}
+
+public void setGesund(boolean gesund) {
+	this.gesund = gesund;
+}
+
+public boolean isResistent() {
+	return resistent;
+}
+
+public void setResistent(boolean resistent) {
+	this.resistent = resistent;
+}
+}
+
+
 
 
