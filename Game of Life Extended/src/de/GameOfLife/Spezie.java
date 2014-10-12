@@ -56,7 +56,7 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 	 
  };
  
- public void werdeInfiziert(double rate) throws IllegalArgumentException{
+ protected void werdeInfiziert(double rate) throws IllegalArgumentException{
 	 if(rate<0 || rate>1){
 		 throw new IllegalArgumentException("Argument muss einer Prozentzähl entsprechen");
 	 }
