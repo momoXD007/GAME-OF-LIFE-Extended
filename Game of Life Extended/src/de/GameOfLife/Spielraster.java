@@ -109,12 +109,22 @@ public void reseteAlleZellen(){
 				}
 			}
 		}
-	
-	
+	}
+
+
+
+public int getAnzInfiziert(){
+	return anzInfiziert;
 }
-
-
-
+public int getAnzResisten(){
+	return anzResistent;
+}
+public int getAnzGesund(){
+	return anzGesund;
+}
+public int getAnzGesamtLebendig(){
+	return anzResistent+anzGesund+anzInfiziert;
+}
 
 }
 
