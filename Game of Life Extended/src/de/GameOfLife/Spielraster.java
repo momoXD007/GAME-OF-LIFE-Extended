@@ -55,9 +55,7 @@ public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int st
 }
 
 private void besiedleRaster(){
-	//ToDo was sinnvolles implementieren
-	//raster[0][0]= new Spezie(true, false, 0, 0, this); 
-	//raster[0][1]= new Spezie(false, false, 1, 0, this);
+
 	
 	//sanity checks einbauen
 	
@@ -182,7 +180,37 @@ private void besiedleRaster(){
 
 };
 
-
+public int zustandsBeschreibung(int xPos, int yPos){
+	int rueckgabe=0;
+	Spezie ausgewaehlt;
+	try{
+		ausgewaehlt=raster[xPos][yPos];
+	}catch(ArrayIndexOutOfBoundsException e){
+		ausgewaehlt=null;
+	}
+	if(ausgewaehlt==null){
+		rueckgabe=0;
+	}else if(ausgewaehlt instanceof Mensch){
+		if(ausgewaehlt.isGesund()){
+			rueckgabe=1;
+		}else{
+			rueckgabe=2;
+		}
+		if(ausgewaehlt.isResistent()){
+			rueckgabe=3;
+		}
+	}else if(ausgewaehlt instanceof Tier){
+		if(ausgewaehlt.isGesund()){
+			rueckgabe=4;
+		}else{
+			rueckgabe=5;
+		}
+		if (ausgewaehlt.isResistent()) {
+			rueckgabe=6;
+		}
+	}
+	return rueckgabe;
+}
 
  public Spezie holeSpezieVon(int xPos,int  yPos){
 	 Spezie nachbar;
