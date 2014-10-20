@@ -1,8 +1,9 @@
 package de.GameOfLife;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Spezie {
+public class Spezie implements Serializable {
  private boolean gesund;
  private boolean resistent;
  private Random zufallsGen = new Random();
