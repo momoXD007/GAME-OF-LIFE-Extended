@@ -13,16 +13,9 @@ import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 
 //ToDo überlegen ob diese Klasse nicht als Singleton erzeugt wird dann muss man sie nicht immer mitgeben
 public class Spielraster implements Serializable {
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1849731288047615175L;
-/**
-	 * 
-	 */
-//private static final long serialVersionUID = 1L;
-	
-	
+
+private static final long serialVersionUID = 1849731288047615175L;
+
 private int anzMenschenInfiziert;
 private int anzMenschenResistent;
 private int anzMenschenGesund;
