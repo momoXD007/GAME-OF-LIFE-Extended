@@ -18,9 +18,13 @@ private int groesse;
 
 private Spezie[][] raster =new Spezie[1][1];
 
-public Spielraster(int startInfizierte,int startResistent, int startGroesse){
-	 anzMenschenInfiziert=startInfizierte;
-	 anzMenschenResistent = startResistent;
+public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int startGroesse){
+	 anzMenschenInfiziert=startMenschenInfizierte;
+	 anzMenschenResistent = startMenschenResistent;
+	 anzMenschenGesund=startMenschenGesund;
+	 anzTiereInfiziert=startTiereInfiziert;
+	 anzTiereResistent=startTiereResistent;
+	 anzTiereGesund=startTiereGesund;
 	 raster=new Spezie[startGroesse/2][startGroesse/2];
 	 //sorgt dafür das auch wirkliche durch 2 teilbare Größe gespeichert wird
 	 //bsp.: falls User 13 eingibt wird 13/2=6 gerechnet dann 6*2=12 also die Anzahl die auch wirklich genutzt wird;
