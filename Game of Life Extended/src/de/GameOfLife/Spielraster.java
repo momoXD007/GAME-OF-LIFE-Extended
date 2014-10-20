@@ -1,16 +1,26 @@
 package de.GameOfLife;
+
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+
 //ToDo überlegen ob diese Klasse nicht als Singleton erzeugt wird dann muss man sie nicht immer mitgeben
 public class Spielraster {
-private int anzInfiziert;
-private int anzResistent;
-private int anzGesund;
+private int anzMenschenInfiziert;
+private int anzMenschenResistent;
+private int anzMenschenGesund;
+
+//
+private int anzTiereInfiziert;
+private int anzTiereResistent;
+private int anzTiereGesund;
+
+
 private int groesse;
 
 private Spezie[][] raster =new Spezie[1][1];
 
 public Spielraster(int startInfizierte,int startResistent, int startGroesse){
-	 anzInfiziert=startInfizierte;
-	 anzResistent = startResistent;
+	 anzMenschenInfiziert=startInfizierte;
+	 anzMenschenResistent = startResistent;
 	 raster=new Spezie[startGroesse/2][startGroesse/2];
 	 //sorgt dafür das auch wirkliche durch 2 teilbare Größe gespeichert wird
 	 //bsp.: falls User 13 eingibt wird 13/2=6 gerechnet dann 6*2=12 also die Anzahl die auch wirklich genutzt wird;
@@ -63,9 +73,12 @@ private void besiedleRaster(){
 	}
  
  public void aktualiesiereStats(){
-		int infiziert=0;
-		int gesund =0;
-		int resistent=0;
+		int menschenInfiziert=0;
+		int menschenGesund =0;
+		int menschenResistent=0;
+		int tiereInfiziert=0;
+		int tiereGesund=0;
+		int tiereResistent=0;
 	 
 	 
 	 	Spezie curr;
@@ -76,19 +89,37 @@ private void besiedleRaster(){
 			for(int x=0; x<groesse/2; x++){
 				curr=raster[x][y];
 				if(curr!=null){
-					if(curr.isGesund()){
-						gesund++;
-					}else if(curr.isResistent()){
-						resistent++;
-					}else{
-						infiziert++;
+					if(curr instanceof Mensch){
+						if(curr.isGesund()){
+							menschenGesund++;
+						}else if(curr.isResistent()){
+							menschenResistent++;
+						}else{
+							menschenInfiziert++;
+						}
+					}else if(curr instanceof Tier){
+						
+						if(curr.isGesund()){
+							tiereGesund++;
+						}else if(curr.isResistent()){
+							tiereResistent++;
+						}else{
+							tiereInfiziert++;
+						}
 					}
 				}
 			}
 		}
-		anzInfiziert=infiziert;
-		anzResistent=resistent;
-		anzGesund=gesund;
+		//Stats für Menschen updaten
+		anzMenschenInfiziert=menschenInfiziert;
+		anzMenschenResistent=menschenResistent;
+		anzMenschenGesund=menschenGesund;
+		//Stats für Tiere updaten
+		anzTiereGesund=tiereGesund;
+		anzTiereInfiziert=tiereInfiziert;
+		anzTiereResistent=tiereResistent;
+		
+		
  }
  
  
@@ -113,17 +144,17 @@ public void reseteAlleZellen(){
 
 
 
-public int getAnzInfiziert(){
-	return anzInfiziert;
+public int getMesnchenAnzInfiziert(){
+	return anzMenschenInfiziert;
 }
-public int getAnzResisten(){
-	return anzResistent;
+public int getAnzMenschenResisten(){
+	return anzMenschenResistent;
 }
-public int getAnzGesund(){
-	return anzGesund;
+public int getMenschenAnzGesund(){
+	return anzMenschenGesund;
 }
-public int getAnzGesamtLebendig(){
-	return anzResistent+anzGesund+anzInfiziert;
+public int getAnzMenschenGesamtLebendig(){
+	return anzMenschenResistent+anzMenschenGesund+anzMenschenInfiziert;
 }
 
 }
