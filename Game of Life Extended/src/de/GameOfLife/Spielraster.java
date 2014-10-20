@@ -13,18 +13,36 @@ private int anzTiereInfiziert;
 private int anzTiereResistent;
 private int anzTiereGesund;
 
-
+//rastereigenschaften
 private int groesse;
 private int maxX;
+
+//Krankheitseigenschaften
+private boolean tierAufMensch;
+private boolean menschAufMensch;
+private boolean tierAufTier;
+private boolean menschAufTier;
+
+
 private Spezie[][] raster =new Spezie[1][1];
 
-public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int startGroesse){
+public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,
+		int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int startGroesse,
+		boolean lTierAufMensch, boolean lMenschAufMsnch,boolean lTierAufTier, boolean lMenschAufTier){
 	 anzMenschenInfiziert=startMenschenInfizierte;
 	 anzMenschenResistent = startMenschenResistent;
 	 anzMenschenGesund=startMenschenGesund;
 	 anzTiereInfiziert=startTiereInfiziert;
 	 anzTiereResistent=startTiereResistent;
 	 anzTiereGesund=startTiereGesund;
+	 
+	 //Krankheitseigenschaften übernehemen
+	 
+	 tierAufMensch=lTierAufMensch;
+	 tierAufTier=lTierAufTier;
+	 menschAufMensch=lMenschAufMsnch;
+	 menschAufTier=lMenschAufTier;
+	 
 	 
 	 maxX=(int) Math.round(Math.sqrt(startGroesse));
 	 
@@ -60,7 +78,7 @@ private void besiedleRaster(){
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
-				raster[x][y]= new Mensch(true, false, y, x, this, true, true);
+				raster[x][y]= new Mensch(true, false, y, x, this, menschAufMensch, tierAufMensch);
 				gesetzt=true;
 			}
 		}
@@ -77,7 +95,7 @@ private void besiedleRaster(){
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
-				raster[x][y]= new Mensch(false, false, y, x, this, true, true);
+				raster[x][y]= new Mensch(false, false, y, x, this, menschAufMensch, tierAufMensch);
 				gesetzt=true;
 			}
 		}
@@ -96,7 +114,7 @@ private void besiedleRaster(){
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
-				raster[x][y]= new Mensch(true, true, y, x, this, true, true);
+				raster[x][y]= new Mensch(true, true, y, x, this, menschAufMensch, tierAufMensch);
 				gesetzt=true;
 			}
 		}
@@ -112,7 +130,7 @@ private void besiedleRaster(){
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
-				raster[x][y]= new Tier(true, false, y, x, this, true, true);
+				raster[x][y]= new Tier(true, false, y, x, this, menschAufTier, tierAufTier);
 				gesetzt=true;
 			}
 		}
@@ -129,7 +147,7 @@ private void besiedleRaster(){
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
-				raster[x][y]= new Tier(false, false, y, x, this, true, true);
+				raster[x][y]= new Tier(false, false, y, x, this, menschAufTier, tierAufTier);
 				gesetzt=true;
 			}
 		}
@@ -145,7 +163,7 @@ private void besiedleRaster(){
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
-				raster[x][y]= new Tier(true, true, y, x, this, true, true);
+				raster[x][y]= new Tier(true, true, y, x, this, menschAufTier, tierAufTier);
 				gesetzt=true;
 			}
 		}
