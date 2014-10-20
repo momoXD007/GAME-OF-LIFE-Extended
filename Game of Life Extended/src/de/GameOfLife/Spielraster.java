@@ -157,6 +157,19 @@ public int getAnzMenschenGesamtLebendig(){
 	return anzMenschenResistent+anzMenschenGesund+anzMenschenInfiziert;
 }
 
+public int getAnzTiereInfiziert() {
+	return anzTiereInfiziert;
+}
+
+public void setAnzTiereInfiziert(int anzTiereInfiziert) {
+	this.anzTiereInfiziert = anzTiereInfiziert;
+}
+
+public int getAnzTiereResistent() {
+	return anzTiereResistent;
+}
+
+
 }
 
 
