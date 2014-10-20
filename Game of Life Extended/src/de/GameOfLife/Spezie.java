@@ -27,7 +27,6 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 	 
  };
  protected  Spezie[] getNeighbours(){
-	 int gefunden=0;
 	 Spezie[] nachbarn = new Spezie[8];
 	 //oberer Nachbar
 	 nachbarn[0]=raster.holeSpezieVon(xPos, yPos+1);
@@ -139,6 +138,9 @@ public boolean isResistent() {
 public void setResistent(boolean resistent) {
 	this.resistent = resistent;
 }
+
+
+
 }
 
 

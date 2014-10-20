@@ -1,5 +1,5 @@
 package de.GameOfLife;
-
+import java.util.Random;
 
 
 //ToDo überlegen ob diese Klasse nicht als Singleton erzeugt wird dann muss man sie nicht immer mitgeben
@@ -15,7 +15,7 @@ private int anzTiereGesund;
 
 
 private int groesse;
-
+private int maxX;
 private Spezie[][] raster =new Spezie[1][1];
 
 public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int startGroesse){
@@ -25,18 +25,143 @@ public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int st
 	 anzTiereInfiziert=startTiereInfiziert;
 	 anzTiereResistent=startTiereResistent;
 	 anzTiereGesund=startTiereGesund;
-	 raster=new Spezie[startGroesse/2][startGroesse/2];
+	 
+	 maxX=(int) Math.round(Math.sqrt(startGroesse));
+	 
+	 raster=new Spezie[maxX][maxX];
 	 //sorgt dafür das auch wirkliche durch 2 teilbare Größe gespeichert wird
 	 //bsp.: falls User 13 eingibt wird 13/2=6 gerechnet dann 6*2=12 also die Anzahl die auch wirklich genutzt wird;
-	 groesse=(startGroesse/2)*2;
+	 groesse=maxX*maxX;
 	 this.besiedleRaster();
 
 }
 
 private void besiedleRaster(){
 	//ToDo was sinnvolles implementieren
-	raster[0][0]= new Spezie(true, false, 0, 0, this); 
-	raster[0][1]= new Spezie(false, false, 1, 0, this);
+	//raster[0][0]= new Spezie(true, false, 0, 0, this); 
+	//raster[0][1]= new Spezie(false, false, 1, 0, this);
+	
+	//sanity checks einbauen
+	
+	//ist Raster überhaupt groß genug für Anzahl der Individuen
+	
+	
+	
+	Random rand = new Random();
+	
+	
+	//verteile gesunde Menschen
+	for(int i=0;i<anzMenschenGesund; i++){
+		boolean gesetzt=false;
+		while(!gesetzt){
+			int x=rand.nextInt()%(maxX);
+			if(x<0){x=x*-1;}
+			int y=rand.nextInt()%(maxX);
+			if(y<0){y=y*-1;}
+			if(raster[x][y]==null){
+				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
+				raster[x][y]= new Mensch(true, false, y, x, this, true, true);
+				gesetzt=true;
+			}
+		}
+		
+	}
+	
+	//setze Infizierte Menschen
+	for(int i=0;i<anzMenschenInfiziert; i++){
+		boolean gesetzt=false;
+		while(!gesetzt){
+			int x=rand.nextInt()%(maxX);
+			if(x<0){x=x*-1;}
+			int y=rand.nextInt()%(maxX);
+			if(y<0){y=y*-1;}
+			if(raster[x][y]==null){
+				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
+				raster[x][y]= new Mensch(false, false, y, x, this, true, true);
+				gesetzt=true;
+			}
+		}
+		
+	}
+	
+	//setze Resitente Menschen
+
+	
+	for(int i=0;i<anzMenschenResistent; i++){
+		boolean gesetzt=false;
+		while(!gesetzt){
+			int x=rand.nextInt()%(maxX);
+			if(x<0){x=x*-1;}
+			int y=rand.nextInt()%(maxX);
+			if(y<0){y=y*-1;}
+			if(raster[x][y]==null){
+				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
+				raster[x][y]= new Mensch(true, true, y, x, this, true, true);
+				gesetzt=true;
+			}
+		}
+		
+	}
+	//setze gesunde Tiere
+	for(int i=0;i<anzTiereGesund; i++){
+		boolean gesetzt=false;
+		while(!gesetzt){
+			int x=rand.nextInt()%(maxX);
+			if(x<0){x=x*-1;}
+			int y=rand.nextInt()%(maxX);
+			if(y<0){y=y*-1;}
+			if(raster[x][y]==null){
+				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
+				raster[x][y]= new Tier(true, false, y, x, this, true, true);
+				gesetzt=true;
+			}
+		}
+		
+	}
+	
+	//setzte kranke Tiere
+	for(int i=0;i<anzTiereInfiziert; i++){
+		boolean gesetzt=false;
+		while(!gesetzt){
+			int x=rand.nextInt()%(maxX);
+			if(x<0){x=x*-1;}
+			int y=rand.nextInt()%(maxX);
+			if(y<0){y=y*-1;}
+			if(raster[x][y]==null){
+				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
+				raster[x][y]= new Tier(false, false, y, x, this, true, true);
+				gesetzt=true;
+			}
+		}
+		
+	}
+	//setze Resitente Tiere
+	for(int i=0;i<anzTiereResistent; i++){
+		boolean gesetzt=false;
+		while(!gesetzt){
+			int x=rand.nextInt()%(maxX);
+			if(x<0){x=x*-1;}
+			int y=rand.nextInt()%(maxX);
+			if(y<0){y=y*-1;}
+			if(raster[x][y]==null){
+				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
+				raster[x][y]= new Tier(true, true, y, x, this, true, true);
+				gesetzt=true;
+			}
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
 };
 
 
@@ -57,11 +182,11 @@ private void besiedleRaster(){
  public void iteriere(int anzRunden){
 		for (int i = 0; i < anzRunden; i++) {
 			Spezie curr;
-			for(int y=0; y<groesse/2; y++){
+			for(int y=0; y<maxX; y++){
 				
 			
 				//in jeder Reihe über die x-Koordinaten gehen
-				for(int x=0; x<groesse/2; x++){
+				for(int x=0; x<maxX; x++){
 					curr=raster[x][y];
 					if(curr!=null && !(curr.getWarDran())){
 						//ToDo: raten flexibel halten!!!!
@@ -86,11 +211,11 @@ private void besiedleRaster(){
 	 
 	 
 	 	Spezie curr;
-		for(int y=0; y<groesse/2; y++){
+		for(int y=0; y<maxX; y++){
 			
 		
 			//in jeder Reihe über die x-Koordinaten gehen
-			for(int x=0; x<groesse/2; x++){
+			for(int x=0; x<maxX; x++){
 				curr=raster[x][y];
 				if(curr!=null){
 					if(curr instanceof Mensch){
@@ -133,11 +258,11 @@ private void besiedleRaster(){
 public void reseteAlleZellen(){
 	
 		Spezie curr;
-		for(int y=0; y<groesse/2; y++){
+		for(int y=0; y<maxX; y++){
 			
 		
 			//in jeder Reihe über die x-Koordinaten gehen
-			for(int x=0; x<groesse/2; x++){
+			for(int x=0; x<maxX; x++){
 				curr=raster[x][y];
 				if(curr!=null){
 					curr.setWarDran(false);
