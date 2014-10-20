@@ -1,6 +1,6 @@
 package de.GameOfLife;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+
 
 //ToDo überlegen ob diese Klasse nicht als Singleton erzeugt wird dann muss man sie nicht immer mitgeben
 public class Spielraster {
@@ -161,10 +161,9 @@ public int getAnzTiereInfiziert() {
 	return anzTiereInfiziert;
 }
 
-public void setAnzTiereInfiziert(int anzTiereInfiziert) {
-	this.anzTiereInfiziert = anzTiereInfiziert;
+public int getAnzTiereGesund(){
+	return anzTiereGesund;
 }
-
 public int getAnzTiereResistent() {
 	return anzTiereResistent;
 }
