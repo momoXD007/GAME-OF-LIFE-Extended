@@ -1,9 +1,28 @@
 package de.GameOfLife;
 import java.util.Random;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 
 //ToDo überlegen ob diese Klasse nicht als Singleton erzeugt wird dann muss man sie nicht immer mitgeben
-public class Spielraster {
+public class Spielraster implements Serializable {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1849731288047615175L;
+/**
+	 * 
+	 */
+//private static final long serialVersionUID = 1L;
+	
+	
 private int anzMenschenInfiziert;
 private int anzMenschenResistent;
 private int anzMenschenGesund;
@@ -322,12 +341,15 @@ public void reseteAlleZellen(){
 public int getMesnchenAnzInfiziert(){
 	return anzMenschenInfiziert;
 }
+
 public int getAnzMenschenResisten(){
 	return anzMenschenResistent;
 }
+
 public int getMenschenAnzGesund(){
 	return anzMenschenGesund;
 }
+
 public int getAnzMenschenGesamtLebendig(){
 	return anzMenschenResistent+anzMenschenGesund+anzMenschenInfiziert;
 }
@@ -341,6 +363,48 @@ public int getAnzTiereGesund(){
 }
 public int getAnzTiereResistent() {
 	return anzTiereResistent;
+
+
+public void saveState(){
+	try
+	{
+		//Serialize Object to a file
+		FileOutputStream fileOut =
+				new FileOutputStream("C:\\Zustand.ser");
+				ObjectOutputStream out = new ObjectOutputStream(fileOut);
+				out.writeObject(raster);
+				out.close();
+				fileOut.close();
+				
+				System.out.printf("Serialized data is saved in given folder");
+	}	catch(IOException i)
+	{
+			i.printStackTrace();
+	}
+	
+}
+
+public void loadState(){
+	Spezie[][] raster = null;
+	try
+    {
+       FileInputStream fileIn = new FileInputStream("C:\\Zustand.ser");
+       ObjectInputStream in = new ObjectInputStream(fileIn);
+       raster = (Spezie[][]) in.readObject();
+       in.close();
+       fileIn.close();
+    }catch(IOException i)
+    {
+       i.printStackTrace();
+       return;
+    }catch(ClassNotFoundException c)
+    {
+       System.out.println("Die Zustandsklasse konnte nicht gefunden werden");
+       c.printStackTrace();
+       return;
+    }
+	
+
 }
 
 
