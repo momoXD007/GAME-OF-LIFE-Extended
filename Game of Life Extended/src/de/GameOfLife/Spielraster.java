@@ -1,6 +1,4 @@
 package de.GameOfLife;
-import java.util.Random;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,8 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+import java.util.Random;
 
 //ToDo überlegen ob diese Klasse nicht als Singleton erzeugt wird dann muss man sie nicht immer mitgeben
 public class Spielraster implements Serializable {
@@ -44,7 +41,7 @@ private Spezie[][] raster =new Spezie[1][1];
 
 public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,
 		int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int startGroesse,
-		boolean lTierAufMensch, boolean lMenschAufMsnch,boolean lTierAufTier, boolean lMenschAufTier){
+		Krankheiten k){
 	 anzMenschenInfiziert=startMenschenInfizierte;
 	 anzMenschenResistent = startMenschenResistent;
 	 anzMenschenGesund=startMenschenGesund;
@@ -54,10 +51,17 @@ public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int st
 	 
 	 //Krankheitseigenschaften übernehemen
 	 
-	 tierAufMensch=lTierAufMensch;
-	 tierAufTier=lTierAufTier;
-	 menschAufMensch=lMenschAufMsnch;
-	 menschAufTier=lMenschAufTier;
+	 tierAufMensch=k.getTierAufMensch();
+	 tierAufTier=k.getTierAufTier();
+	 menschAufMensch=k.getMenschAufMensch();
+	 menschAufTier=k.getMenschAufTier();
+	 
+	 infektionsRate=k.getInfektionsRate();
+	 resistenzRate=k.getResistenzRate();
+	 heilungsRate=k.getHeilungsRate();
+	 sterbeRate=k.getSterbeRate();
+	 
+	 
 	 
 	 
 	 maxX=(int) Math.round(Math.sqrt(startGroesse));
