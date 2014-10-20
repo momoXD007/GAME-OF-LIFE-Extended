@@ -1,20 +1,20 @@
 package de.GameOfLife;
 
-public class Ebola extends Krankheiten {
-	
-	Ebola virusEbola = new Ebola();
+public class Tollwut extends Krankheiten{
 
-	public Ebola() {
+	Tollwut virusTollwut = new Tollwut();
+
+	public Tollwut() {
 		super();
-		virusEbola.setTierAufTier(true);
-		virusEbola.setMenschAufTier(true);
-		virusEbola.setTierAufMensch(true);	
-		virusEbola.setMenschAufMensch(true);
+		virusTollwut.setTierAufTier(true);
+		virusTollwut.setMenschAufTier(true);
+		virusTollwut.setTierAufMensch(true);	
+		virusTollwut.setMenschAufMensch(true);
 		
-		virusEbola.setInfektionsRate(0);;
-		virusEbola.setHeilungsRate(0);
-		virusEbola.setSterbeRate(0);	
-		virusEbola.setResistenzRate(0);
+		virusTollwut.setInfektionsRate(0);;
+		virusTollwut.setHeilungsRate(0);
+		virusTollwut.setSterbeRate(0);	
+		virusTollwut.setResistenzRate(0);
 	}
 	
 	public void setTierAufMensch(boolean TaM){
@@ -80,6 +80,6 @@ public class Ebola extends Krankheiten {
 	public double getResistenzRate(){
 		return resistenzRate;
 	}
-	
+
 	
 }

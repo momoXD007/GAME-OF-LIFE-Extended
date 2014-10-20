@@ -2,21 +2,16 @@ package de.GameOfLife;
 
 public abstract class Krankheiten {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5046215450772680923L;
-
 	protected boolean[] BoolValuesIllness;
 	protected Double[] RatesIllness;
-	private boolean menschAufMensch;
-	private boolean tierAufTier;
-	private boolean menschAufTier;
-	private boolean tierAufMensch;
-	private double infektionsRate;
-	private double heilungsRate;
-	private double resistenzRate;
-	private double sterbeRate;
+	protected boolean menschAufMensch;
+	protected boolean tierAufTier;
+	protected boolean menschAufTier;
+	protected boolean tierAufMensch;
+	protected double infektionsRate;
+	protected double heilungsRate;
+	protected double resistenzRate;
+	protected double sterbeRate;
 	
 	public Krankheiten() {
 		BoolValuesIllness[0] = tierAufMensch;
@@ -31,68 +26,36 @@ public abstract class Krankheiten {
 		
 	}
 	
-	public void setTierAufMensch(boolean auss){
-		tierAufMensch = auss;
-	}
+	public abstract void setTierAufMensch(boolean auss);
 	
-	public boolean getTierAufMensch(){
-		return tierAufMensch;
-	}
+	public abstract boolean getTierAufMensch();
 	
-	public void setTierAufTier(boolean auss){
-		tierAufTier = auss;
-	}
+	public abstract void setTierAufTier(boolean auss);
 	
-	public boolean getTierAufTier(){
-		return tierAufTier;
-	}
+	public abstract boolean getTierAufTier();
 	
-	public void setMenschAufMensch(boolean auss){
-		menschAufMensch = auss;
-	}
+	public abstract void setMenschAufMensch(boolean auss);
 	
-	public boolean MenschTierAufMensch(){
-		return menschAufMensch;
-	}
+	public abstract boolean getMenschAufMensch();
 	
-	public void setMenschAufTier(boolean auss){
-		menschAufTier = auss;
-	}
+	public abstract void setMenschAufTier(boolean auss);
 	
-	public boolean getMenschAufTier(){
-		return menschAufTier;
-	}
+	public abstract boolean getMenschAufTier();
 	
-	public void setInfektionsRate(double auss){
-		infektionsRate = auss;
-	}
+	public abstract void setInfektionsRate(double auss);
 	
-	public double getInfektionsRate(){
-		return infektionsRate;
-	}
+	public abstract double getInfektionsRate();
 
-	public void setHeilungsRate(double auss){
-		heilungsRate = auss;
-	}
+	public abstract void setHeilungsRate(double auss);
 	
-	public double getHeilungsRate(){
-		return heilungsRate;
-	}	
+	public abstract double getHeilungsRate();
 	
-	public void setSterbeRate(double auss){
-		sterbeRate = auss;
-	}
+	public abstract void setSterbeRate(double auss);
 	
-	public double getSterbeRate(){
-		return sterbeRate;
-	}
+	public abstract double getSterbeRate();
 	
-	public void setResistenzRate(double auss){
-		resistenzRate = auss;
-	}
+	public abstract void setResistenzRate(double auss);
 	
-	public double getResistenzRate(){
-		return resistenzRate;
-	}
+	public abstract double getResistenzRate();
 	
 }
