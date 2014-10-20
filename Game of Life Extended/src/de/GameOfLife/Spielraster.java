@@ -1,7 +1,7 @@
 package de.GameOfLife;
 import java.util.Random;
-
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,6 +41,10 @@ private boolean tierAufMensch;
 private boolean menschAufMensch;
 private boolean tierAufTier;
 private boolean menschAufTier;
+private double infektionsRate;
+private double resistenzRate;
+private double heilungsRate;
+private double sterbeRate;
 
 
 private Spezie[][] raster =new Spezie[1][1];
@@ -255,7 +259,8 @@ public int zustandsBeschreibung(int xPos, int yPos){
 					curr=raster[x][y];
 					if(curr!=null && !(curr.getWarDran())){
 						//ToDo: raten flexibel halten!!!!
-						if(curr.iteration(0.2, 0.2, 0.2, 0.2)){
+						if(curr.iteration(infektionsRate, resistenzRate, heilungsRate, sterbeRate)){
+							
 							//zelle ist tot-->Referenz wird gelöscht
 							raster[x][y]=null;
 						}
@@ -325,7 +330,6 @@ public void reseteAlleZellen(){
 		Spezie curr;
 		for(int y=0; y<maxX; y++){
 			
-		
 			//in jeder Reihe über die x-Koordinaten gehen
 			for(int x=0; x<maxX; x++){
 				curr=raster[x][y];
@@ -363,20 +367,19 @@ public int getAnzTiereGesund(){
 }
 public int getAnzTiereResistent() {
 	return anzTiereResistent;
-
-
+}
 public void saveState(){
 	try
 	{
 		//Serialize Object to a file
 		FileOutputStream fileOut =
-				new FileOutputStream("C:\\Zustand.ser");
+				new FileOutputStream("Zustand_"+System.currentTimeMillis()+ ".ser");
 				ObjectOutputStream out = new ObjectOutputStream(fileOut);
 				out.writeObject(raster);
 				out.close();
 				fileOut.close();
 				
-				System.out.printf("Serialized data is saved in given folder");
+				System.out.println("Serialized data is saved in given folder");
 	}	catch(IOException i)
 	{
 			i.printStackTrace();
@@ -384,11 +387,11 @@ public void saveState(){
 	
 }
 
-public void loadState(){
+public void loadState(File f){
 	Spezie[][] raster = null;
 	try
     {
-       FileInputStream fileIn = new FileInputStream("C:\\Zustand.ser");
+       FileInputStream fileIn = new FileInputStream(f);
        ObjectInputStream in = new ObjectInputStream(fileIn);
        raster = (Spezie[][]) in.readObject();
        in.close();
