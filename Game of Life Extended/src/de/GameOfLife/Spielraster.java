@@ -51,10 +51,10 @@ public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int st
 	 
 	 //Krankheitseigenschaften übernehemen
 	 
-	 tierAufMensch=k.getTierAufMensch();
-	 tierAufTier=k.getTierAufTier();
-	 menschAufMensch=k.getMenschAufMensch();
-	 menschAufTier=k.getMenschAufTier();
+	 tierAufMensch=k.isTierAufMensch();
+	 tierAufTier=k.isTierAufTier();
+	 menschAufMensch=k.isMenschAufMensch();
+	 menschAufTier=k.isMenschAufTier();
 	 
 	 infektionsRate=k.getInfektionsRate();
 	 resistenzRate=k.getResistenzRate();

@@ -51,7 +51,7 @@ public class MainController implements Initializable {
 					int code = spiel.zustandsBeschreibung(x, y);
 					switch (code) {
 					case 0:
-						spielfeld.getChildren().add(new Rectangle(5,5,Color.TRANSPARENT));
+						spielfeld.getChildren().add(new Rectangle(5,5,Color.ANTIQUEWHITE));
 						break;
 					case 1:
 						spielfeld.getChildren().add(new Circle(2.5,Color.GREEN));
