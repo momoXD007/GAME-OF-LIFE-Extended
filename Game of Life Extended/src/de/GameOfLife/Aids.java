@@ -7,14 +7,14 @@ public class Aids extends Krankheiten {
 	public Aids() {
 		super();
 		virusAids.setTierAufTier(true);
-		virusAids.setMenschAufTier(true);
-		virusAids.setTierAufMensch(true);	
+		virusAids.setMenschAufTier(false);
+		virusAids.setTierAufMensch(false);	
 		virusAids.setMenschAufMensch(true);
 		
-		virusAids.setInfektionsRate(0);;
+		virusAids.setInfektionsRate(0.05);
 		virusAids.setHeilungsRate(0);
-		virusAids.setSterbeRate(0);	
-		virusAids.setResistenzRate(0);
+		virusAids.setSterbeRate(5.30);	
+		virusAids.setResistenzRate(0); //Schutz durch Aufklärung o.ä.
 	}
 	
 	@Override

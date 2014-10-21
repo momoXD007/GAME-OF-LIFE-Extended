@@ -7,13 +7,13 @@ public class Ebola extends Krankheiten {
 	public Ebola() {
 		super();
 		virusEbola.setTierAufTier(true);
-		virusEbola.setMenschAufTier(true);
+		virusEbola.setMenschAufTier(false);
 		virusEbola.setTierAufMensch(true);	
 		virusEbola.setMenschAufMensch(true);
 		
-		virusEbola.setInfektionsRate(0);;
-		virusEbola.setHeilungsRate(0);
-		virusEbola.setSterbeRate(0);	
+		virusEbola.setInfektionsRate(0);
+		virusEbola.setHeilungsRate(0.3);
+		virusEbola.setSterbeRate(0.7);	
 		virusEbola.setResistenzRate(0);
 	}
 	
