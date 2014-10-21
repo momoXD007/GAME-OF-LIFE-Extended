@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+   <children>
+      <BorderPane fx:id="borderBack" layoutX="8.0" layoutY="14.0" prefHeight="800.0" prefWidth="1280.0">
+         <bottom>
+            <HBox prefHeight="250.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <LineChart prefHeight="200.0" prefWidth="640.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <LineChart prefWidth="640.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <FlowPane prefHeight="39.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl der Runden" />
+                  <TextField fx:id="rundenZahl">
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin>
+                  </TextField>
+                  <CheckBox fx:id="endlosBox" mnemonicParsing="false" text="endlos">
+                     <FlowPane.margin>
+                        <Insets left="50.0" />
+                     </FlowPane.margin>
+                  </CheckBox>
+                  <Button fx:id="simulateButton" mnemonicParsing="false" onAction="#starteSimulation" text="Simuliere">
+                     <FlowPane.margin>
+                        <Insets left="50.0" />
+                     </FlowPane.margin>
+                  </Button>
+               </children>
+            </FlowPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

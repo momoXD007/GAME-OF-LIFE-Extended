@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button fx:id="goButton" layoutX="282.0" layoutY="208.0" mnemonicParsing="false" onAction="#go" prefHeight="48.0" prefWidth="95.0" text="Starte" />
+      <Text layoutX="111.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Krankheitssimulation" textAlignment="CENTER" wrappingWidth="214.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="40.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gesund">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="40.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infiziert">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="35.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resistent">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="97.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menschen" textAlignment="CENTER" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="315.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiere">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField id="gm" fx:id="text_gm" layoutX="95.0" layoutY="69.0" />
+      <TextField id="gt" fx:id="text_gt" layoutX="254.0" layoutY="69.0" />
+      <TextField id="im" fx:id="text_im" layoutX="95.0" layoutY="98.0" />
+      <TextField id="it" fx:id="text_it" layoutX="254.0" layoutY="98.0" />
+      <TextField id="rm" fx:id="text_rm" layoutX="95.0" layoutY="128.0" />
+      <TextField id="rt" fx:id="text_rt" layoutX="254.0" layoutY="128.0" />
+      <ComboBox fx:id="comboKrank" layoutX="96.0" layoutY="219.0" prefWidth="150.0" />
+      <Text layoutX="35.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Krankheit">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="zufall" layoutX="111.0" layoutY="177.0" mnemonicParsing="false" text="zufällig">
+         <toggleGroup>
+            <ToggleGroup fx:id="start" />
+         </toggleGroup>
+      </RadioButton>
+      <Text layoutX="31.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verteilung">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="bestehend" layoutX="177.0" layoutY="177.0" mnemonicParsing="false" text="bestehend" toggleGroup="$start" />
+      <TextField fx:id="path" editable="false" layoutX="256.0" layoutY="173.0" />
+   </children>
+</AnchorPane>
