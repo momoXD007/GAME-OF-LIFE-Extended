@@ -1,23 +1,22 @@
 package de.GameOfLife;
 
-public class Vogelgrippe extends Krankheiten {
+public class Aids extends Krankheiten {
 	
-	Vogelgrippe virusVogelgrippe = new Vogelgrippe();
+	Aids virusAids = new Aids();
 
-	public Vogelgrippe(){
+	public Aids() {
 		super();
+		virusAids.setTierAufTier(true);
+		virusAids.setMenschAufTier(true);
+		virusAids.setTierAufMensch(true);	
+		virusAids.setMenschAufMensch(true);
 		
-		virusVogelgrippe.setTierAufTier(true);
-		virusVogelgrippe.setMenschAufTier(true);
-		virusVogelgrippe.setTierAufMensch(true);	
-		virusVogelgrippe.setMenschAufMensch(true);
-		
-		virusVogelgrippe.setInfektionsRate(0);;
-		virusVogelgrippe.setHeilungsRate(0);
-		virusVogelgrippe.setSterbeRate(0);	
-		virusVogelgrippe.setResistenzRate(0);
+		virusAids.setInfektionsRate(0);;
+		virusAids.setHeilungsRate(0);
+		virusAids.setSterbeRate(0);	
+		virusAids.setResistenzRate(0);
 	}
-
+	
 	@Override
 	public void setTierAufMensch(boolean auss) {
 		// TODO Auto-generated method stub
@@ -113,5 +112,7 @@ public class Vogelgrippe extends Krankheiten {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
 
 }

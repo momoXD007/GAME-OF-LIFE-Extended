@@ -1,21 +1,21 @@
 package de.GameOfLife;
 
-public class Vogelgrippe extends Krankheiten {
+public class Pocken extends Krankheiten {
 	
-	Vogelgrippe virusVogelgrippe = new Vogelgrippe();
+	Pocken virusPocken = new Pocken();
 
-	public Vogelgrippe(){
+	public Pocken(){
 		super();
 		
-		virusVogelgrippe.setTierAufTier(true);
-		virusVogelgrippe.setMenschAufTier(true);
-		virusVogelgrippe.setTierAufMensch(true);	
-		virusVogelgrippe.setMenschAufMensch(true);
+		virusPocken.setTierAufTier(true);
+		virusPocken.setMenschAufTier(true);
+		virusPocken.setTierAufMensch(true);	
+		virusPocken.setMenschAufMensch(true);
 		
-		virusVogelgrippe.setInfektionsRate(0);;
-		virusVogelgrippe.setHeilungsRate(0);
-		virusVogelgrippe.setSterbeRate(0);	
-		virusVogelgrippe.setResistenzRate(0);
+		virusPocken.setInfektionsRate(0);;
+		virusPocken.setHeilungsRate(0);
+		virusPocken.setSterbeRate(0);	
+		virusPocken.setResistenzRate(0);
 	}
 
 	@Override
