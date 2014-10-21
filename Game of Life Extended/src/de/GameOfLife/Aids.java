@@ -9,9 +9,9 @@ public class Aids extends Krankheiten {
 		this.setTierAufMensch(false);	
 		this.setMenschAufMensch(true);
 		
-		this.setInfektionsRate(0.05);
+		this.setInfektionsRate(0.0005);
 		this.setHeilungsRate(0);
-		this.setSterbeRate(5.30);	
+		this.setSterbeRate(0.0053);	
 		this.setResistenzRate(0); //Schutz durch Aufklärung
 	} 
 }

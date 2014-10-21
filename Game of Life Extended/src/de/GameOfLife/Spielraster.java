@@ -264,8 +264,10 @@ public int zustandsBeschreibung(int xPos, int yPos){
 					}
 				}
 			}
+			this.reseteAlleZellen();
 		}
-		this.reseteAlleZellen();
+		
+		this.aktualiesiereStats();
 	}
  
  public void aktualiesiereStats(){

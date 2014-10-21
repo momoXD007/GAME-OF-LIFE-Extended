@@ -50,9 +50,13 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 	 return nachbarn;
  }; 
  public boolean sterbe(double rate){
-	 //toDo
-	 
-	 return rate>=zufall;
+	 if(!gesund && !resistent){
+		 return rate>=zufall;
+	 }else{
+		 return false;
+	 }
+	
+	
 	 
  };
  
@@ -62,6 +66,9 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 	 }
 	 
 	 //checke ob bereits krank oder resistent
+	 if(!resistent){
+		 resistent=false;
+		 }
 	 if(gesund && (!resistent)){
 		 if(rate>=zufall){
 			 //hier eventuell inkubationszeit einbauen
