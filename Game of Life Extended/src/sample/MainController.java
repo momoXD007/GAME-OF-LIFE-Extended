@@ -9,6 +9,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -32,6 +35,18 @@ public class MainController implements Initializable {
 	public Button loeseButton;
 	private boolean running = false;
 	private LaufenLasser lassIhn;
+	@FXML
+	public LineChart<?, ?> menschChart;    
+	@FXML // fx:id="tierChart"
+    private LineChart<?, ?> tierChart; // Value injected by FXMLLoader
+	public XYChart.Series menschGesund = new XYChart.Series();
+	public XYChart.Series menschInfiziert = new XYChart.Series();
+	public XYChart.Series menschResistent = new XYChart.Series();
+	public XYChart.Series tierGesund = new XYChart.Series();
+	public XYChart.Series tierInfiziert = new XYChart.Series();
+	public XYChart.Series tierResistent = new XYChart.Series();
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -42,6 +57,7 @@ public class MainController implements Initializable {
 		spielfeld.setPrefRows(50);
 		Group display = new Group(spielfeld);
 		borderBack.setCenter(display);
+		initCharts();
 	}
 
 	public void setSpiel(Spielraster s) {
@@ -57,7 +73,7 @@ public class MainController implements Initializable {
 					switch (code) {
 					case 0:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.ANTIQUEWHITE));
+								new Rectangle(5, 5, Color.WHITE));
 						break;
 					case 1:
 						spielfeld.getChildren().add(
@@ -88,7 +104,20 @@ public class MainController implements Initializable {
 				}
 
 			}
+			updateCharts();
 		}
+	}
+
+	private void updateCharts() {
+		String runde = "Runde " +spiel.rundenCounter;
+	
+		menschGesund.getData().add(new XYChart.Data(runde,spiel.getMenschenAnzGesund()));
+		menschInfiziert.getData().add(new XYChart.Data(runde,spiel.getMesnchenAnzInfiziert()));
+		menschResistent.getData().add(new XYChart.Data(runde,spiel.getAnzMenschenResisten()));
+
+		tierGesund.getData().add(new XYChart.Data(runde,spiel.getAnzTiereGesund()));
+		tierInfiziert.getData().add(new XYChart.Data(runde,spiel.getAnzTiereInfiziert()));
+		tierResistent.getData().add(new XYChart.Data(runde,spiel.getAnzTiereResistent()));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -127,5 +156,25 @@ public class MainController implements Initializable {
 	}
 	public void machUpdate(){
 		updateRaster();
+		
+	}
+	public void initCharts(){
+		tierChart.setCreateSymbols(false);
+		menschChart.setCreateSymbols(false);
+		menschGesund.setName("Gesund"); tierGesund.setName("Gesund");
+		menschInfiziert.setName("Infiziert"); tierInfiziert.setName("Infiziert");
+		menschResistent.setName("Resistent"); tierResistent.setName("Resistent");
+		menschChart.getData().addAll(menschGesund,menschInfiziert,menschResistent);
+		tierChart.getData().addAll(tierGesund,tierInfiziert,tierResistent);
+		
+		
+		((Node) menschResistent.nodeProperty().get()).setStyle("-fx-stroke: #000000;");
+		((Node) tierResistent.nodeProperty().get()).setStyle("-fx-stroke: #000000;");
+		((Node) tierGesund.nodeProperty().get()).setStyle("-fx-stroke: #00FF00;");
+		((Node) menschGesund.nodeProperty().get()).setStyle("-fx-stroke: #00FF00;");
+		((Node) menschInfiziert.nodeProperty().get()).setStyle("-fx-stroke: #FF0000;");
+		((Node) tierInfiziert.nodeProperty().get()).setStyle("-fx-stroke: #FF0000;");
+
+	
 	}
 }

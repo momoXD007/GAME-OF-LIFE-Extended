@@ -13,7 +13,7 @@
          <bottom>
             <HBox prefHeight="250.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <LineChart prefHeight="200.0" prefWidth="640.0">
+                  <LineChart id="menschChart" fx:id="menschChart" alternativeColumnFillVisible="true" prefHeight="200.0" prefWidth="640.0" title="Entwicklung der Menschen">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -21,7 +21,7 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                   </LineChart>
-                  <LineChart prefWidth="640.0">
+                  <LineChart fx:id="tierChart" prefWidth="640.0" title="Entwicklung der Tiere">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

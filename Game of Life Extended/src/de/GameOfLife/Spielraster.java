@@ -35,7 +35,7 @@ private double infektionsRate;
 private double resistenzRate;
 private double heilungsRate;
 private double sterbeRate;
-
+public int rundenCounter = 0;
 
 private Spezie[][] raster =new Spezie[1][1];
 
@@ -270,8 +270,9 @@ public int zustandsBeschreibung(int xPos, int yPos){
  }
  
  
- public void iteriere(int anzRunden){
+ public synchronized void iteriere(int anzRunden){
 		for (int i = 0; i < anzRunden; i++) {
+			rundenCounter++;
 			Spezie curr;
 			for(int y=0; y<maxX; y++){
 				
