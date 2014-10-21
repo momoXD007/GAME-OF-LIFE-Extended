@@ -3,8 +3,14 @@ package de.GameOfLife;
 import java.io.Serializable;
 import java.util.Random;
 
+
+
 public class Spezie implements Serializable {
- private boolean gesund;
+ /**
+	 * 
+	 */
+private static final long serialVersionUID = -8204540376294598490L;
+private boolean gesund;
  private boolean resistent;
  private Random zufallsGen = new Random();
  private double zufall=zufallsGen.nextDouble();
@@ -24,9 +30,61 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
  }
  
  protected  void bewege(){
-	 //ToDo
 	 
- };
+	 
+	 
+	 //Zellenabhängige Implementation
+	Spezie[] nachbarn= this.getNeighbours();
+	boolean gesetzt=false;
+	int c =0;
+	int x=this.xPos;
+	int y = this.yPos;
+	while(!gesetzt && c<8){
+		int index = zufallsGen.nextInt()%8;
+		if(index<0){
+			index*=-1;
+		}
+		
+		switch(index){
+		case 0: //x=x;
+				y++;
+				break;
+		case 1:x++;
+			   y++;
+			break;
+		case 2:x++;
+				//y=y;
+			break;
+		case 3:	x++;
+				y--;
+				
+			break;
+		case 4:	//x=x;
+				y--;
+				break;
+		case 5: x--;
+				y--;
+			break;
+		case 6: x--;
+				//y=y;
+				break;
+		case 7: x--;
+				y++;
+		break;
+		default: ;
+		}
+		gesetzt=raster.setzeZelle(x, y, this, this.xPos,this.yPos);
+		c++;
+		
+		
+	}
+	if(gesetzt){
+		this.xPos=x;
+		this.yPos=y;
+	}
+ }
+ 
+ 
  protected  Spezie[] getNeighbours(){
 	 Spezie[] nachbarn = new Spezie[8];
 	 //oberer Nachbar
