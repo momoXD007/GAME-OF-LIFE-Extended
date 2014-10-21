@@ -200,6 +200,31 @@ private void besiedleRaster(){
 
 };
 
+public boolean setzeZelle(int x, int y, Spezie lSpezie, int altX, int altY){
+	Spezie curr;
+	boolean error=false;
+	if(x<0 || y<0 || x>maxX || y>maxX){
+		error=true;
+	}
+	try{
+		curr=raster[x][y];
+	}catch(ArrayIndexOutOfBoundsException e){
+		curr=null;
+		error=true;
+	}
+	if(curr !=null || error ){
+		return false;
+	}else{
+		raster[x][y]=lSpezie;
+		raster[altX][altY]=null;
+		return true;
+	}
+	
+	
+	
+}
+
+
 public int zustandsBeschreibung(int xPos, int yPos){
 	int rueckgabe=0;
 	Spezie ausgewaehlt;
@@ -367,6 +392,8 @@ public int getAnzTiereGesund(){
 public int getAnzTiereResistent() {
 	return anzTiereResistent;
 }
+
+
 public void saveState(){
 	try
 	{
