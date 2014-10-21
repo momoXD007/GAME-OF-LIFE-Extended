@@ -28,7 +28,13 @@ public class LaufenLasser extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					b.fire();
+				}
+			});
+			
 		}
 	}
 

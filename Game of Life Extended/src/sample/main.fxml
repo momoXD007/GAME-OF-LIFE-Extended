@@ -51,7 +51,7 @@
                         <Insets left="50.0" />
                      </FlowPane.margin>
                   </Button>
-                  <Button fx:id="loeseButton" mnemonicParsing="false" onAction="#machUpdate" prefHeight="25.0" prefWidth="55.0" text="Update" />
+                  <Button fx:id="loeseButton" mnemonicParsing="false" onAction="#machUpdate" prefHeight="25.0" prefWidth="55.0" text="Update" visible="false" />
                </children>
             </FlowPane>
          </top>
