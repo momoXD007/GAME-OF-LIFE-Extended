@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.GameOfLife.Aids;
 import de.GameOfLife.Spielraster;
 
 public class Controller implements Initializable {
@@ -43,7 +44,7 @@ public class Controller implements Initializable {
 //            root = loader.load(getClass().getResource("main.fxml"));
             root = loader.load(getClass().getResource("main.fxml").openStream());
             mc = (MainController) loader.getController();
-    		Spielraster raster = new Spielraster(10, 2, 10, 0, 2, 10, 2500,true,false,true,false);
+    		Spielraster raster = new Spielraster(500, 50, 500, 40, 20, 80, 2500, new Aids());
     		mc.setSpiel(raster);
     		mc.updateRaster();
             
