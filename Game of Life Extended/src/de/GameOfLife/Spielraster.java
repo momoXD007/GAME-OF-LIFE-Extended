@@ -316,19 +316,21 @@ public int zustandsBeschreibung(int xPos, int yPos){
 					if(curr instanceof Mensch){
 						if(curr.isGesund()){
 							menschenGesund++;
-						}else if(curr.isResistent()){
-							menschenResistent++;
 						}else{
 							menschenInfiziert++;
+						}
+						if(curr.isResistent()){
+							menschenResistent++;
 						}
 					}else if(curr instanceof Tier){
 						
 						if(curr.isGesund()){
 							tiereGesund++;
-						}else if(curr.isResistent()){
-							tiereResistent++;
 						}else{
 							tiereInfiziert++;
+						}
+						if(curr.isResistent()){
+							tiereResistent++;
 						}
 					}
 				}
