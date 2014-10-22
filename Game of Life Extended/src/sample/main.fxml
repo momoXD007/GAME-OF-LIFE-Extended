@@ -7,13 +7,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#checkeKey" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#checkeKey" prefHeight="840" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
    <children>
       <BorderPane fx:id="borderBack" layoutX="8.0" layoutY="14.0" prefHeight="800.0" prefWidth="1280.0">
          <bottom>
             <HBox prefHeight="250.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <LineChart id="menschChart" fx:id="menschChart" alternativeColumnFillVisible="true" prefHeight="200.0" prefWidth="640.0" title="Entwicklung der Menschen">
+                  <LineChart id="menschChart" fx:id="menschChart" alternativeColumnFillVisible="true" prefHeight="200.0" prefWidth="640.0" stylesheets="@legende.css" title="Entwicklung der Menschen">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
