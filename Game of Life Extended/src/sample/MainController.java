@@ -147,6 +147,7 @@ public class MainController implements Initializable {
 			lassIhn = null;
 		}
 	}
+	
 
 	@FXML
 	public void checkeKey(KeyEvent event) {
@@ -161,19 +162,18 @@ public class MainController implements Initializable {
 	public void initCharts(){
 		tierChart.setCreateSymbols(false);
 		menschChart.setCreateSymbols(false);
-		menschGesund.setName("Gesund"); tierGesund.setName("Gesund");
-		menschInfiziert.setName("Infiziert"); tierInfiziert.setName("Infiziert");
-		menschResistent.setName("Resistent"); tierResistent.setName("Resistent");
+		
+		menschGesund.setName("Gesund"); 
+		tierGesund.setName("Gesund");	
+		menschInfiziert.setName("Infiziert"); 
+		tierInfiziert.setName("Infiziert");	
+		
+		menschResistent.setName("Resistent"); 
+		tierResistent.setName("Resistent");	
+		
 		menschChart.getData().addAll(menschGesund,menschInfiziert,menschResistent);
 		tierChart.getData().addAll(tierGesund,tierInfiziert,tierResistent);
 		
-		
-		((Node) menschResistent.nodeProperty().get()).setStyle("-fx-stroke: #000000;");
-		((Node) tierResistent.nodeProperty().get()).setStyle("-fx-stroke: #000000;");
-		((Node) tierGesund.nodeProperty().get()).setStyle("-fx-stroke: #00FF00;");
-		((Node) menschGesund.nodeProperty().get()).setStyle("-fx-stroke: #00FF00;");
-		((Node) menschInfiziert.nodeProperty().get()).setStyle("-fx-stroke: #FF0000;");
-		((Node) tierInfiziert.nodeProperty().get()).setStyle("-fx-stroke: #FF0000;");
 
 	
 	}

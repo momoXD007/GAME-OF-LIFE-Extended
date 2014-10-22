@@ -52,6 +52,7 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("sample/legende.css");
         stage.setScene(scene);
         stage.show();
         stage.centerOnScreen();
