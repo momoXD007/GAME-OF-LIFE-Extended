@@ -53,8 +53,8 @@ public class MainController implements Initializable {
 		spielfeld = new TilePane();
 		spielfeld.setHgap(1);
 		spielfeld.setVgap(1);
-		spielfeld.setPrefColumns(50);
-		spielfeld.setPrefRows(50);
+		spielfeld.setPrefColumns(60);
+		spielfeld.setPrefRows(60);
 		Group display = new Group(spielfeld);
 		borderBack.setCenter(display);
 		initCharts();
@@ -67,8 +67,8 @@ public class MainController implements Initializable {
 	public void updateRaster() {
 		if (spiel != null) {
 			spielfeld.getChildren().clear();
-			for (int x = 0; x < 50; x++) {
-				for (int y = 0; y < 50; y++) {
+			for (int x = 0; x < 60; x++) {
+				for (int y = 0; y < 60; y++) {
 					int code = spiel.zustandsBeschreibung(x, y);
 					switch (code) {
 					case 0:

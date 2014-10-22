@@ -2,19 +2,17 @@ package de.GameOfLife;
 
 public class Ebola extends Krankheiten {
 	
-	Ebola virusEbola = new Ebola();
 
 	public Ebola() {
-		super();
-		virusEbola.setTierAufTier(true);
-		virusEbola.setMenschAufTier(false);
-		virusEbola.setTierAufMensch(true);	
-		virusEbola.setMenschAufMensch(true);
+		this.setTierAufTier(true);
+		this.setMenschAufTier(false);
+		this.setTierAufMensch(true);	
+		this.setMenschAufMensch(true);
 		
-		virusEbola.setInfektionsRate(0);
-		virusEbola.setHeilungsRate(0.3);
-		virusEbola.setSterbeRate(0.7);	
-		virusEbola.setResistenzRate(0);
+		this.setInfektionsRate(0.1);
+		this.setHeilungsRate(0.3);
+		this.setSterbeRate(0.7);	
+		this.setResistenzRate(0);
 	}
 	
 	public void setTierAufMensch(boolean TaM){
