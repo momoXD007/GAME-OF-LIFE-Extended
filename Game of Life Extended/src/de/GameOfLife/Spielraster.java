@@ -339,9 +339,9 @@ public int zustandsBeschreibung(int xPos, int yPos){
 		//Stats für Menschen updaten
 		anzMenschenInfiziert=menschenInfiziert;
 		anzMenschenResistent=menschenResistent;
-		anzMenschenGesund=menschenGesund;
+		anzMenschenGesund=menschenGesund-menschenResistent;
 		//Stats für Tiere updaten
-		anzTiereGesund=tiereGesund;
+		anzTiereGesund=tiereGesund-tiereResistent;
 		anzTiereInfiziert=tiereInfiziert;
 		anzTiereResistent=tiereResistent;
 		
