@@ -16,11 +16,12 @@ private static final long serialVersionUID = 1849731288047615175L;
 private int anzMenschenInfiziert;
 private int anzMenschenResistent;
 private int anzMenschenGesund;
-
+private int anzMenschenGestorben;
 //
 private int anzTiereInfiziert;
 private int anzTiereResistent;
 private int anzTiereGesund;
+private int anzTiereGestorben;
 
 //rastereigenschaften
 private int groesse;
@@ -271,7 +272,9 @@ public int zustandsBeschreibung(int xPos, int yPos){
  
  
  public synchronized void iteriere(int anzRunden){
-		for (int i = 0; i < anzRunden; i++) {
+	anzMenschenGestorben=0;
+	anzTiereGestorben=0;
+	 for (int i = 0; i < anzRunden; i++) {
 			rundenCounter++;
 			Spezie curr;
 			for(int y=0; y<maxY; y++){
@@ -286,6 +289,12 @@ public int zustandsBeschreibung(int xPos, int yPos){
 							
 							//zelle ist tot-->Referenz wird gelöscht
 							raster[x][y]=null;
+							//Todescounter inkremtieren solange Referenz auf Zelle noch da ist
+							if(curr instanceof Mensch) {
+								anzMenschenGestorben++;		
+							}else{
+								anzTiereGestorben++;
+							}
 						}
 					}
 				}
@@ -381,6 +390,10 @@ public int getMenschenAnzGesund(){
 	return anzMenschenGesund;
 }
 
+public int getAnzMenschenGestorben(){
+	return anzMenschenGestorben;
+}
+
 public int getAnzMenschenGesamtLebendig(){
 	return anzMenschenResistent+anzMenschenGesund+anzMenschenInfiziert;
 }
@@ -396,6 +409,9 @@ public int getAnzTiereResistent() {
 	return anzTiereResistent;
 }
 
+public int getAnzTiereGestorben(){
+	return anzTiereGestorben;
+}
 
 public void saveState(){
 	try
