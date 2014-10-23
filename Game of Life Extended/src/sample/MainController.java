@@ -28,6 +28,11 @@ import javafx.scene.shape.*;
 public class MainController implements Initializable {
 	public static final int x_koordinate = 150;
 	public static final int y_koordinate = 75;
+	@FXML // fx:id="toteMenschen"
+    private TextField toteMenschen; // Value injected by FXMLLoader
+
+    @FXML // fx:id="toteTiere"
+    private TextField toteTiere; // Value injected by FXMLLoader
 	public BorderPane borderBack;
 	public TilePane spielfeld;
 	private Spielraster spiel;
@@ -47,8 +52,7 @@ public class MainController implements Initializable {
 	public XYChart.Series tierGesund = new XYChart.Series();
 	public XYChart.Series tierInfiziert = new XYChart.Series();
 	public XYChart.Series tierResistent = new XYChart.Series();
-	
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -107,6 +111,10 @@ public class MainController implements Initializable {
 
 			}
 			updateCharts();
+			if(spiel!=null){
+				toteMenschen.setText(String.valueOf(spiel.getAnzMenschenGestorben()));
+				toteTiere.setText(String.valueOf(spiel.getAnzTiereGestorben()));
+			}
 		}
 	}
 
