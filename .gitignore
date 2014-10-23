@@ -39,3 +39,11 @@ local.properties
 # TeXlipse plugin
 .texlipse
 .classpath
+
+*.DS_Store
+#Tex Sachen
+*.pdf
+*.log
+*.synct
+*.aux
+*.synctex.gz
