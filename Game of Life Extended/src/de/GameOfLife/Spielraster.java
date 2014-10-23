@@ -289,6 +289,7 @@ public int zustandsBeschreibung(int xPos, int yPos){
 							
 							//zelle ist tot-->Referenz wird gelöscht
 							raster[x][y]=null;
+							//Todescounter inkremtieren solange Referenz auf Zelle noch da ist
 							if(curr instanceof Mensch) {
 								anzMenschenGestorben++;		
 							}else{
