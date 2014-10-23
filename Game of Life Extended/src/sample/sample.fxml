@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -7,6 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
+      <ImageView fx:id="bBild" fitHeight="278.0" fitWidth="436.0" layoutX="-0.0" opacity="0.17" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="goButton" layoutX="282.0" layoutY="208.0" mnemonicParsing="false" onAction="#go" prefHeight="48.0" prefWidth="95.0" text="Starte" />
       <Text layoutX="111.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Krankheitssimulation" textAlignment="CENTER" wrappingWidth="214.0">
          <font>

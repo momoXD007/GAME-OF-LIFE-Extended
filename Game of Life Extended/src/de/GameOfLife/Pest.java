@@ -9,9 +9,9 @@ public class Pest extends Krankheiten {
 		this.setTierAufMensch(true);	
 		this.setMenschAufMensch(true);
 		
-		this.setInfektionsRate(0);;
-		this.setHeilungsRate(0);
-		this.setSterbeRate(0);	
-		this.setResistenzRate(0);
+		this.setInfektionsRate(0.33);;
+		this.setHeilungsRate(0.75);
+		this.setSterbeRate(0.3);	
+		this.setResistenzRate(0.02);
 	}
 }

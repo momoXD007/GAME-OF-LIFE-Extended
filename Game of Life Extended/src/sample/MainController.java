@@ -26,6 +26,8 @@ import javafx.scene.shape.*;
  * Created by Marvin on 20.10.2014.
  */
 public class MainController implements Initializable {
+	public static final int x_koordinate = 150;
+	public static final int y_koordinate = 75;
 	public BorderPane borderBack;
 	public TilePane spielfeld;
 	private Spielraster spiel;
@@ -53,8 +55,8 @@ public class MainController implements Initializable {
 		spielfeld = new TilePane();
 		spielfeld.setHgap(1);
 		spielfeld.setVgap(1);
-		spielfeld.setPrefColumns(60);
-		spielfeld.setPrefRows(60);
+		spielfeld.setPrefColumns(x_koordinate);
+		spielfeld.setPrefRows(y_koordinate);
 		Group display = new Group(spielfeld);
 		borderBack.setCenter(display);
 		initCharts();
@@ -67,8 +69,8 @@ public class MainController implements Initializable {
 	public void updateRaster() {
 		if (spiel != null) {
 			spielfeld.getChildren().clear();
-			for (int x = 0; x < 60; x++) {
-				for (int y = 0; y < 60; y++) {
+			for (int x = 0; x < x_koordinate; x++) {
+				for (int y = 0; y < y_koordinate; y++) {
 					int code = spiel.zustandsBeschreibung(x, y);
 					switch (code) {
 					case 0:

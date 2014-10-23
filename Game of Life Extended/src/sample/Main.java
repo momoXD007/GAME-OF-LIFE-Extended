@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,6 +16,7 @@ public class Main extends Application {
         root = (Parent) loader.load(getClass().getResource("sample.fxml").openStream());
         primaryStage.setTitle("Und wann bist du dran?");
         primaryStage.setScene(new Scene(root));
+        primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("B_hazard.gif"))); 
         primaryStage.show();
     }
 

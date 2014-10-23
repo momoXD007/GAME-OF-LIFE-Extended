@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -32,7 +34,7 @@ public class Controller implements Initializable {
 	public ComboBox<String> comboKrank;
 	public RadioButton bestehend;
 	public TextField path;
-
+	public ImageView bBild;
 	private File config;
 
 	@Override
@@ -43,7 +45,7 @@ public class Controller implements Initializable {
 		goButton.setText("GO");
 		zufall.setSelected(true);
 		path.setDisable(true);
-
+		bBild.setImage(new Image(Main.class.getResourceAsStream("B_hazard.gif")));
 		start.selectedToggleProperty().addListener(
 				new ChangeListener<Toggle>() {
 					public void changed(ObservableValue<? extends Toggle> ov,
@@ -79,7 +81,8 @@ public class Controller implements Initializable {
 					Integer.parseInt(text_it.getText()), // inf menschen
 					Integer.parseInt(text_rt.getText()), // res menschen
 					Integer.parseInt(text_gt.getText()), // gesund menschen
-					60,90, getKrankheit());
+					MainController.x_koordinate,
+					MainController.y_koordinate	, getKrankheit());
 			mc.setSpiel(raster);
 			mc.updateRaster();
 
