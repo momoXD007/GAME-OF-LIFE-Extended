@@ -79,7 +79,7 @@ public class Controller implements Initializable {
 					Integer.parseInt(text_it.getText()), // inf menschen
 					Integer.parseInt(text_rt.getText()), // res menschen
 					Integer.parseInt(text_gt.getText()), // gesund menschen
-					60*60, getKrankheit());
+					60,90, getKrankheit());
 			mc.setSpiel(raster);
 			mc.updateRaster();
 

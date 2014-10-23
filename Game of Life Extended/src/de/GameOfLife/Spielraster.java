@@ -25,6 +25,7 @@ private int anzTiereGesund;
 //rastereigenschaften
 private int groesse;
 private int maxX;
+private int maxY;
 
 //Krankheitseigenschaften
 private boolean tierAufMensch;
@@ -40,7 +41,16 @@ public int rundenCounter = 0;
 private Spezie[][] raster =new Spezie[1][1];
 
 public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,
-		int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int startGroesse,
+		int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int groesse,
+		Krankheiten k){
+		this(startMenschenInfizierte, startMenschenResistent, startMenschenGesund, startTiereInfiziert, startTiereResistent, startTiereGesund, (int)Math.round(Math.sqrt(groesse)), (int)Math.round(Math.sqrt(groesse)), k);
+	
+		
+	}
+
+
+public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,
+		int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int x,int y,
 		Krankheiten k){
 	 anzMenschenInfiziert=startMenschenInfizierte;
 	 anzMenschenResistent = startMenschenResistent;
@@ -64,12 +74,13 @@ public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int st
 	 
 	 
 	 
-	 maxX=(int) Math.round(Math.sqrt(startGroesse));
+	 maxX=x;
+	 maxY=y;
 	 
-	 raster=new Spezie[maxX][maxX];
+	 raster=new Spezie[maxX][maxY];
 	 //sorgt dafür das auch wirkliche durch 2 teilbare Größe gespeichert wird
 	 //bsp.: falls User 13 eingibt wird 13/2=6 gerechnet dann 6*2=12 also die Anzahl die auch wirklich genutzt wird;
-	 groesse=maxX*maxX;
+	 groesse=maxX*maxY;
 	 this.besiedleRaster();
 
 }
@@ -92,7 +103,7 @@ private void besiedleRaster(){
 		while(!gesetzt){
 			int x=rand.nextInt()%(maxX);
 			if(x<0){x=x*-1;}
-			int y=rand.nextInt()%(maxX);
+			int y=rand.nextInt()%(maxY);
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
@@ -109,7 +120,7 @@ private void besiedleRaster(){
 		while(!gesetzt){
 			int x=rand.nextInt()%(maxX);
 			if(x<0){x=x*-1;}
-			int y=rand.nextInt()%(maxX);
+			int y=rand.nextInt()%(maxY);
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
@@ -128,7 +139,7 @@ private void besiedleRaster(){
 		while(!gesetzt){
 			int x=rand.nextInt()%(maxX);
 			if(x<0){x=x*-1;}
-			int y=rand.nextInt()%(maxX);
+			int y=rand.nextInt()%(maxY);
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
@@ -144,7 +155,7 @@ private void besiedleRaster(){
 		while(!gesetzt){
 			int x=rand.nextInt()%(maxX);
 			if(x<0){x=x*-1;}
-			int y=rand.nextInt()%(maxX);
+			int y=rand.nextInt()%(maxY);
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
@@ -161,7 +172,7 @@ private void besiedleRaster(){
 		while(!gesetzt){
 			int x=rand.nextInt()%(maxX);
 			if(x<0){x=x*-1;}
-			int y=rand.nextInt()%(maxX);
+			int y=rand.nextInt()%(maxY);
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
@@ -177,7 +188,7 @@ private void besiedleRaster(){
 		while(!gesetzt){
 			int x=rand.nextInt()%(maxX);
 			if(x<0){x=x*-1;}
-			int y=rand.nextInt()%(maxX);
+			int y=rand.nextInt()%(maxY);
 			if(y<0){y=y*-1;}
 			if(raster[x][y]==null){
 				//die beiden hinteren Werte müssen irgendwie global verwaltet werden
@@ -187,23 +198,12 @@ private void besiedleRaster(){
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
 };
 
 public boolean setzeZelle(int x, int y, Spezie lSpezie, int altX, int altY){
 	Spezie curr;
 	boolean error=false;
-	if(x<0 || y<0 || x>maxX || y>maxX){
+	if(x<0 || y<0 || x>maxX || y>maxY){
 		error=true;
 	}
 	try{
@@ -274,7 +274,7 @@ public int zustandsBeschreibung(int xPos, int yPos){
 		for (int i = 0; i < anzRunden; i++) {
 			rundenCounter++;
 			Spezie curr;
-			for(int y=0; y<maxX; y++){
+			for(int y=0; y<maxY; y++){
 				
 			
 				//in jeder Reihe über die x-Koordinaten gehen
@@ -306,7 +306,7 @@ public int zustandsBeschreibung(int xPos, int yPos){
 	 
 	 
 	 	Spezie curr;
-		for(int y=0; y<maxX; y++){
+		for(int y=0; y<maxY; y++){
 			
 		
 			//in jeder Reihe über die x-Koordinaten gehen
@@ -355,7 +355,7 @@ public int zustandsBeschreibung(int xPos, int yPos){
 public void reseteAlleZellen(){
 	
 		Spezie curr;
-		for(int y=0; y<maxX; y++){
+		for(int y=0; y<maxY; y++){
 			
 			//in jeder Reihe über die x-Koordinaten gehen
 			for(int x=0; x<maxX; x++){
