@@ -272,10 +272,11 @@ public int zustandsBeschreibung(int xPos, int yPos){
  
  
  public synchronized void iteriere(int anzRunden){
-	anzMenschenGestorben=0;
-	anzTiereGestorben=0;
+	
 	 for (int i = 0; i < anzRunden; i++) {
-			rundenCounter++;
+		 	anzMenschenGestorben=0;
+			anzTiereGestorben=0;
+		 	rundenCounter++;
 			Spezie curr;
 			for(int y=0; y<maxY; y++){
 				
