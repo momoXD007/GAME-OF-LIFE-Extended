@@ -42,6 +42,7 @@ public class MainController implements Initializable {
 	public Button loeseButton;
 	private boolean running = false;
 	private LaufenLasser lassIhn;
+	private int startGroese;
 	@FXML
 	public LineChart<?, ?> menschChart;    
 	@FXML // fx:id="tierChart"
