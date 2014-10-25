@@ -17,11 +17,18 @@ private int anzMenschenInfiziert;
 private int anzMenschenResistent;
 private int anzMenschenGesund;
 private int anzMenschenGestorben;
+
+
+
 //
 private int anzTiereInfiziert;
 private int anzTiereResistent;
 private int anzTiereGesund;
 private int anzTiereGestorben;
+
+private int anzGesamtToteSpezienSeitStart=0;
+
+
 
 //rastereigenschaften
 private int groesse;
@@ -301,6 +308,7 @@ public int zustandsBeschreibung(int xPos, int yPos){
 				}
 			}
 			this.reseteAlleZellen();
+			anzGesamtToteSpezienSeitStart+=anzMenschenGestorben+anzTiereGestorben;
 		}
 		
 		this.aktualiesiereStats();
@@ -413,7 +421,9 @@ public int getAnzTiereResistent() {
 public int getAnzTiereGestorben(){
 	return anzTiereGestorben;
 }
-
+public int getAnzGesamtToteSpezienSeitStart() {
+	return anzGesamtToteSpezienSeitStart;
+}
 public void saveState(){
 	try
 	{
