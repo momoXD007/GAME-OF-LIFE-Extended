@@ -2,18 +2,19 @@ package de.GameOfLife;
 
 public class Tollwut extends Krankheiten{
 
+	//Tollwut heute weltweit
 	Tollwut virusTollwut = new Tollwut();
 
 	public Tollwut() {
 		super();
 		virusTollwut.setTierAufTier(true);
-		virusTollwut.setMenschAufTier(true);
+		virusTollwut.setMenschAufTier(false); //kommt auch nicht vor(!)
 		virusTollwut.setTierAufMensch(true);	
-		virusTollwut.setMenschAufMensch(true);
+		virusTollwut.setMenschAufMensch(false); //kommt nicht vor(!)
 		
-		virusTollwut.setInfektionsRate(0);;
+		virusTollwut.setInfektionsRate(0.0014);;
 		virusTollwut.setHeilungsRate(0);
-		virusTollwut.setSterbeRate(0);	
+		virusTollwut.setSterbeRate(0.7857 * (Math.pow(10, -5)));	
 		virusTollwut.setResistenzRate(0);
 	}
 	

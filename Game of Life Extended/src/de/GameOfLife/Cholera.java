@@ -2,19 +2,19 @@ package de.GameOfLife;
 
 public class Cholera extends Krankheiten {
 	
-
+	//Choleraepedemie (Hamburg 1982)
 	Cholera virusCholera = new Cholera();
 
 	public Cholera() {
 		super();
-		virusCholera.setTierAufTier(true);
-		virusCholera.setMenschAufTier(true);
-		virusCholera.setTierAufMensch(true);	
+		virusCholera.setTierAufTier(false);
+		virusCholera.setMenschAufTier(false);
+		virusCholera.setTierAufMensch(false);	
 		virusCholera.setMenschAufMensch(true);
 		
-		virusCholera.setInfektionsRate(0);;
-		virusCholera.setHeilungsRate(0);
-		virusCholera.setSterbeRate(0);	
+		virusCholera.setInfektionsRate(0.0265);;
+		virusCholera.setHeilungsRate(0.4925);
+		virusCholera.setSterbeRate(0.5075);	
 		virusCholera.setResistenzRate(0);
 	}
 	

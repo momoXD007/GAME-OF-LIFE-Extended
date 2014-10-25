@@ -1,19 +1,21 @@
 package de.GameOfLife;
 
-public class Ebola extends Krankheiten {
+public class CholeraAfrika extends Krankheiten {
 	
-	//Aktuelle Zahlen weltweit
-	
-	public Ebola() {
-		this.setTierAufTier(true);
-		this.setMenschAufTier(false);
-		this.setTierAufMensch(true);	
-		this.setMenschAufMensch(true);
+	//Choleraepedemie (Simbabwe 2008/2009)
+	CholeraAfrika virusCholera = new CholeraAfrika();
+
+	public CholeraAfrika() {
+		super();
+		virusCholera.setTierAufTier(false);
+		virusCholera.setMenschAufTier(false);
+		virusCholera.setTierAufMensch(false);	
+		virusCholera.setMenschAufMensch(true);
 		
-		this.setInfektionsRate(0.1);
-		this.setHeilungsRate(0.3);
-		this.setSterbeRate(0.7);	
-		this.setResistenzRate(0);
+		virusCholera.setInfektionsRate(0.0077);;
+		virusCholera.setHeilungsRate(0.4925);
+		virusCholera.setSterbeRate(0.053);	
+		virusCholera.setResistenzRate(0);
 	}
 	
 	public void setTierAufMensch(boolean TaM){
@@ -79,6 +81,6 @@ public class Ebola extends Krankheiten {
 	public double getResistenzRate(){
 		return resistenzRate;
 	}
-	
-	
+
+
 }

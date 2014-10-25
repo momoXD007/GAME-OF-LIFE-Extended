@@ -29,7 +29,7 @@ public class LaufenLasser extends Thread {
 				e.printStackTrace();
 			}
 			Platform.runLater(new Runnable() {
-				@Override
+				//@Override
 				public void run() {
 					b.fire();
 				}
