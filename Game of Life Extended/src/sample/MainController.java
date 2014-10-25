@@ -74,8 +74,8 @@ public class MainController implements Initializable {
 	public void updateRaster() {
 		if (spiel != null) {
 			spielfeld.getChildren().clear();
-			for (int x = 0; x < x_koordinate; x++) {
-				for (int y = 0; y < y_koordinate; y++) {
+			for (int y = 0; y < y_koordinate; y++) {
+				for (int x = 0; x < x_koordinate; x++) {
 					int code = spiel.zustandsBeschreibung(x, y);
 					switch (code) {
 					case 0:
