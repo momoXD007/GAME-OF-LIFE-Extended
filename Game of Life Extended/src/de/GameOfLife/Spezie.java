@@ -204,7 +204,12 @@ public boolean isResistent() {
 public void setResistent(boolean resistent) {
 	this.resistent = resistent;
 }
-
+public int getXPos(){
+	return xPos;
+}
+public int getYPos(){
+	return yPos;
+}
 
 
 }

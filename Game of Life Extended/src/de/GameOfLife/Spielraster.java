@@ -296,7 +296,7 @@ public int zustandsBeschreibung(int xPos, int yPos){
 						if(curr.iteration(infektionsRate, resistenzRate, heilungsRate, sterbeRate)){
 							
 							//zelle ist tot-->Referenz wird gelöscht
-							raster[x][y]=null;
+							raster[curr.getXPos()][curr.getYPos()]=null;
 							//Todescounter inkremtieren solange Referenz auf Zelle noch da ist
 							if(curr instanceof Mensch) {
 								anzMenschenGestorben++;		
