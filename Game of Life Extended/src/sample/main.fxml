@@ -42,7 +42,7 @@
          <top>
             <FlowPane prefHeight="39.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl der Runden" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl der Runden / Zeitschritte" />
                   <TextField fx:id="rundenZahl">
                      <FlowPane.margin>
                         <Insets left="10.0" />
@@ -59,7 +59,7 @@
                      </FlowPane.margin>
                   </Button>
                   <Button fx:id="loeseButton" mnemonicParsing="false" onAction="#machUpdate" prefHeight="25.0" prefWidth="55.0" text="Update" visible="false" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bereits gestorbene Menschen">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zuletzt gestorbene Menschen">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -75,7 +75,7 @@
                         <Insets left="5.0" />
                      </FlowPane.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bereits gestorbene Tiere">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zuletzt gestorbene Tiere">
                      <font>
                         <Font size="14.0" />
                      </font>
