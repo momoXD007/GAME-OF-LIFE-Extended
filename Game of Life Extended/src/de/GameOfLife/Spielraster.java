@@ -421,7 +421,7 @@ public int getAnzTiereResistent() {
 public int getAnzTiereGestorben(){
 	return anzTiereGestorben;
 }
-public int getAnzGesamtToteSpezienSeitStart() {
+public synchronized int getAnzGesamtToteSpezienSeitStart() {
 	return anzGesamtToteSpezienSeitStart;
 }
 public void saveState(){

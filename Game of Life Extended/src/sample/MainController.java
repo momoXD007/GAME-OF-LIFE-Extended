@@ -33,6 +33,7 @@ public class MainController implements Initializable {
 
     @FXML // fx:id="toteTiere"
     private TextField toteTiere; // Value injected by FXMLLoader
+    public TextField totalTod;
 	public BorderPane borderBack;
 	public TilePane spielfeld;
 	private Spielraster spiel;
@@ -54,6 +55,9 @@ public class MainController implements Initializable {
 	public XYChart.Series tierInfiziert = new XYChart.Series();
 	public XYChart.Series tierResistent = new XYChart.Series();
 
+	private int rechteck = 8;
+	private int radius 	= 4;
+	
 	//@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -80,30 +84,30 @@ public class MainController implements Initializable {
 					switch (code) {
 					case 0:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.WHITE));
+								new Rectangle(rechteck, rechteck, Color.WHITE));
 						break;
 					case 1:
 						spielfeld.getChildren().add(
-								new Circle(2.5, Color.GREEN));
+								new Circle(radius, Color.GREEN));
 						break;
 					case 2:
-						spielfeld.getChildren().add(new Circle(2.5, Color.RED));
+						spielfeld.getChildren().add(new Circle(radius, Color.DARKRED));
 						break;
 					case 3:
 						spielfeld.getChildren().add(
-								new Circle(2.5, Color.BLACK));
+								new Circle(radius, Color.BLACK));
 						break;
 					case 4:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.GREEN));
+								new Rectangle(rechteck, rechteck, Color.LIGHTGREEN));
 						break;
 					case 5:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.RED));
+								new Rectangle(rechteck, rechteck, Color.RED));
 						break;
 					case 6:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.BLACK));
+								new Rectangle(rechteck, rechteck, Color.BLACK));
 						break;
 					default:
 						break;
@@ -115,6 +119,7 @@ public class MainController implements Initializable {
 			if(spiel!=null){
 				toteMenschen.setText(String.valueOf(spiel.getAnzMenschenGestorben()));
 				toteTiere.setText(String.valueOf(spiel.getAnzTiereGestorben()));
+				totalTod.setText(String.valueOf(spiel.getAnzGesamtToteSpezienSeitStart()));
 			}
 		}
 	}

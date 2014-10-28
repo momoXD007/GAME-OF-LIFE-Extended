@@ -14,7 +14,7 @@
          <bottom>
             <HBox maxHeight="300.0" maxWidth="-Infinity" minWidth="1240.0" prefHeight="250.0" prefWidth="1900.0">
                <children>
-                  <LineChart id="menschChart" fx:id="menschChart" alternativeColumnFillVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="950.0" stylesheets="@legende.css" title="Entwicklung der Menschen" HBox.hgrow="ALWAYS">
+                  <LineChart id="menschChart" fx:id="menschChart" alternativeColumnFillVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="950.0" title="Entwicklung der Menschen" HBox.hgrow="ALWAYS">
                     <xAxis>
                       <CategoryAxis label="Zeit" side="BOTTOM" />
                     </xAxis>
