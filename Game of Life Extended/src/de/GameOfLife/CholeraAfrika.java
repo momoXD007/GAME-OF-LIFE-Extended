@@ -1,19 +1,19 @@
 package de.GameOfLife;
 
-public class Cholera extends Krankheiten {
+public class CholeraAfrika extends Krankheiten {
 	
-	//Choleraepedemie (Hamburg 1982)
-
-	public Cholera() {
+	//Choleraepedemie (Simbabwe 2008/2009)
+	
+	public CholeraAfrika() {
 		this.setTierAufTier(false);
 		this.setMenschAufTier(false);
 		this.setTierAufMensch(false);	
 		this.setMenschAufMensch(true);
 		
-		this.setInfektionsRate(0.0265);;
+		this.setInfektionsRate(0.0077);;
 		this.setHeilungsRate(0.4925);
-		this.setSterbeRate(0.5075);	
+		this.setSterbeRate(0.053);	
 		this.setResistenzRate(0);
 	}
-
+	
 }

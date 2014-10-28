@@ -54,7 +54,7 @@ public class MainController implements Initializable {
 	public XYChart.Series tierInfiziert = new XYChart.Series();
 	public XYChart.Series tierResistent = new XYChart.Series();
 
-	@Override
+	//@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		spielfeld = new TilePane();

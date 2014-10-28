@@ -2,6 +2,7 @@ package de.GameOfLife;
 
 public class Dengue extends Krankheiten {
 
+	//Aktuelle Zahlen weltweit
 
 	public Dengue(){		
 		this.setTierAufTier(true);

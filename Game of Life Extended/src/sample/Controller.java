@@ -37,11 +37,10 @@ public class Controller implements Initializable {
 	public ImageView bBild;
 	private File config;
 
-	@Override
+	//@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		comboKrank.getItems().addAll("AIDS", "Cholera", "Dengue", "Ebola",
-				"Mittelalterpest", "Pocken", "Schweinegrippe", "Tollwut", "Tuberkulose",
-				"Vogelgrippe");
+		comboKrank.getItems().addAll("AIDS", "Cholera (Hamburg 1892)", "Cholera (Simbabwe 2008/9)", "Dengue", "Ebola",
+				"Mittelalterpest", "Schweinegrippe", "Spanische Grippe", "Tollwut", "Tuberkulose");
 		goButton.setText("GO");
 		zufall.setSelected(true);
 		path.setDisable(true);
@@ -103,7 +102,7 @@ public class Controller implements Initializable {
 		if (kString.equals("AIDS")) {
 			k = new Aids();
 		}
-		if (kString.equals("Cholera")) {
+		if (kString.equals("Cholera (Hamburg 1892)")) {
 			k= new Cholera();
 		}
 		if (kString.equals("Dengue")) {
@@ -115,8 +114,8 @@ public class Controller implements Initializable {
 		if (kString.equals("Mittelalterpest")) {
 			k = new Pest();
 		}
-		if (kString.equals("Pocken")) {
-			k = new Pocken();
+		if (kString.equals("Cholera (Simbabwe 2008/9)")) {
+			k = new CholeraAfrika();
 		}
 		if (kString.equals("Schweinegrippe")) {
 			k = new Schweinegrippe();
@@ -127,8 +126,8 @@ public class Controller implements Initializable {
 		if (kString.equals("Tuberkulose")) {
 			k = new Tuberkulose();
 		}
-		if (kString.equals("Vogelgrippe")) {
-			k = new Vogelgrippe();
+		if (kString.equals("Spanische Grippe")) {
+			k = new SpanischeGrippe();
 		}
 		return k;
 	}

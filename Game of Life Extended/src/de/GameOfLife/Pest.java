@@ -2,6 +2,7 @@ package de.GameOfLife;
 
 public class Pest extends Krankheiten {
 	
+	//Raten aus dem Mittelalter
 	
 	public Pest() {
 		this.setTierAufTier(true);
