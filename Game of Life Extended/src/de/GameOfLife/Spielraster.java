@@ -48,6 +48,10 @@ public int rundenCounter = 0;
 
 private Spezie[][] raster =new Spezie[1][1];
 
+
+//Zufallsgen für alle Zellen erzeugen
+private Random rand= new Random();
+
 public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,
 		int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int groesse,
 		Krankheiten k){
@@ -384,7 +388,12 @@ public void reseteAlleZellen(){
 			}
 		}
 	}
-
+public double getNextDouble(){
+	return rand.nextDouble();
+}
+public int getNextInt(){
+	return rand.nextInt();
+}
 
 
 public int getMesnchenAnzInfiziert(){
