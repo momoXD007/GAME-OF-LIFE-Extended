@@ -35,7 +35,7 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 	 
 	 
 	 //Zellenabhängige Implementation
-	Spezie[] nachbarn= this.getNeighbours();
+	//Spezie[] nachbarn= this.getNeighbours();
 	boolean gesetzt=false;
 	int c =0;
 	int x=this.xPos;
