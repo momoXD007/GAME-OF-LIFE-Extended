@@ -39,7 +39,7 @@ public class Controller implements Initializable {
 
 	//@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		comboKrank.getItems().addAll("AIDS", "Cholera (Hamburg 1892)", "Cholera (Simbabwe 2008/9)", "Dengue", "Ebola",
+		comboKrank.getItems().addAll("AIDS", "Cholera (Hamburg 1892)", "Cholera (Simbabwe 2008/9)", "Dengue", "Ebola", "I am Legend - Virus",
 				"Mittelalterpest", "Schweinegrippe", "Spanische Grippe", "Tollwut", "Tuberkulose");
 		goButton.setText("GO");
 		zufall.setSelected(true);
@@ -128,6 +128,9 @@ public class Controller implements Initializable {
 		}
 		if (kString.equals("Spanische Grippe")) {
 			k = new SpanischeGrippe();
+		}
+		if (kString.equals("I am Legend - Virus")) {
+			k = new IAmLegend();
 		}
 		return k;
 	}

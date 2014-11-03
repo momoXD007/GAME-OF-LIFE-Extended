@@ -13,7 +13,7 @@ public class Ebola extends Krankheiten {
 		this.setInfektionsRate(0.1);
 		this.setHeilungsRate(0.3);
 		this.setSterbeRate(0.7);	
-		this.setResistenzRate(0);
+		this.setResistenzRate(0.15);
 	}	
 	
 }
