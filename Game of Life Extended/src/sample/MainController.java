@@ -26,6 +26,14 @@ import javafx.scene.shape.*;
  * Created by Marvin on 20.10.2014.
  */
 public class MainController implements Initializable {
+	public static final int x_koordinate = 150;
+	public static final int y_koordinate = 75;
+	@FXML // fx:id="toteMenschen"
+    private TextField toteMenschen; // Value injected by FXMLLoader
+
+    @FXML // fx:id="toteTiere"
+    private TextField toteTiere; // Value injected by FXMLLoader
+    public TextField totalTod;
 	public BorderPane borderBack;
 	public TilePane spielfeld;
 	private Spielraster spiel;
@@ -35,6 +43,7 @@ public class MainController implements Initializable {
 	public Button loeseButton;
 	private boolean running = false;
 	private LaufenLasser lassIhn;
+	private int startGroese;
 	@FXML
 	public LineChart<?, ?> menschChart;    
 	@FXML // fx:id="tierChart"
@@ -45,16 +54,18 @@ public class MainController implements Initializable {
 	public XYChart.Series tierGesund = new XYChart.Series();
 	public XYChart.Series tierInfiziert = new XYChart.Series();
 	public XYChart.Series tierResistent = new XYChart.Series();
+
+	private int rechteck = 8;
+	private int radius 	= 4;
 	
-	
-	@Override
+	//@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		spielfeld = new TilePane();
 		spielfeld.setHgap(1);
 		spielfeld.setVgap(1);
-		spielfeld.setPrefColumns(60);
-		spielfeld.setPrefRows(60);
+		spielfeld.setPrefColumns(x_koordinate);
+		spielfeld.setPrefRows(y_koordinate);
 		Group display = new Group(spielfeld);
 		borderBack.setCenter(display);
 		initCharts();
@@ -67,36 +78,36 @@ public class MainController implements Initializable {
 	public void updateRaster() {
 		if (spiel != null) {
 			spielfeld.getChildren().clear();
-			for (int x = 0; x < 60; x++) {
-				for (int y = 0; y < 60; y++) {
+			for (int y = 0; y < y_koordinate; y++) {
+				for (int x = 0; x < x_koordinate; x++) {
 					int code = spiel.zustandsBeschreibung(x, y);
 					switch (code) {
 					case 0:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.WHITE));
+								new Rectangle(rechteck, rechteck, Color.WHITE));
 						break;
 					case 1:
 						spielfeld.getChildren().add(
-								new Circle(2.5, Color.GREEN));
+								new Circle(radius, Color.GREEN));
 						break;
 					case 2:
-						spielfeld.getChildren().add(new Circle(2.5, Color.RED));
+						spielfeld.getChildren().add(new Circle(radius, Color.DARKRED));
 						break;
 					case 3:
 						spielfeld.getChildren().add(
-								new Circle(2.5, Color.BLACK));
+								new Circle(radius, Color.BLACK));
 						break;
 					case 4:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.GREEN));
+								new Rectangle(rechteck, rechteck, Color.LIGHTGREEN));
 						break;
 					case 5:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.RED));
+								new Rectangle(rechteck, rechteck, Color.RED));
 						break;
 					case 6:
 						spielfeld.getChildren().add(
-								new Rectangle(5, 5, Color.BLACK));
+								new Rectangle(rechteck, rechteck, Color.BLACK));
 						break;
 					default:
 						break;
@@ -105,6 +116,11 @@ public class MainController implements Initializable {
 
 			}
 			updateCharts();
+			if(spiel!=null){
+				toteMenschen.setText(String.valueOf(spiel.getAnzMenschenGestorben()));
+				toteTiere.setText(String.valueOf(spiel.getAnzTiereGestorben()));
+				totalTod.setText(String.valueOf(spiel.getAnzGesamtToteSpezienSeitStart()));
+			}
 		}
 	}
 

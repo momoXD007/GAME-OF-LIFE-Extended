@@ -16,11 +16,19 @@ private static final long serialVersionUID = 1849731288047615175L;
 private int anzMenschenInfiziert;
 private int anzMenschenResistent;
 private int anzMenschenGesund;
+private int anzMenschenGestorben;
+
+
 
 //
 private int anzTiereInfiziert;
 private int anzTiereResistent;
 private int anzTiereGesund;
+private int anzTiereGestorben;
+
+private int anzGesamtToteSpezienSeitStart=0;
+
+
 
 //rastereigenschaften
 private int groesse;
@@ -39,6 +47,10 @@ private double sterbeRate;
 public int rundenCounter = 0;
 
 private Spezie[][] raster =new Spezie[1][1];
+
+
+//Zufallsgen für alle Zellen erzeugen
+private Random rand= new Random();
 
 public Spielraster(int startMenschenInfizierte,int startMenschenResistent,int startMenschenGesund,
 		int startTiereInfiziert,int startTiereResistent,int startTiereGesund, int groesse,
@@ -271,8 +283,11 @@ public int zustandsBeschreibung(int xPos, int yPos){
  
  
  public synchronized void iteriere(int anzRunden){
-		for (int i = 0; i < anzRunden; i++) {
-			rundenCounter++;
+	
+	 for (int i = 0; i < anzRunden; i++) {
+		 	anzMenschenGestorben=0;
+			anzTiereGestorben=0;
+		 	rundenCounter++;
 			Spezie curr;
 			for(int y=0; y<maxY; y++){
 				
@@ -285,12 +300,19 @@ public int zustandsBeschreibung(int xPos, int yPos){
 						if(curr.iteration(infektionsRate, resistenzRate, heilungsRate, sterbeRate)){
 							
 							//zelle ist tot-->Referenz wird gelöscht
-							raster[x][y]=null;
+							raster[curr.getXPos()][curr.getYPos()]=null;
+							//Todescounter inkremtieren solange Referenz auf Zelle noch da ist
+							if(curr instanceof Mensch) {
+								anzMenschenGestorben++;		
+							}else{
+								anzTiereGestorben++;
+							}
 						}
 					}
 				}
 			}
 			this.reseteAlleZellen();
+			anzGesamtToteSpezienSeitStart+=anzMenschenGestorben+anzTiereGestorben;
 		}
 		
 		this.aktualiesiereStats();
@@ -366,7 +388,12 @@ public void reseteAlleZellen(){
 			}
 		}
 	}
-
+public double getNextDouble(){
+	return rand.nextDouble();
+}
+public int getNextInt(){
+	return rand.nextInt();
+}
 
 
 public int getMesnchenAnzInfiziert(){
@@ -379,6 +406,10 @@ public int getAnzMenschenResisten(){
 
 public int getMenschenAnzGesund(){
 	return anzMenschenGesund;
+}
+
+public int getAnzMenschenGestorben(){
+	return anzMenschenGestorben;
 }
 
 public int getAnzMenschenGesamtLebendig(){
@@ -396,7 +427,12 @@ public int getAnzTiereResistent() {
 	return anzTiereResistent;
 }
 
-
+public int getAnzTiereGestorben(){
+	return anzTiereGestorben;
+}
+public synchronized int getAnzGesamtToteSpezienSeitStart() {
+	return anzGesamtToteSpezienSeitStart;
+}
 public void saveState(){
 	try
 	{

@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -32,18 +34,17 @@ public class Controller implements Initializable {
 	public ComboBox<String> comboKrank;
 	public RadioButton bestehend;
 	public TextField path;
-
+	public ImageView bBild;
 	private File config;
 
-	@Override
+	//@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		comboKrank.getItems().addAll("AIDS", "Cholera", "Dengue", "Ebola",
-				"Pest", "Pocken", "Schweinegrippe", "Tollwut", "Tuberkulose",
-				"Vogelgrippe");
+		comboKrank.getItems().addAll("AIDS", "Cholera (Hamburg 1892)", "Cholera (Simbabwe 2008/9)", "Dengue", "Ebola", "I am Legend - Virus",
+				"Mittelalterpest", "Schweinegrippe", "Spanische Grippe", "Tollwut", "Tuberkulose");
 		goButton.setText("GO");
 		zufall.setSelected(true);
 		path.setDisable(true);
-
+		bBild.setImage(new Image(Main.class.getResourceAsStream("B_hazard.gif")));
 		start.selectedToggleProperty().addListener(
 				new ChangeListener<Toggle>() {
 					public void changed(ObservableValue<? extends Toggle> ov,
@@ -79,7 +80,8 @@ public class Controller implements Initializable {
 					Integer.parseInt(text_it.getText()), // inf menschen
 					Integer.parseInt(text_rt.getText()), // res menschen
 					Integer.parseInt(text_gt.getText()), // gesund menschen
-					60,90, getKrankheit());
+					MainController.x_koordinate,
+					MainController.y_koordinate	, getKrankheit());
 			mc.setSpiel(raster);
 			mc.updateRaster();
 
@@ -100,7 +102,7 @@ public class Controller implements Initializable {
 		if (kString.equals("AIDS")) {
 			k = new Aids();
 		}
-		if (kString.equals("Cholera")) {
+		if (kString.equals("Cholera (Hamburg 1892)")) {
 			k= new Cholera();
 		}
 		if (kString.equals("Dengue")) {
@@ -109,11 +111,11 @@ public class Controller implements Initializable {
 		if (kString.equals("Ebola")) {
 			k=new Ebola();
 		}
-		if (kString.equals("Pest")) {
+		if (kString.equals("Mittelalterpest")) {
 			k = new Pest();
 		}
-		if (kString.equals("Pocken")) {
-			k = new Pocken();
+		if (kString.equals("Cholera (Simbabwe 2008/9)")) {
+			k = new CholeraAfrika();
 		}
 		if (kString.equals("Schweinegrippe")) {
 			k = new Schweinegrippe();
@@ -124,8 +126,11 @@ public class Controller implements Initializable {
 		if (kString.equals("Tuberkulose")) {
 			k = new Tuberkulose();
 		}
-		if (kString.equals("Vogelgrippe")) {
-			k = new Vogelgrippe();
+		if (kString.equals("Spanische Grippe")) {
+			k = new SpanischeGrippe();
+		}
+		if (kString.equals("I am Legend - Virus")) {
+			k = new IAmLegend();
 		}
 		return k;
 	}

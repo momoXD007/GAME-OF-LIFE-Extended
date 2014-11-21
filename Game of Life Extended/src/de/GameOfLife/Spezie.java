@@ -12,11 +12,11 @@ public class Spezie implements Serializable {
 private static final long serialVersionUID = -8204540376294598490L;
 private boolean gesund;
  private boolean resistent;
- private Random zufallsGen = new Random();
- private double zufall=zufallsGen.nextDouble();
+
 private int yPos;
 private int xPos;
 private Spielraster raster;
+private double zufall;
 private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 
 
@@ -27,6 +27,7 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 	 yPos=lyPos;
 	 xPos=lxPos;
 	 raster = lRaster;
+	 zufall=raster.getNextDouble();
  }
  
  protected  void bewege(){
@@ -34,13 +35,13 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
 	 
 	 
 	 //Zellenabhängige Implementation
-	Spezie[] nachbarn= this.getNeighbours();
+	//Spezie[] nachbarn= this.getNeighbours();
 	boolean gesetzt=false;
 	int c =0;
 	int x=this.xPos;
 	int y = this.yPos;
 	while(!gesetzt && c<8){
-		int index = zufallsGen.nextInt()%8;
+		int index = raster.getNextInt()%8;
 		if(index<0){
 			index*=-1;
 		}
@@ -158,7 +159,7 @@ private boolean warDran=false;//beschreibt ob Zelle schon diese Runde dran war
   * @return gibt true zurück wenn Zelle gestorben ist
   */
 public boolean iteration(double infektionsRate,double resistenzRate, double heilungsRate, double sterbeRate){
-	zufall=zufallsGen.nextDouble();
+	zufall=raster.getNextDouble();
 	this.bewege();
 	if(!gesund){
 		Spezie nachbarn[] = this.getNeighbours();
@@ -204,7 +205,12 @@ public boolean isResistent() {
 public void setResistent(boolean resistent) {
 	this.resistent = resistent;
 }
-
+public int getXPos(){
+	return xPos;
+}
+public int getYPos(){
+	return yPos;
+}
 
 
 }

@@ -1,15 +1,14 @@
 package de.GameOfLife;
 
-public class Vogelgrippe extends Krankheiten {
+public class IAmLegend extends Krankheiten {
 	
-
-	public Vogelgrippe(){
+	public IAmLegend() {
 		this.setTierAufTier(true);
-		this.setMenschAufTier(true);
+		this.setMenschAufTier(false);
 		this.setTierAufMensch(true);	
 		this.setMenschAufMensch(true);
 		
-		this.setInfektionsRate(0);;
+		this.setInfektionsRate(0.8);
 		this.setHeilungsRate(0);
 		this.setSterbeRate(0);	
 		this.setResistenzRate(0);

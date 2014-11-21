@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -7,27 +8,33 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#checkeKey" prefHeight="840" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#checkeKey" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
    <children>
-      <BorderPane fx:id="borderBack" layoutX="8.0" layoutY="14.0" prefHeight="800.0" prefWidth="1280.0">
+      <BorderPane fx:id="borderBack" layoutX="8.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="974.0" prefWidth="1900.0">
          <bottom>
-            <HBox prefHeight="250.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox maxHeight="300.0" maxWidth="-Infinity" minWidth="1240.0" prefHeight="250.0" prefWidth="1900.0">
                <children>
-                  <LineChart id="menschChart" fx:id="menschChart" alternativeColumnFillVisible="true" prefHeight="200.0" prefWidth="640.0" stylesheets="@legende.css" title="Entwicklung der Menschen">
+                  <LineChart id="menschChart" fx:id="menschChart" alternativeColumnFillVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="950.0" title="Entwicklung der Menschen" HBox.hgrow="ALWAYS">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis label="Zeit" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis label="Anzahl" minorTickVisible="false" side="LEFT" />
                     </yAxis>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </LineChart>
-                  <LineChart fx:id="tierChart" prefWidth="640.0" title="Entwicklung der Tiere">
+                  <LineChart fx:id="tierChart" prefWidth="950.0" title="Entwicklung der Tiere" HBox.hgrow="ALWAYS">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis label="Zeit" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis label="Anzahl" minorTickVisible="false" side="LEFT" />
                     </yAxis>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </LineChart>
                </children>
             </HBox>
@@ -35,7 +42,7 @@
          <top>
             <FlowPane prefHeight="39.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl der Runden" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl der Runden / Zeitschritte" />
                   <TextField fx:id="rundenZahl">
                      <FlowPane.margin>
                         <Insets left="10.0" />
@@ -52,6 +59,48 @@
                      </FlowPane.margin>
                   </Button>
                   <Button fx:id="loeseButton" mnemonicParsing="false" onAction="#machUpdate" prefHeight="25.0" prefWidth="55.0" text="Update" visible="false" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zuletzt gestorbene Menschen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="toteMenschen" editable="false" prefHeight="30.0" prefWidth="123.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets left="5.0" />
+                     </FlowPane.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zuletzt gestorbene Tiere">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets left="5.0" />
+                     </FlowPane.margin>
+                  </Text>
+                  <TextField fx:id="toteTiere" prefHeight="30.0" prefWidth="123.0">
+                     <FlowPane.margin>
+                        <Insets left="5.0" />
+                     </FlowPane.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gesamt verstorbene Spezien">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin>
+                  </Text>
+                  <TextField fx:id="totalTod" prefHeight="30.0" prefWidth="123.0">
+                     <FlowPane.margin>
+                        <Insets left="5.0" />
+                     </FlowPane.margin>
+                  </TextField>
                </children>
             </FlowPane>
          </top>

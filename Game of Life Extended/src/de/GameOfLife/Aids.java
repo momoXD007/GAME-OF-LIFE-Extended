@@ -2,7 +2,7 @@ package de.GameOfLife;
 
 public class Aids extends Krankheiten {
 	
-
+	//Aktuelle zahlen weltweit
 	public Aids() {
 		this.setTierAufTier(true);
 		this.setMenschAufTier(false);
@@ -12,6 +12,6 @@ public class Aids extends Krankheiten {
 		this.setInfektionsRate(0.0005);
 		this.setHeilungsRate(0);
 		this.setSterbeRate(0.0053);	
-		this.setResistenzRate(0); //Schutz durch Aufklärung
+		this.setResistenzRate(0);
 	} 
 }
