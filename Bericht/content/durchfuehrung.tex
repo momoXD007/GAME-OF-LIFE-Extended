@@ -1,5 +1,11 @@
-%Wie bereits erläutert weißt das SIR-Modell einige Schwächen auf unter Anderem wird in dem Modell davon ausgegangen dass jeder Mensch im Schnitt acht Kontakte zu anderen Menschen hat. In unserem Programm wird dies dynamisch geregelt, dort gibt es einen Raster welchereinem Schachbrett ähnelt auf diesem beliebig großem rechteckigem \glqq{}Spielfeld \grqq{} lassen sich an jeder x,y Position Zellen positionieren. So kann es Zellen geben welche sehr viele Nachbarn haben aber auch Zellen welche gar keinen Nachbar haben. So können auch extreme Situationen realistisch dargestellt werden wie zum Beispiel sehr dünn besiedelte Gegenden oder aber auch mittelalterliche Städte in denen in einem Haushalt durchaus 20 Personen lebten.\\
-Verbesserungen gegenüber dem SIR-Modell
+Wie bereits erläutert weißt das SIR-Modell einige Schwächen auf unter Anderem wird in dem Modell davon ausgegangen dass jeder Mensch im Schnitt acht Kontakte zu anderen Menschen hat. In unserem Programm wird dies dynamisch geregelt, dort gibt es einen Raster welcher einem Schachbrett ähnelt auf diesem beliebig großem rechteckigem \glqq{}Spielfeld \grqq{} lassen sich an jeder x,y Position Zellen positionieren. So kann es Zellen geben welche sehr viele Nachbarn haben aber auch Zellen welche gar keinen Nachbar haben. So können auch extreme Situationen realistisch dargestellt werden wie zum Beispiel sehr dünn besiedelte Gegenden oder aber auch mittelalterliche Städte in denen in einem Haushalt durchaus 20 Personen lebten.\\
+%Quelle recherchieren
+
+
+%Verbesserungen gegenüber dem SIR-Modell
+
+
+
 
 \subsection{Zelluläre Automaten}
 Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert.Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. Dabei kann sich die Zelle in jeder Phase der Simulation nur in genau einem der folgenden Zustände befinden:
@@ -38,6 +44,9 @@ Im Rahmen dieses Modell ist es möglich zu simulieren wie sich eine Krankheit be
 Dabei ist auch das Verhältnis von Menschen zu Tieren vollkommen beliebig wählbar.
 
 \subsection{nicht deterministisch}
+Ob eine Zelle in einen bestimmten Zustand übergeht hängt einerseits von ihrem Zustand beziehungsweise den Zuständen ihrer Nachbarn, andererseits von einer krankheitstypischen Wahrscheinlichkeit ab. Sollte eine Zelle infiziert sein und bei der simulierten Krankheit besteht die Wahrscheinlichkeit zu sterben bei 25\% so wird der Wert 0.25 mit einer zufälligen Zahl zwischen 0 und 1 verglichen. Sollte diese Zufallszahl größer sein als die Übergangswahrscheinlichkeit geht die Zelle in den entsprechenden Zustand über.\\
+Das bedeutet das selbst wenn man die Simulation mit exakt den selben Parametern mehrmals durchführt man unterschiedliche Ergebnisse bekommen kann. Das Modell ist also nicht deterministisch.
+
 
 %\begin{enumerate}
 %\item{Bewegung}
