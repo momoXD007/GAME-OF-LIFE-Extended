@@ -1,23 +1,54 @@
 %Wie bereits erläutert weißt das SIR-Modell einige Schwächen auf unter Anderem wird in dem Modell davon ausgegangen dass jeder Mensch im Schnitt acht Kontakte zu anderen Menschen hat. In unserem Programm wird dies dynamisch geregelt, dort gibt es einen Raster welchereinem Schachbrett ähnelt auf diesem beliebig großem rechteckigem \glqq{}Spielfeld \grqq{} lassen sich an jeder x,y Position Zellen positionieren. So kann es Zellen geben welche sehr viele Nachbarn haben aber auch Zellen welche gar keinen Nachbar haben. So können auch extreme Situationen realistisch dargestellt werden wie zum Beispiel sehr dünn besiedelte Gegenden oder aber auch mittelalterliche Städte in denen in einem Haushalt durchaus 20 Personen lebten.\\
 Verbesserungen gegenüber dem SIR-Modell
 
+\subsection{Zelluläre Automaten}
+Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert.Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. Dabei kann sich die Zelle in jeder Phase der Simulation nur in genau einem der folgenden Zustände befinden:
+\begin{enumerate}
+\item{\emph{Anfällig}\\
+Eine anfällige Zelle kann von einer  infizierten Zelle in ihrem direkten Umfeld welche durch eine Moore-Nachbarschaft simuliert wird angesteckt wird. Das heißt dass eine Zelle auf dem rechteckigen Raster nur von den Zellen links über ihr, direkt über ihr, rechts über ihr, links und rechts neben ihr und links neben ihr, links unter ihr, direkt unter ihr und rechts unter ihr angesteckt werden kann. Des Weiteren wird auch betrachtet ob die Krankheit auch von jeder Zelle auf jede übertragbar ist oder ob zum Beispiel nur eine Übertragung von Mensch auf Tier aber nicht von Mensch auf Mensch möglich ist.
+%Bild von Moore-Nachbarschaft einbinden und Quelle hinzufügen
+}
+\item{\emph{Infiziert}\\
+Eine infizierte Zelle kann an ihrer Krankheit sterben, heilen und damit in den ersten Zustand übergehen, eine Resistenz bilden und damit in den dritten Zustand übergehen oder aber sie bleibt infiziert.\\
+All dies geschieht unter Berücksichtigung der für die simulierte Krankheit eingegebenen Werte.\\
+Des Weiteren kann sie natürlich alle gesunden Zellen in ihrem Umfeld infizieren, auch dies geschieht unter Berücksichtigung der Werte die für die aktuelle Krankheit gelten.
+}
+\item{\emph{Resistent}\\
+Da resistente Zellen nicht mehr in den Infiziert Zustand übergehen können und das Programm keine natürlichen Tode vorsieht, sind diese Zellen im Kontext des Programms unsterblich.\\
+Sie werden jedoch trotzdem betrachtet, da sie im Kontext der Simulation interessant sind. So könnte man beispielsweise betrachten wie sich eine Krankheit verbreitet wenn bereits fast alle Zellen immun sind und es nur sehr wenige infizierte und anfällige Zellen gibt. Denkbar ist in diesem Szenario, dass die resistenten Zellen die infizierten Zellen weitestgehend abschirmen und so eine weitere Verbreitung verhindern. 
+}
+
+\item{\emph{Tot}\\
+Eine Zelle in diesem Zustand, ist für die weitere Simulation nicht relevant. Naheliegenderweise kann sie sich nicht mehr eigenständig bewegen und auch kann sie keine anderen Zellen mehr infizieren. Es mag zwar durchaus Krankheiten geben welche auch nach dem Tot des Wirtes infektiös, an dieser Stelle wird in der Simulation davon ausgegangen dass die Zelle sich in einem intaktem Umfeld befindet in dem Tote entweder isoliert werden, dass sie keinen Kontakt mehr zu lebendigen Individuen haben. 
+}
+\end{enumerate}
+
 \subsection{Bewegung}
+Zellen die sich in einem der ersten drei Zustände befinden können sich bewegen. Dabei wird in dieser Simulation davon ausgegangen dass die Zellen sich in einem geschlossenem Umfeld befinden. Es können also keine Zellen das Simulationsgebiert verlassen oder neu betreten.\\
+Des Weiteren handelt es sich um eine zwei dimensionale Simulation in der es nicht möglich ist dass sich mehrere Zellen auf einem Feld über- oder untereinander befinden.\\
+Die Zellen bewegen sich dabei dem Random-Walk entsprechend, dies bedeutet in dass sich eine Zelle zufällig in irgendeine Richtung bewegt. Dabei wird davon ausgegangen dass die Zellen grundsätzlich einen Drang zur Bewegung haben. Also sollte sich eine Zelle entscheiden sich in ein Feld zu bewegen indem schon eine andere Zelle ist, ist diese Bewegung nicht möglich und die Zelle muss sich neu entscheiden. Das Gleiche gilt für Zellen am Rand des Simulationsgebietes. Natürlich gibt es die Möglichkeit dass eine Zelle komplett \glqq umringt\grqq von anderen Zellen ist, in diesem Fall bleibt die Zelle zwangsweise an ihrer alten Position.
+%Quelle hier einbinden
 \subsection{Wirtsbeziehungen}
+Die Simulation ist in der Lage einfache Wirtsbeziehungen zu simulieren, dadurch dass es zwei Arten von Zellen gibt(Menschen und Tiere), kann man krankheitsabhängig unterscheiden ob eine Krankheit jeweils von Mensch auf Mensch, von Mensch auf Tier, von Tier auf Mensch und von Tier auf Tier übertragbar ist, so kann schon eine beträchtliche Menge von Krankheiten simuliert werden.\\
+Dies ermöglicht es zu simulieren was passiert wenn man versucht Krankheiten wie die Tollwut welche fast ausschließlich von Tieren auf den Mensch übertragen werden, versucht auszurotten indem man alle potentiellen Wirte immunisiert.
 
 \subsection{Bevölkerungsdichte wird berücksichtigt}
+Im Rahmen dieses Modell ist es möglich zu simulieren wie sich eine Krankheit bei verschiedener Bevölkerungsdichte verhält. So ist es möglich dass es auf einem gegebenem Raster x*y x,y E N zwischen 1 und x*y Zellen zu platzieren.\\
+%Mathematischer einbinden-->würde intelligenter aussehen
+Dabei ist auch das Verhältnis von Menschen zu Tieren vollkommen beliebig wählbar.
 
 \subsection{nicht deterministisch}
 
-\begin{enumerate}
-\item{Bewegung}
-\item{\emph{Wirtsbeziehungen}
-
-
-
-}
-\item{\emph{Bevölkerungsdichte wird berücksichtigt}
-
-
-}
-\item{nicht deterministisch}
-\end{enumerate}
+%\begin{enumerate}
+%\item{Bewegung}
+%\item{\emph{Wirtsbeziehungen}
+%
+%
+%
+%}
+%\item{\emph{Bevölkerungsdichte wird berücksichtigt}
+%
+%
+%}
+%\item{nicht deterministisch}
+%\end{enumerate}
