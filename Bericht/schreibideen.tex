@@ -307,7 +307,16 @@ Das Problem der Inkubationszeiten lässt sich lösen, indem die Krankheiten weit
 Die Zellen, die schon als Objekte existieren, könnten durch weitere Attribute sinnvoll ergänzt werden, damit sie die Realität besser abbilden.
 Vor allem Alterung spielt hier ein zentrale Rolle. Das junge widerstandsfähiger als ältere Zellen sind gilt für die meisten Krankheiten, jedoch nicht unbedingt für alle und hängt auch von weiteren Faktoren ab.Das je nachdem bestimmte Zellen anfälliger sind berücksichtigt unser Modell jedoch noch nicht. Ein Lösungsansatz für diese Problem wäre zum einem ein Alter für die Zelle einzuführen als auch die Krankheit mit verschiedenen Wahrscheinlichkeiten für die jeweilige Zielgruppe zu modellieren. 
 Durch die Alterung ist  ebenfalls das Problem gelöst, dass Zellen theoretisch ewig leben können, wenn sie keiner Krankheit zum Opfer fallen. Dies gilt allerdings nur, wenn zusätzlich eine weitere Voraussetzung erfüllt ist. Die Simulation benötigt eine gewisse Lebenserwartung der Zellen. Diese kann je nach Region oder bisherigen Iterationen variieren und sorgt dafür, dass Zellen nicht ewig leben können.
-Zeitgleich wirft diese Lösung ein neues Problem in den Raum und zwar, dass es keine Reproduktion der Zellen gibt. Die Population stürbe auf lange Sicht gesehen aus. Ein möglicher Lösungsansatz wäre hier, mit jeder Iteration eine gewisse Anzahl von neuen Zellen zu erzeugen. Allerdings ist diese Berechnung keineswegs trivial, weil verschiedene Faktoren wie Überbevölkerung, Krankheitsübertragungen während der Schwangerschaft, Geschlechterverhältnis und weitere eine Rolle spielen.
+Zeitgleich wirft diese Lösung ein neues Problem in den Raum und zwar, dass es keine Reproduktion der Zellen gibt. Die Population stürbe auf lange Sicht gesehen aus. Ein möglicher Lösungsansatz wäre hier, mit jeder Iteration eine gewisse Anzahl von neuen Zellen zu erzeugen. Allerdings ist diese Berechnung keineswegs trivial, weil verschiedene Faktoren wie Geschlechterverhältnis, Krankheitsübertragungen während der Schwangerschaft, Überbevölkerung und weitere diese beeinflussen.
+
+Bisher verwendet die Simulation nur die unmittelbare Nachbarschaft. Betrachtet man nun Ballungsgebiete wie New York, Peking oder Tokio ist unmittelbare Nachbarschaft nicht unbedingt ausreichend. Die Wahrscheinlichkeit mit einer Infizierten Person in Kontakt zukommen ist größer als in ländlichen Regionen. Deshalb wäre eine Lösung die Nachbarschaft auszudehnen, so dass weitere Zellen für die Zustände verantwortlich sind. Beispielsweise wie in Abbildung \ref{fig:ewnachbar} gezeigt. Die gesunde Zelle in der Mitte hat nun 2 Infizierte Zellen, die für die Berechnung des neuen Zustandes relevant sind.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width= 0.3\textwidth]{./images/ewNachbar.pdf}
+	\caption{Augmentierte Nachbarschaft}
+	\label{fig:ewnachbar}
+\end{figure}
 
 %Was Sie hier finden sollten, findet sich leider schon in den vorangegangenen
 %Textpassagen und Abschnitten und ich mag Sie nicht mit Wiederholungen
