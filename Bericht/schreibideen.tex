@@ -282,7 +282,6 @@ Jedoch gibt es auch einige Punkte der Realität die unser Modell nicht abbilden 
 Eine weitere Schwäche ist es, dass die Zellen die resistent geworden sind, einfach auf dem Raster weiter existieren. Für diese Zellen bedeutet die Resistenz somit das ewige Leben, da bisher keine Alterung der Zellen berücksichtigt wird. 
 
 Insgesamt ist das Modell dementsprechend etwas dynamischer als das SIR Modell. Obwohl es nicht deterministisch ist scheint es jedoch etwas näher an der Realität zu sein. Für wichtige Entscheidungen im Katastrophenschutz kann andererseits genau dieses auch ein Negativpunkt sein, da man nur von verschiedenen Szenerien ausgehen kann und nicht von konkreten absoluten Zahlen.
-Vorteile
 
 \section*{Ausblick}
 Da die Welt bisher nur aus einem bloßen Raster mit den Koordinaten $x$ und $y$ besteht, wäre ein erster Schritt sich der Realität weiter anzunähern, dass die Welt keine harte Ecken hat. Wie sie noch in Abbildung \ref{fig:welt} zu erkennen sind.
@@ -314,6 +313,7 @@ Zeitgleich wirft diese Lösung ein neues Problem in den Raum und zwar, dass es k
 
 Des Weiteren verwendet die Simulation bisher nur die unmittelbare Nachbarschaft. Betrachtet man nun Ballungsgebiete wie New York, Peking oder Tokio ist unmittelbare Nachbarschaft nicht unbedingt ausreichend. Die Wahrscheinlichkeit mit einer Infizierten Person in Kontakt zukommen ist größer als in ländlichen Regionen. Deshalb wäre eine Lösung die Nachbarschaft auszudehnen, so dass weitere Zellen für die Zustände verantwortlich sind. Beispielsweise wie in Abbildung \ref{fig:ewnachbar} gezeigt. Die Moore-Nachbarschaft wird nur auf den Radius 2 erhöht. Die gesunde Zelle in der Mitte hat nun 2 Infizierte Zellen, die für die Berechnung des neuen Zustandes relevant sind. 
 
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 0.3\textwidth]{./images/ewNachbar.pdf}
@@ -334,54 +334,9 @@ b & b & b & b & b \\
 $ als Faltungsmatrix
 \end{center} verwenden, um die Distanz mit Faktoren $a,b$ zu gewichten. Beispielsweise könnte man die unmittelbare Nachbarschaft also $a=1$ und die Nachbarschaft mit dem Radius 2 mit $b=\frac{2}{3}$ bewerten. Ebenso könnte man die Diagonale aufgrund höherer Distanz zusätzlich geringer gewichten.
 
-%Was Sie hier finden sollten, findet sich leider schon in den vorangegangenen
-%Textpassagen und Abschnitten und ich mag Sie nicht mit Wiederholungen
-%langweilen. Jedoch kann man ab und zu feststellen, dass das Abstract und
-%die Diskussionen eine gewisse Ähnlichkeit aufweisen, wobei die Diskussion
-%immer ausführlicher sein soll. Das liegt mitunter daran, dass beide 
-%Abschnitte Zusammenfassungen mit unterschiedlicher Nuancierung darstellen. 
-%
-%Jetzt möchte ich mich gleich auf genau dieses Schreiben beziehen, 
-%von dem ich hoffe, dass Sie hinsichtlich des Schreibens und Lesens 
-%von solchen Ideen- und Gedankenmanifestationen etwas für sich mitnehmen konnten. 
-%Selber hatte ich mit diesem Thema verstärkt während meiner Doktorarbeit \cite{Gerhards2008} 
-%zu tun gehabt, ohne selber der enthusiastischste Leser gewesen zu sein.
-%Viele Ideen und Ansichten habe ich jedoch von meinem Doktorvater 
-%Prof. Dr. Kurt Roth mitbekommen, dessen arbeitsgruppeninterne Übungen 
-%zum schnellen Lesen förderlich für die Adrenalinproduktion waren.
+In der vorliegenden Version bewegen sich alle Zellen vollkommen zufällig. Da aber Menschen als auch Tiere sich meist zielgerichtet bewegen, wäre es realistischer anzunehmen dass Zellen einen Zielpunkt auf dem Raster haben oder sich zumindest nicht nach einem Schritt wieder direkt zu ihrer alten Position zurück bewegen. Hier bietet sich beispielsweise das sogenannte \glqq{}Correlated random walks\grqq{}. Bei dem davon ausgegangen wird dass eine Reihe von aufeinanderfolgenden Bewgungen tendziell immer in die Gleiche Richtung geht der Einfluss der vorherigen Bewegungen aber immer weiter abnimmt umso länger sie zurückliegen\cite{Codling:2008}.
 
-% Ziel der Vorlesung war neben der sehr theorielastigen Einführung
-% in die Fourier-Transformation, Faltung, Korrelationsanalyse und
-% der nichtlinearen Optimierung, dass Sie sich mit einem Problem
-% mit stark physikalischem Schwerpunkt auseinandersetzen sollten.
-% Hier galt es sich einzuarbeiten und danach die entsprechenden
-% Werkzeuge zum Lösen des Problems sowie zur graphischen Visualisierung
-% anzueignen. Die Päsentation sowie der Abschlussbericht stellen
-% dann die mündliche, wie schriftliche Darlegung des Problems und
-% dessen Lösunng dar.
-% 
-% Und auch wenn Sie mit Ihrem Problem in Zukunft nie wieder in
-% Berührung kommen werden, ist es generell wichtig Probleme anzugehen,
-% die Werkzeuge zur dessen Bewältigung anzueignen und danach die
-% Problemlösung auch voranzutreiben. Wissenschaftlichkeit in den
-% Sachverhalt einfließen zu lassen, bedeutet dann noch das Problem
-% in einem größeren Kontext zu sehen oder auch in Bezug auf verwandte
-% Problematiken.
 
-% Zum Abschluss aber noch einen Witz: Stellen Sie sich eine Party
-% vieler mathematischer Funktionen vor. Auf einmal öffnet sich die
-% Tür und ein Differentialoperator tritt herein. Alle Funktionen
-% suchen die Flucht, nur die e-Funktion bleibt an der Bar stehen.
-% Kommt der Differentialoperator zur e-Funktion und fragt, warum
-% sie denn nicht weglaufen täte. 'Na, ich bin doch die Funktion e hoch x.
-% Du kannst mich nicht wegdifferenzieren.' Darauf antwortet der
-% Differentialoperator: 'Aber ich leite doch nach y ab.'
-
-%Schließen möchte ich mit einem Zitat von Wittgenstein \cite{Wittgenstein1922},
-%welches Prof. Dr. Kurt Roth im Zusammenhang wissenschaftlichen
-%Schreibens gerne nutzte: {\it Was sich überhaupt sagen lässt, lässt
-%sich klar sagen; und wovon man nicht reden kann, darüber muss man
-%schweigen.} 
 
 \section*{Danksagung}
 Wir möchten uns an dieser Stelle bei \emph{Dr. Gerhards} bedanken. Einerseits für die fachliche Hilfe bei diesem Projekt und andererseits für seine hilfreichen Anmerkungen nach der Präsentation im Plenum, die die Basis dieser Ausarbeitung darstellt.\\
