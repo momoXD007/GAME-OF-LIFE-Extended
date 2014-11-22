@@ -130,11 +130,11 @@ Insgesamt ist das Modell dementsprechend etwas dynamischer als das SIR Modell. O
 Da die Welt bisher nur aus einem bloßen Raster mit den Koordinaten $x$ und $y$ besteht, wäre ein erster Schritt sich der Realität weiter anzunähern, dass die Welt keine harte Ecken hat. Wie sie noch in Abbildung \ref{fig:welt} zu erkennen sind.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width= 0.45\textwidth]{./images/map.png}
+	\includegraphics[width= 0.5\textwidth]{./images/map.png}
 	\caption{Bisheriges einfaches Raster}
 	\label{fig:welt}
 \end{figure}
-Um dieses Problem zu lösen ist die Idee, dass Raster in Form einer Kugel zu modellieren, so dass die Übergänge weicher werden. Des Weiteren erinnert diese Form eher an die der Erde. Für die Simulationslogik sähe das Raster als Folge dessen wie in Abbildung \ref{fig:kugel} gezeigt aus. Ebenso wären natürliche Hindernisse wie Meere oder ähnliches in der Modellierung denkbar.
+Um dieses Problem zu lösen ist die Idee, dass Raster in Form einer Kugel zu modellieren, so dass die Übergänge weicher werden. Des Weiteren erinnert diese Form eher an die der Erde. Für die Simulationslogik sähe das Raster als Folge dessen wie in Abbildung \ref{fig:kugel} auf Seite \pageref{fig:kugel} gezeigt aus. Ebenso wären natürliche Hindernisse wie Meere oder ähnliches in der Modellierung denkbar.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 0.3\textwidth]{./images/kugel.pdf}
@@ -156,7 +156,12 @@ Zeitgleich wirft diese Lösung ein neues Problem in den Raum und zwar, dass es k
 
 Des Weiteren verwendet die Simulation bisher nur die unmittelbare Nachbarschaft. Betrachtet man nun Ballungsgebiete wie New York, Peking oder Tokio ist unmittelbare Nachbarschaft nicht unbedingt ausreichend. Die Wahrscheinlichkeit mit einer Infizierten Person in Kontakt zukommen ist größer als in ländlichen Regionen. Deshalb wäre eine Lösung die Nachbarschaft auszudehnen, so dass weitere Zellen für die Zustände verantwortlich sind. Beispielsweise wie in Abbildung \ref{fig:ewnachbar} gezeigt. Die Moore-Nachbarschaft wird nur auf den Radius 2 erhöht. Die gesunde Zelle in der Mitte hat nun 2 Infizierte Zellen, die für die Berechnung des neuen Zustandes relevant sind. 
 
-
+\begin{figure}[t]
+	\centering
+	\includegraphics[width= 0.3\textwidth]{./images/ewNachbar.pdf}
+	\caption{Augmentierte Nachbarschaft}
+	\label{fig:ewnachbar}
+\end{figure}
 
 An dieser Stelle könnte man zusätzlich eine Art Gauß-Filter verwenden, um auch die Distanz bei der Gewichtung mit einfließen zu lassen. Die Zellen im unmittelbaren Umkreis hätten somit einen größeren Einfluss als diejenigen, die weiter entfernt liegen.
 Dafür könnte man 
@@ -171,12 +176,7 @@ b & b & b & b & b \\
 \end{bmatrix}
 $ als Faltungsmatrix
 \end{center} 
-\begin{figure}[t]
-	\centering
-	\includegraphics[width= 0.3\textwidth]{./images/ewNachbar.pdf}
-	\caption{Augmentierte Nachbarschaft}
-	\label{fig:ewnachbar}
-\end{figure}
+
 verwenden, um die Distanz mit Faktoren $a,b$ zu gewichten. Beispielsweise könnte man die unmittelbare Nachbarschaft also $a=1$ und die Nachbarschaft mit dem Radius 2 mit $b=\frac{2}{3}$ bewerten. Ebenso könnte man die Diagonale aufgrund höherer Distanz zusätzlich geringer gewichten.
 
 In der vorliegenden Version bewegen sich alle Zellen vollkommen zufällig. Da aber Menschen als auch Tiere sich meist zielgerichtet bewegen, wäre es realistischer anzunehmen dass Zellen einen Zielpunkt auf dem Raster haben oder sich zumindest nicht nach einem Schritt wieder direkt zu ihrer alten Position zurück bewegen. Hier bietet sich beispielsweise das sogenannte \glqq{}Correlated random walks\grqq{}. Bei dem davon ausgegangen wird dass eine Reihe von aufeinanderfolgenden Bewgungen tendziell immer in die Gleiche Richtung geht der Einfluss der vorherigen Bewegungen aber immer weiter abnimmt umso länger sie zurückliegen \cite{Codling:2008}.

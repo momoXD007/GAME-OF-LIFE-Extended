@@ -6,6 +6,12 @@ Da sich die Zellen nahezu beliebig auf dem Raster verteilen können, kann es Zel
 
 
 \subsection*{Zelluläre Automaten}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width= 0.45\textwidth]{./images/nachbarn.png}
+	\caption{Ein 3x3 Raster mit Zellen in drei verschiedenen Zuständen}
+	\label{fig:Raster}
+\end{figure}
 Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert. %Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. 
 Dabei kann sich die Zelle in jeder Phase der Simulation nur in genau einem der folgenden Zustände befinden:
 \begin{enumerate}
@@ -19,12 +25,7 @@ Eine infizierte Zelle kann an ihrer Krankheit sterben, heilen und damit in den e
 All dies geschieht unter Berücksichtigung der für die simulierte Krankheit angenommen Werte.\footnote{Diese Werte werden nicht vom Programm berechnet und müssen anderweitig ermittelt werden.}\\
 Des Weiteren kann sie natürlich alle gesunden Zellen in ihrem Umfeld infizieren, auch dies geschieht unter Berücksichtigung der Werte die für die aktuelle Krankheit gelten.
 }
-\begin{figure}[t]
-	\centering
-	\includegraphics[width= 0.45\textwidth]{./images/nachbarn.png}
-	\caption{Ein 3x3 Raster mit Zellen in drei verschiedenen Zuständen}
-	\label{fig:Raster}
-\end{figure}
+
 \item{\emph{Resistent}\\
 Da resistente Zellen nicht mehr in den Infiziert Zustand übergehen können und das Programm keine natürlichen Tode vorsieht, sind diese Zellen im Kontext des Programms unsterblich.\\
 Sie werden jedoch trotzdem betrachtet, da sie im Kontext der Simulation interessant sind. So könnte man beispielsweise betrachten wie sich eine Krankheit verbreitet wenn bereits fast alle Zellen immun sind und es nur sehr wenige infizierte und anfällige Zellen gibt. Denkbar ist in diesem Szenario, dass die resistenten Zellen die infizierten Zellen weitestgehend abschirmen und so eine weitere Verbreitung verhindern. 
