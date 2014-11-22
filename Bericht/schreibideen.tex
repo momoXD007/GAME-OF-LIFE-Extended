@@ -247,8 +247,18 @@ Mannheim, November 2014
 %%nicht näher zu bezeichnenden Einheiten (a.u. für arbitrary unit) angegeben sind.}
 %%\label{fig:audio}
 %%\end{figure}
-\section*{Vergleich mit dem SIR Modell}
-ZDF
+\section{Vergleich mit dem SIR Modell}
+Da die mathematische Beschreibung, sowie das Programm beide den Verlauf von Krankheiten simulieren, liegt ein Vergleich der beiden Herangehensweisen nahe. 
+Dieser soll anhand eines konkreten Testszenarios angewandt werden, bei dem beide Modelle mit denselben Daten eine Prognose über die Entwicklung einer Krankheit liefern sollen.\\
+Der Vergleich soll eine Einschätzung der Repräsentativität, des dem Projekt zugrunde liegenden Programms ermöglichen und Schwächen und Stärken der beiden Modelle herausstellen.\\
+Bevor das Szenario mit beiden Herangehensweisen vorgestellt wird, wird in diesem Abschnitt das SIR-Modell erläutert. Anschließend wird darauf aufbauend erklärt warum wir uns gerade für den Vergleich des dem Projekt zugrunde liegendem Programm mit diesem Modell entschieden haben.
+
+\subparagraph{Szenario}
+Das Testszenario spielt in einem kleinen Dorf mit 10150 Einwohnern zur Zeit des Mittelalters.\\
+Damals hat die Pest, oft bezeichnet als "Schwarzer Tod" von 1347 bis 1353 ein Drittel des europäischen Bevölkerung das Leben gekostet. Die Diagnose Pest war damals gleichzusetzen mit dem Todesurteil, da nur ein sehr geringer Teil der Bevölkerung diese Krankheit mit den medizinischen Stand überleben konnte. Während einige Landstriche komplett entvölkert wurden blieben einige Gebiete verschont. In Italien starb fast jeder 5. an der Krankheit, in Deutschland hingegen jeder 10.\\
+Aufgrund der regionalen Unterschiede und der wenigen verlässlichen Daten ist es besonders schwer die die Kennzahlen von Krankheiten möglichst Realitätsnah wiederzugeben, insbesondere wenn die Krankheit tödlich ist.\\
+Für den Vergleich wird angenommen, dass die Krankheit eine Infektionsrate von 33\% hat, da die Heilungschancen sehr gering sind und ein Drittel an der tödlichen Krankheit gestorben ist.\cite{•} Zudem stirbt ein erkranktes Individuum pro Runde zu 70\% an seiner Krankheit. Die Wahrscheinlichkeit zu genesen oder sogar Resistent zu werden liegt jeweils nur bei 2\%.\cite{•}
+
 \section*{Ergebnisse}
 Grundsätzlich lässt sich sagen, dass die Pest in beiden Modellen komplett ausstirbt. Beim SIR Modell liegt dies trivialerweise daran, dass die sich die gesamte Population im R-Zustand befindet. Betrachtet man nun das vorgestellte Modell lassen sich so leicht keine Aussagen treffen, weil das vorgestellt Modell nicht deterministisch ist, deshalb lassen sich bei nur einmaliger Ausführung nicht wirklich repräsentative Ergebnisse ermitteln. Aus diesem Grund wurde tausend mal mit den selben Parametern simuliert, um eine Abschätzung der Ergebnisse zu ermöglichen. Die Ergebnisse zu den zu erwartenden Werten mit den entsprechenden Zuständen, entweder Tod oder Lebendig, befinden sich in der Tabelle \ref{tab:ergebnisse}.
 \begin{table}[H]
@@ -267,7 +277,7 @@ Grundsätzlich lässt sich sagen, dass die Pest in beiden Modellen komplett auss
 Wir stellen fest, dass bei einer Ausgangsgröße der Population von 10150 Individuen sich die Schwankung nur auf 6,89\% beläuft. Damit unterscheiden sich die Ergebnisse jedoch deutlich von denen des SIR Modells, bei dem die komplette Population nach den 50 Zeitschritten im R-Zustand befindet. Die maximale Anzahl an Infizierten erreichen SIR und das vorgestellte Modell in einem ähnlichen Zeitraum. Beim SIR Modell tritt das Maximum der Infizierten nach etwa 2,5 Tagen auf und unser Modell erreicht im Schnitt das Maximum der Infizierten nach 3,1 Tagen. Das ist nur etwa einen halben Tag später im Schnitt.
 Trotz alledem ist eine interessante Bemerkung, dass nicht alle Individuen aussterben. Dies kann verschiedene Gründe haben. Zum einen besteht bei dem Modell die Chance, dass die Zellen wieder in den gesunden Zustand zurückkehren. Eine weitere Möglichkeit ist, dass die Krankheit verhältnismäßig schnell zum Tod führt und so längst nicht alle Zellen infiziert werden. Durch eine günstige Lage kommen sie demnach nicht mit Infizierten Zellen in Kontakt.   
 
-\section*{Diskussion}
+\section{Diskussion}
 Aus den Ergebnissen lassen sich nun gewisse Punkte identifizieren, die die beiden Modelle unterscheidet.
 Angefangen bei der Verlässlichkeit und Reproduzierbarkeit, dass SIR Modell als mathematisches Modell ist statisch und verhält sich unter gegebenen Parametern immer gleich. Es gibt keine Schwankung bei den Werten. Währenddessen es beim vorgestellten Modell nicht wirklich vorhersagbar ist, wie die Simulation genau ausgeht. Lediglich lässt sich bei hinreichend großer Anzahl von Iterationen ein Mittelwert der simulierten Werte ermitteln. Die Werte sind jedoch nicht deterministisch.
 Unser Modell liegt damit eventuell etwas näher an der Realität, da man auch im echten Leben nie eine Entwicklung einer Epidemie mit 100\% Wahrscheinlichkeit voraussagen kann. Denn die Parameter können sich im Verlauf der Zeit verändern. Vorstellbar wäre es, dass die Viren Resistenzen gegen bekannte Medikamente bilden oder gar mutieren.
@@ -363,7 +373,6 @@ Des Weiteren möchten wir uns bei unseren Ausbildungsbetrieben der \emph{SAP SE}
 
 \begin{thebibliography}{99}
 \bibitem{gehlhoff2007chronik}
-<<<<<<< 0d23fd742fc266d9603de347d25a9ff65bc9ab0c
 B. Gehlhoff,  \textit{Chronik Jahresrückblick 2006}, 2007,
 \url{http://books.google.de/books?id=JtPnf5K1CaIC},
 Chronik-Verlag, Seite 15
@@ -373,7 +382,6 @@ Chronik-Verlag, Seite 15
 	\url{http://www.unaids.org/sites/default/files/documents/20141118_FS_WADreport_en.pdf},
 	Seite 1, Einsichtnahme 22.11.2014 17:19
 
-=======
 	B. Gehlhoff,  \textit{Chronik Jahresrückblick 2006}, 2007,
 	\url{http://books.google.de/books?id=JtPnf5K1CaIC},
 	Chronik-Verlag, Seite 15
@@ -388,11 +396,10 @@ Chronik-Verlag, Seite 15
 	\url{http://books.google.de/books?id=uABYP1hnsf0C&printsec=frontcover&hl=de&source=gbs_ge_summary_r&cad=0#v=onepage&q=SIR&f=false},
 	SIAM (Society for Industrial and Applied Mathematics), Seite 242-252
 	
-\bibitem{sebMöh}
+\bibitem{sebM}
 	S. Möhler,  \textit{Ausbreitung von Infektionskrankheiten}, 2004,
 	\url{http://www.mathe.tu-freiberg.de/~wegert/Lehre/Seminar3/moehler.pdf}
->>>>>>> 01be9592ad3f67e66c28590518da967ddbcebbff
-	
+
 %Sebastian M¨ohler: Ausbreitung von %Infektionskrankheiten
 %Literatur: [2] 242–257, [3] 610–619
 	
