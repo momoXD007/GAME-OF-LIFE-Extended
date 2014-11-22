@@ -21,9 +21,10 @@ Wie bereits erläutert weißt das SIR-Modell einige Schwächen auf unter Anderem
 Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert.Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. Dabei kann sich die Zelle in jeder Phase der Simulation nur in genau einem der folgenden Zustände befinden:
 \begin{enumerate}
 \item{\emph{Anfällig}\\
-Eine anfällige Zelle kann von einer  infizierten Zelle in ihrem direkten Umfeld welche durch eine Moore-Nachbarschaft simuliert wird angesteckt wird. Das heißt dass eine Zelle auf dem rechteckigen Raster nur von den Zellen links über ihr, direkt über ihr, rechts über ihr, links und rechts neben ihr und links neben ihr, links unter ihr, direkt unter ihr und rechts unter ihr angesteckt werden kann.Dies sind im inneren des Spielfeldes maximal acht Zellen wie man am Beispiel der roten Zelle in Abbildung \ref{fig:Raster} gut sehen kann.\\
-Des Weiteren wird auch betrachtet ob die Krankheit auch von jeder Zelle auf jede übertragbar ist oder ob zum Beispiel nur eine Übertragung von Mensch auf Tier aber nicht von Mensch auf Mensch möglich ist.
+Eine anfällige Zelle kann nur von infizierten Zellen in ihrem direkten Umfeld welches durch eine Moore-Nachbarschaft \cite{Weisstein:2014} des Radius 1 charakterisiert wird angesteckt werden. Das heißt dass eine Zelle auf dem rechteckigen Raster nur von den Zellen links über ihr, direkt über ihr, rechts über ihr, links und rechts neben ihr und links neben ihr, links unter ihr, direkt unter ihr und rechts unter ihr angesteckt werden kann.Dies sind im inneren des Spielfeldes maximal acht Zellen wie man am Beispiel der roten Zelle in Abbildung \ref{fig:Raster} gut sehen kann.\\
+Des Weiteren wird auch betrachtet ob die Krankheit auch von jeder Zelle auf jede übertragbar ist oder ob zum Beispiel nur eine Übertragung von Mensch auf Tier aber nicht von Mensch auf Mensch möglich ist.\\
 %Bild von Moore-Nachbarschaft einbinden und Quelle hinzufügen
+Angenommen die rote Zelle in Abbildung \ref{fig:Raster} ist ein infizierter Mensch und 
 }
 \item{\emph{Infiziert}\\
 Eine infizierte Zelle kann an ihrer Krankheit sterben, heilen und damit in den ersten Zustand übergehen, eine Resistenz bilden und damit in den dritten Zustand übergehen oder aber sie bleibt infiziert.\\
@@ -42,22 +43,22 @@ Eine Zelle in diesem Zustand, ist für die weitere Simulation nicht relevant. Na
 
 \subsection*{Bewegung}
 Zellen die sich in einem der ersten drei Zustände befinden können sich bewegen. Dabei wird in dieser Simulation davon ausgegangen dass die Zellen sich in einem geschlossenem Umfeld befinden. Es können also keine Zellen das Simulationsgebiert verlassen oder neu betreten.\\
-Des Weiteren handelt es sich um eine zwei dimensionale Simulation in der es nicht möglich ist dass sich mehrere Zellen auf einem Feld über- oder untereinander befinden.\\
-Im allgemeinen Fall bewegen sich die Zellen dem Random-Walk entsprechend, dies bedeutet dass sich eine Zelle zufällig in irgendeine Richtung bewegt. Dabei wird davon ausgegangen dass die Zellen grundsätzlich einen Drang zur Bewegung haben. Also sollte sich eine Zelle entscheiden sich in ein Feld zu bewegen indem schon eine andere Zelle ist, ist diese Bewegung nicht möglich und die Zelle muss sich neu entscheiden. Das Gleiche gilt für Zellen am Rand des Simulationsgebietes. Natürlich gibt es die Möglichkeit dass eine Zelle komplett \glqq umringt\grqq von anderen Zellen ist, in diesem Fall bleibt die Zelle zwangsweise an ihrer alten Position.\\
-Dies bedeuted dass  zum Beispiel die grüne Zelle in Abbildung \ref{fig:Raster} nur zwei Möglichkeiten hat sich zu bewegen. Nämlich eine Bewegung nach unten oder nach rechts. Da über und links neben ihr keine Felder mehr sind und auf der Diagonale kann sie sich auch nicht bewegen da dort die rote Zelle das einzig mögliche Feld blockiert.\\
+Des Weiteren handelt es sich um eine zweidimensionale Simulation in der es nicht möglich ist dass sich mehrere Zellen auf einem Feld über- oder untereinander befinden.\\
+Im allgemeinen Fall bewegen sich die Zellen dem Simple Isotropic  Random Walk Model \cite{Codling:2008} entsprechend, dies bedeutet dass sich eine Zelle zufällig in irgendeine Richtung bewegt unabhängig davon wohin sie sich zuvor bewegt hat. Dabei wird davon ausgegangen dass die Zellen grundsätzlich einen Drang zur Bewegung haben.\\
+Sollte sich eine Zelle jedoch entscheiden sich in ein Feld zu bewegen indem schon eine andere Zelle ist, ist diese Bewegung nicht möglich und die Zelle muss sich neu entscheiden. Das Gleiche gilt für Zellen am Rand des Simulationsgebietes. Natürlich gibt es die Möglichkeit dass eine Zelle komplett \glqq umringt\grqq von anderen Zellen ist, in diesem Fall bleibt die Zelle zwangsweise an ihrer alten Position.\\
+Veranschaulicht bedeutet dass das zum Beispiel die grüne Zelle in Abbildung \ref{fig:Raster} nur zwei Möglichkeiten hat sich zu bewegen. Nämlich eine Bewegung nach unten oder nach rechts. Da über und links neben ihr keine Felder mehr sind und auf der Diagonale kann sie sich auch nicht bewegen da dort die rote Zelle das einzig mögliche Feld blockiert.\\
 %Quelle hier einbinden
 \subsection*{Wirtsbeziehungen}
-Die Simulation ist in der Lage einfache Wirtsbeziehungen zu simulieren, dadurch dass es zwei Arten von Zellen gibt(Menschen und Tiere), kann man krankheitsabhängig unterscheiden ob eine Krankheit jeweils von Mensch auf Mensch, von Mensch auf Tier, von Tier auf Mensch und von Tier auf Tier übertragbar ist, so kann schon eine beträchtliche Menge von Krankheiten simuliert werden.\\
+Die Simulation ist in der Lage einfache Wirtsbeziehungen zu simulieren, dadurch dass es zwei Arten von Zellen gibt (Menschen und Tiere), kann man krankheitsabhängig unterscheiden ob eine Krankheit jeweils von Mensch auf Mensch, von Mensch auf Tier, von Tier auf Mensch und von Tier auf Tier übertragbar ist, so kann schon eine beträchtliche Menge von Krankheiten simuliert werden.\\
 Dies ermöglicht es zu simulieren was passiert wenn man versucht Krankheiten wie die Tollwut welche fast ausschließlich von Tieren auf den Mensch übertragen werden, versucht auszurotten indem man alle potentiellen Wirte immunisiert.
 
 \subsection*{Bevölkerungsdichte}
 Im Rahmen dieses Modell ist es möglich zu simulieren wie sich eine Krankheit bei verschiedener Bevölkerungsdichte verhält. So ist es möglich dass es auf einem gegebenem Raster $x\cdot y$ für die gilt $ x,y \in \mathbb{N}$ zwischen $1$ und $x\cdot y$ Zellen zu platzieren.\\
-%Mathematischer einbinden-->würde intelligenter aussehen
 Dabei ist auch das Verhältnis von Menschen zu Tieren vollkommen beliebig wählbar. So lassen sich die Auswirkungen der Bevölkerungsdichte auf die Entwicklung simulieren.
 
-\subsection*{nicht deterministisch}
+\subsection*{Nicht deterministisch}
 Ob eine Zelle in einen bestimmten Zustand übergeht hängt einerseits von ihrem Zustand beziehungsweise den Zuständen ihrer Nachbarn, andererseits von einer krankheitstypischen Wahrscheinlichkeit ab. Sollte eine Zelle infiziert sein und bei der simulierten Krankheit besteht die Wahrscheinlichkeit zu sterben bei 25\% so wird der Wert 0.25 mit einer zufälligen Zahl zwischen 0 und 1 verglichen. Sollte diese Zufallszahl größer sein als die Übergangswahrscheinlichkeit geht die Zelle in den entsprechenden Zustand über.\\
-Das bedeutet das selbst wenn man die Simulation mit exakt den selben Parametern mehrmals durchführt man unterschiedliche Ergebnisse erwarten kann. Das Modell ist also nicht deterministisch.
+Das bedeutet das selbst wenn man die Simulation mit exakt den selben Parametern mehrmals durchführt man unterschiedliche Ergebnisse erzielen kann. Das Modell ist also nicht deterministisch.
 
 
 %\begin{enumerate}
