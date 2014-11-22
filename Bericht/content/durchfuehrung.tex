@@ -9,22 +9,13 @@ Wie bereits erläutert weißt das SIR-Modell einige Schwächen auf unter Anderem
 \label{fig:Raster}
 \end{figure}
 
-
-
-
-%Verbesserungen gegenüber dem SIR-Modell
-
-
-
-
 \subsection*{Zelluläre Automaten}
 Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert.Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. Dabei kann sich die Zelle in jeder Phase der Simulation nur in genau einem der folgenden Zustände befinden:
 \begin{enumerate}
 \item{\emph{Anfällig}\\
 Eine anfällige Zelle kann nur von infizierten Zellen in ihrem direkten Umfeld welches durch eine Moore-Nachbarschaft \cite{Weisstein:2014} des Radius 1 charakterisiert wird angesteckt werden. Das heißt dass eine Zelle auf dem rechteckigen Raster nur von den Zellen links über ihr, direkt über ihr, rechts über ihr, links und rechts neben ihr und links neben ihr, links unter ihr, direkt unter ihr und rechts unter ihr angesteckt werden kann.Dies sind im inneren des Spielfeldes maximal acht Zellen wie man am Beispiel der roten Zelle in Abbildung \ref{fig:Raster} gut sehen kann.\\
 Des Weiteren wird auch betrachtet ob die Krankheit auch von jeder Zelle auf jede übertragbar ist oder ob zum Beispiel nur eine Übertragung von Mensch auf Tier aber nicht von Mensch auf Mensch möglich ist.\\
-%Bild von Moore-Nachbarschaft einbinden und Quelle hinzufügen
-Angenommen die rote Zelle in Abbildung \ref{fig:Raster} ist ein infizierter Mensch und 
+Angenommen die rote Zelle in Abbildung \ref{fig:Raster} ist ein infizierter Mensch und  die grüne Zelle ein gesundes Tier und die simulierte Krankheit lässt sich nicht von Mensch auf Tier übertragen, dann ist die grüne Zelle momentan vollkommen sicher, da sich in ihrer Nachbarschaft keine für sie potentiell gefährlichen Zellen befinden. 
 }
 \item{\emph{Infiziert}\\
 Eine infizierte Zelle kann an ihrer Krankheit sterben, heilen und damit in den ersten Zustand übergehen, eine Resistenz bilden und damit in den dritten Zustand übergehen oder aber sie bleibt infiziert.\\
