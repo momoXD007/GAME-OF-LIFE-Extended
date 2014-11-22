@@ -3,12 +3,7 @@ In diesem Abschnitt geht es darum die Funktionsweise des im Rahmen der Projektar
 Das erstellte Programm dient dabei zur graphischen und numerischen Simulation der Krankheitsausbreitung auf einem gegebenem abgeschlossenem  rechteckigem Gebiet. Auf diesem \glqq{}Raster\grqq{} welcher einem Schachbrett ähnelt lassen sich an jeder $ x,y $ Position Zellen positionieren. Im Kontext dieser Simulation kann eine Zelle entweder ein Mensch oder ein Tier sein. Dies dient dazu auch Wirtsbeziehungen simulieren zu können und wird später noch detailliert erläutert.\\
 Da sich die Zellen nahezu beliebig auf dem Raster verteilen können, kann es Zellen geben welche sehr viele Nachbarn haben aber auch Zellen welche gar keinen Nachbar haben. Einen exemplarischen Raster sieht man in  Abbildung \ref{fig:Raster}. Auf diesem 3x3 Raster befinden sich aktuell drei Zellen, theoretisch ist es aber auch möglich diesen Raster mit bis zu 9 Zellen zu besiedeln. So können auch extreme Situationen realistisch dargestellt werden wie zum Beispiel sehr dünn besiedelte Gegenden oder aber auch eng besiedelte Gebiete wie Großstädte.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width= 0.45\textwidth]{./images/nachbarn.png}
-\caption{Ein 3x3 Raster mit Zellen in drei verschiedenen Zuständen}
-\label{fig:Raster}
-\end{figure}
+
 
 \subsection*{Zelluläre Automaten}
 Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert. %Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. 
@@ -24,6 +19,12 @@ Eine infizierte Zelle kann an ihrer Krankheit sterben, heilen und damit in den e
 All dies geschieht unter Berücksichtigung der für die simulierte Krankheit angenommen Werte.\footnote{Diese Werte werden nicht vom Programm berechnet und müssen anderweitig ermittelt werden.}\\
 Des Weiteren kann sie natürlich alle gesunden Zellen in ihrem Umfeld infizieren, auch dies geschieht unter Berücksichtigung der Werte die für die aktuelle Krankheit gelten.
 }
+\begin{figure}[t]
+	\centering
+	\includegraphics[width= 0.45\textwidth]{./images/nachbarn.png}
+	\caption{Ein 3x3 Raster mit Zellen in drei verschiedenen Zuständen}
+	\label{fig:Raster}
+\end{figure}
 \item{\emph{Resistent}\\
 Da resistente Zellen nicht mehr in den Infiziert Zustand übergehen können und das Programm keine natürlichen Tode vorsieht, sind diese Zellen im Kontext des Programms unsterblich.\\
 Sie werden jedoch trotzdem betrachtet, da sie im Kontext der Simulation interessant sind. So könnte man beispielsweise betrachten wie sich eine Krankheit verbreitet wenn bereits fast alle Zellen immun sind und es nur sehr wenige infizierte und anfällige Zellen gibt. Denkbar ist in diesem Szenario, dass die resistenten Zellen die infizierten Zellen weitestgehend abschirmen und so eine weitere Verbreitung verhindern. 
