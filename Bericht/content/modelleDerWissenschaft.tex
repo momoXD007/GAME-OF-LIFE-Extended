@@ -32,31 +32,29 @@ b = ( \lambda * X ) / N
 \end{equation}
 Dabei ist die Anzahl X der Kontakte pro Zeiteinheit je nach Krankheitsübertragungsweg zu unterscheiden. Bei Krankheiten die über Tröpfcheninfektion übertragen werden, reicht Hände schütteln, die Übergabe von Geld oder sogar das Zusammensein in einem Raum zur Infektion. In diesem Szenario wird oft ein Durchschnittswert von 8 Menschen am Tag genommen.%\cite{}
 Bei Krankheiten mit anderen Übertragungswegen z.B. AIDS muss der Austausch von Körperflüssigkeiten zur Infektion stattfinden, d.h. \textbf{X} zeigt den durchschnittlichen Austausch von Körperflüssigkeiten in einem Zeitabschnitt. In diesem Fall ist \textbf{X} im Durchschnitt natürlich deutlich geringer als bei Tröpfcheninfektion.\\
-Über die Ansteckungs-Kontakt-Rate kann die Basisreproduktionsrate ermittelt werden. Diese beschreibt die Anzahl der Erwarteten Ansteckungen durch einen zusätzlichen Infizierten.
+Über die Ansteckungs-Kontakt-Rate kann die Basisreproduktionsrate ermittelt werden. Diese beschreibt die Wahrscheinlichkeit für ein Individuum sich zu infizieren, bei wachsender Anzahl der Menschen im \glqq R\grqq-Zustand ($\gamma$).
 \begin{equation}
 R_0 = \frac{ b * N }{ \gamma }
 \end{equation}
 Hat man die beiden Größen ermittelt, können die Funktionen für die drei Zustände S, I und R über einen Zeitraum ermittelt werden. 
 Es gilt:
 \begin{equation}
-\frac{ \delta S }{ \delta t } = -R_0 \cdot \frac{S * I}{N}
+\frac{ \delta S }{ \delta t } = -R_0 * \frac{S * I}{N}
 \end{equation}
-Die erwartete Anzahl an Neuinfizierungen mal den Anteil der Gesunden und Infizierten Individuen von der Gesamtbevölkerung, ergibt die Anzahl der Gesunden, die diese Runde Infiziert werden. Die Menge der Anfälligen wird um die Menge der Neuinfizierten reduziert.
 \begin{equation}
-\frac{\delta I }{\delta t} = R_0 \cdot \frac{S \cdot I}{N}
+\frac{\delta I }{\delta t} = R_0 * \frac{S * I}{N}
 \end{equation}
-Diese Funktion berrechnet die Anzahl der Neuinfizierten von der Menge der Infizierten und der Anfälligen. Die Menge der Infizierten I wächst um die Menge der Anfälligen, die sich diese Runde infiziert haben.
 \begin{equation}
-\frac{\delta R }{\delta t} = \gamma \cdot I
+\frac{\delta R }{\delta t} = \gamma * I
 \end{equation}
-Die Anzahl der Individuen im R-Zustand wächst um einen Anteil $\gamma$ von den Infizierten. Das Heißt Einige Infizierte werden der Menge I abgeführt und wandern in Zustand R über. Von diesem Überstand ist kein anderer Zustand erreichbar, d.h. Diese Menge wächst stetig wenn $\gamma$ 0 und die Baisisreproduktionsrate größer null sind.
+
 \subparagraph{Warum gerade das SIR-Modell?}
 Bei dem Vergleich mit bekannten Modellen aus der Wissenschaft drängt sich zunächst die Frage auf warum im Rahmen des Projektes gerade der Vergleich mit dem SIR-Modell angestellt wird und nicht mit einem anderen Modell zur Darstellung eines Krankheitsverlauf.\\
 Wie genau ein mathematisches Modell die Krankheitsausbreitung in einer Gesellschaft beschreibt, hängt sehr davon ab, wie viel Realismus und damit wie viele Annahmen getroffen werden.\\
 Da in der Medizin viele Einflüsse zunächst vernachlässigt werden müssen, nicht bekannt sind oder die Krankheit sich mit der Zeit durch mutierende Viren verändert, haben die Modelle sehr selten einen endgültigen Charakter. Darüber hinaus sind Krankheiten in ihrer Entwicklung so unterschiedlich, dass es sehr oft möglich und manchmal nötig ist, die Modelle weiter zu verfeinern und anzupassen, wobei unterschiedliche Krankheiten unterschiedliche Modelle erfordern können. 
 \cite{sebM}\\
 Mit anderen Worten: Eine Krankheit kann mit all ihren Eigenschaften sehr realitätsnah abgebildet werden, aber möglicherweise bei einer anderen Krankheit schon wieder versagen. Von daher ist nicht das Modell, sondern das zugrunde liegende Szenario entscheidend für die Wahl des Vergleichsmodells. Eine sinnvolle Vorgehensweise ist es daher erst ein Szenario zu erschaffen und dieses dann mit einem geeigneten Modell abzubilden.\\ 
-Im Rahmen unserer Projektes wurde sich für die Mittelalterpest entschieden.\\ 
+Im Rahmen unseres Projektes wurde sich für die Mittelalterpest entschieden.\\ 
 Die Mittelalterpest war im 14. Jahrhundert gleichzusetzen mit einem Todesurteil. Beinahe jedes Individuum erlag nach einiger Zeit seiner Krankheit. Aus diesem Grund passt die Natur des Modells sehr gut zum vorgegebenen Szenario und dem Krankheitsprofil der Pest: Ein gesundes Individuum kann infiziert werden und dann sterben. In diesem Fall bildet der \glqq R\grqq-Zustand, die Anzahl der verstorbenen Individuen ab.\\
 Mit einem anderen Szenario wäre es sinnvoll gewesen ein anderes Modell zu betrachten. 
 Andere Modelle, die in der mathematischen Biologie angewendet werden sind z.B. das SI-Modell oder SIS-Modell.\\
