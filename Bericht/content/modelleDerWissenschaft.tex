@@ -1,32 +1,35 @@
 \section*{Modelle in der Wissenschaft}
 Ein Ansatz zur mathematischen Betrachtung der Krankheitsausbreitung ist das SIR-Modell von William O. Kernack und Anderson Gray McKendrick.\\
-Es ist 1927 als Teilgebiet der Epidemiologie entstanden, die sich mit der Verbreitung sowie den Ursachen und Folgen von gesundheitsbezogenen Zuständen und Ereignissen in Bevölkerungen oder Populationen beschäftigt.\\
-In diesem Abschnitt wird zunächst die Idee hinter dem SIR-Modell vorgestellt, dann die Berechnung der Werte des SIR-Modells erklärt und abschließend aufbauend darauf die Frage beantwortet, warum sich im Rahmen des Projektes überhaupt für das SIR-Modell entschieden wurde.
-
-\subsection*{Theorie des SIR-Modells}
+Es ist 1927 mit dem Zweck die Verbreitung Krankheiten sowie den Folgen von Gegenmaßnahmen von gesundheitsbezogenen Zuständen und Ereignissen in Bevölkerungen oder Populationen zu untersuchen.\\
+In diesem Abschnitt wird zunächst die Idee hinter dem SIR-Modell vorgestellt, dann die Mathematik hinter dem SIR-Modells erklärt und abschließend aufbauend darauf die Frage beantwortet, warum gerade dieses Modell für den Vergleich des Projektes mit bekannten Methoden aus der Wissenschaft gewählt wurde.
+\subparagraph{Theorie des SIR-Modells}
 \begin{figure}
-\centering
-\includegraphics[width= 0.3\textwidth]{./images/SIR-Modell.jpg}\caption{Zustandsmodell des SIR-Modells}
+\includegraphics[width= 0.3\textwidth]{./images/SIR-Modell.jpg}\caption{Zustandsmodell des SIR-Modells}\label{fig:SIR}
 \end{figure}
-Das SIR-Modell ist eine mathematische Herangehensweise, bei der der Krankheitsverlauf statisch über feste Funktionen errechnet wird. \\
-Dazu wird eine geschlossene Gruppe \textbf{N} an Individuen betrachtet. Die Anzahl der Personen in \textbf{N} ist die Gesamtgröße der Bevölkerung. Die Bevölkerung setzt sich aus gesunden, kranken und \glqq R\grqq-Individuen zusammen, sodass gilt:
+Das SIR-Modell ist eine mathematische Herangehensweise, bei der der Krankheitsverlauf statisch über feste Funktionsterme errechnet wird. \\
+Dazu wird eine geschlossene Gruppe \textbf{N} an Individuen betrachtet. Die Anzahl \textbf{N} ist die Gesamtgröße der Bevölkerung. Die Bevölkerung setzt sich aus gesunden, kranken und \glqq R\grqq-Individuen zusammen, sodass gilt:
 \begin{equation}
 N = S + I + R
 \end{equation}
-Das heißt: Die Bevölkerung wird in drei Zuständen klassifiziert:
+. Das heißt: Die Bevölkerung wird in drei Zuständen klassifiziert:
 \begin{itemize}
 \item \textbf{S (Susceptible)} Anfällige Individuen, die innerhalb der Bevölkerung Infiziert werden können.
-\item \textbf{I (Infected)} Infizierte Individuen, die Anfällige anstecken  oder in den 'R'-Zustand übergehen können.
-\item \textbf{R (Recovered)} Der letzte Zustand ist der \glqq R\grqq-Zustand. Ein infiziertes Individuum, was in den \glqq R\grqq -Zustand übergeht, bleibt im R-Zustand. Es gibt keinen Übergang aus dem R-Zustand zurück in einen der anderen Zustände. Der R-Zustand kann von daher Individuen beschreiben, die aus Epidemiologischer Sicht keinen Einfluss mehr auf den Rest der Gesellschaft haben. Dies könnten z.B. immunisierte, tote oder isolierte Individuen sein.
+\item \textbf{I (Infected)} Infizierte Individuen, die Anfällige anstecken  oder in den \glqq R\grqq -Zustand übergehen können.
+\item \textbf{R (Recovered)} Individuen im \glqq R\grqq -Zustand. Ein infiziertes Individuum, was in den \glqq R\grqq -Zustand übergeht, bleibt im R-Zustand. Es gibt keinen Übergang aus dem \glqq R\grqq -Zustand zurück in einen der anderen Zustände. Der \glqq R\grqq -Zustand kann von daher Individuen beschreiben, die aus Epidemiologischer Sicht keinen Einfluss mehr auf den Rest der Gesellschaft haben. Dies könnten z.B. immunisierte, tote oder isolierte Personen sein.
 \end{itemize}
+Das Bild \ref{fig:SIR} zeigt das entsprechende Zustandsübergangsmodell zu den drei Bevölkerungsgruppen.\\
 Zur Visualisierung des Krankheitsverlauf in einer Bevölkerung kann geeigneter Weise ein Koordinatensystem benutzt werden, dass die Anzahl der Individuen in Relation zur Zeit setzt.
 Für jede Zustandsgruppe wird ein Graph in das Koordinatensystem gezeichnet, sodass ablesbar wird wie viele Individuen zu einem Zeitpunkt krank, gesund oder im \glqq R\grqq-Zustand sind.\\
 Die Verteilung der Individuen in die jeweiligen Zustandsklassen ändert sich mit dem Fortschritt der Zeit \textbf{t}, ist die Krankheit nicht ausgestorben, die Infektionsrate oder \glqq R\grqq-Übergangsrate größer null und nicht alle Individuen im \glqq R\grqq-Zustand.
 Für jeden Zeitschritt wird die Anzahl der Individuen in den Zustandsklassen neu berechnet.\\
-Beispielsweise erkranken nach einem Zeitschritt drei neue Individuen und ein Individuum stirbt. Damit nimmt die Gruppe  \textbf{S} um drei Individuen ab, die Gruppe \textbf{I} wächst entsprechend um drei Individuen und gibt gleichzeitig ein Individuum an die Gruppe \textbf{R} ab, sodass sich die Verteilung von beispielsweise $ S = 5, R = 5 $ und $ I = 5 $ nach einem Zeitschritt zu $ S = 2, I = 7 $ und $ R = 6 $ ändert.
+Beispielsweise könnten nach einem Zeitschritt drei neue Individuen erkranken und ein Mensch stirbt. Damit nimmt die Gruppe  \textbf{S} um drei Individuen ab, die Gruppe \textbf{I} wächst entsprechend um drei und gibt gleichzeitig ein Individuum an die Gruppe \textbf{R} ab, sodass sich die Verteilung nach einem Zeitschritt wie in Bild \ref{sch} ändert.
 
-\subsection*{Berechnung der Entwicklung mit dem SIR-Modell}
-Damit die Verteilung sinnvoll berechnet werden kann, werden Kennzahlen über die Krankheit benötigt, die das Krankheitsprofil widerspiegeln. Dabei wird für das SIR-Modell die Infektionsstärke und die \glqq R\grqq-Übergangsrate benötigt.
+
+\subparagraph{Berechnung der Entwicklung mit dem SIR-Modell}
+\begin{figure}
+\includegraphics[width= 0.3\textwidth]{./images/SIR-Berechnung.jpg}\caption{Möglicher Zustandswechsel nach einem Zeitschritt}\label{fig:sch}
+\end{figure}
+Damit die Verteilung sinnvoll berechnet werden kann, werden Kennzahlen über die Krankheit benötigt, die das Krankheitsprofil widerspiegeln. Dabei wird für das SIR-Modell die Infektionsstärke und die \grqq R\glqq{}-Übergangsrate benötigt.
 Über die Infektionsstärke $\lambda$ wird die Ansteckung-Kontakt-Rate \textbf{b} ermittelt. Diese ist die Wahrscheinlichkeit mit der ein Individuum, dass mit \textbf{X} Individuen pro Zeitschritt Kontakt hat, erkranken kann.
 \begin{equation}
 b = ( \lambda * X ) / N
@@ -43,7 +46,6 @@ Es gilt:
 \frac{ \delta S }{ \delta t } = -R_0 * \frac{S * I}{N}
 \end{equation}
 Die erwartete Anzahl an Neuinfizierungen mal den Anteil der Gesunden und Infizierten Individuen von der Gesamtbevölkerung, ergibt die Anzahl der Gesunden, die diese Runde Infiziert werden. Die Menge der Anfälligen wird um die Menge der Neuinfizierten reduziert.
-
 \begin{equation}
 \frac{\delta I }{\delta t} = R_0 * \frac{S * I}{N}
 \end{equation}
@@ -53,8 +55,7 @@ Diese Funktion berrechnet die Anzahl der Neuinfizierten von der Menge der Infizi
 \end{equation}
 Die Anzahl der Individuen im R-Zustand wächst um einen Anteil $\gamma$ von den Infizierten. Das Heißt Einige Infizierte werden der Menge I abgeführt und wandern in Zustand R über. Von diesem Überstand ist kein anderer Zustand erreichbar, d.h. Diese Menge wächst stetig wenn $\gamma$ 0 und die Baisisreproduktionsrate größer null sind.
 
-
-\subsection*{Warum gerade das SIR-Modell?}
+\subparagraph{Wahl des SIR-Modells als Referenzmodell}
 Bei dem Vergleich mit bekannten Modellen aus der Wissenschaft drängt sich zunächst die Frage auf warum im Rahmen des Projektes gerade der Vergleich mit dem SIR-Modell angestellt wird und nicht mit einem anderen Modell zur Darstellung eines Krankheitsverlauf.\\
 Wie genau ein mathematisches Modell die Krankheitsausbreitung in einer Gesellschaft beschreibt, hängt sehr davon ab, wie viel Realismus und damit wie viele Annahmen getroffen werden.\\
 Da in der Medizin viele Einflüsse zunächst vernachlässigt werden müssen, nicht bekannt sind oder die Krankheit sich mit der Zeit durch mutierende Viren verändert, haben die Modelle sehr selten einen endgültigen Charakter. Darüber hinaus sind Krankheiten in ihrer Entwicklung so unterschiedlich, dass es sehr oft möglich und manchmal nötig ist, die Modelle weiter zu verfeinern und anzupassen, wobei unterschiedliche Krankheiten unterschiedliche Modelle erfordern können. 
@@ -70,5 +71,5 @@ Das Zustandsmodell im SIS-Modell ist im Gegensatz zum SIR-Modell zyklisch. Es gi
 \includegraphics[width= 0.3\textwidth]{./images/SIS-Modell.jpg}\caption{Zuständsmodell des SIS-Modells}
 \end{figure}
 Das SI-Modell hat ebenfalls die beiden Zustände Anfällig und Infiziert, aber ist nicht zyklisch. Es können lediglich Individuen Infiziert werden. Diese bleiben endgültig im Zustand I.\\ 
-Das SI-Modell ist also sinnvoll, wenn Individuen lediglich an einer Krankheit erkranken und nicht wieder genesen, aber auch nicht sterben. Das entsprechende Szenario, wäre beispielsweise ein Zombie-Virus, wie der im Programm implementierte "I am Legend - Virus".\\
-Damit wird der erste Vorteil der Herangehensweise im Programm sichtbar: Während bei der mathematischen berechnen für jedes Modell ein anderes Modell gewählt werden muss, um möglichst nah an der Realität zu bleiben, ist das Programm auf mehrere Szenarien mit Heilung, Toten, Resistenten etc. anwendbar.
+Das SI-Modell ist also sinnvoll, wenn Individuen lediglich an einer Krankheit erkranken und nicht wieder genesen, aber auch nicht sterben. Das entsprechende Szenario, wäre also ein Virus, der ein Individuum auf Lebzeiten oder sogar darüber hinaus. Ein mögliches Szenario wäre ein aus Hollywood bekanntes Filmszenario der berühmten Zombie-Apokalypse.\\
+Damit wird der erste Vorteil der Herangehensweise im Programm sichtbar: Während bei der mathematischen berechnen für jede Infektionskrankheit ein anderes Modell gewählt werden muss, um möglichst nah an der Realität zu bleiben, ist das Programm auf mehrere Szenarien mit Heilung, Toten, Resistenten etc. anwendbar.
