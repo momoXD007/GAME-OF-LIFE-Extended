@@ -46,7 +46,7 @@
 \usepackage{lastpage}
 \usepackage{fancyhdr}
 \fancyhf{} % leere alle Felder
-\fancyhead[R]{\footnotesize Marvin Klose,Michael Josef Wieneke, Inga Miadowicz}
+\fancyhead[R]{\footnotesize Dr. Holger Gerhards \\ Kontakt: holger.gerhards@web.de}
 \fancyhead[L]{\footnotesize Ausgewählte Methoden der
 Datenanalyse, \\ Modellierung und Simulation} % Titel des Aufsatzes
 \fancyfoot[C]{\footnotesize \thepage/\pageref{LastPage}}
@@ -77,28 +77,28 @@ Mannheim, November 2014
 
 \input{./content/einleitung.tex}
 \input{./content/modelleDerWissenschaft.tex}
-%\input{./content/mUndM.tex}
+\input{./content/mUndM.tex}
 
-%\subsection*{Bedeutung der Abschnitte}
-%
-%In naturwissenschaftlichen Veröffentlichungen sollte immer 
-%ein 'Abstract', eine 'Einleitung' und soetwas wie 'Ergebnisse und
-%Diskussion' vorhanden sein. Andererseits muss man sich bei den
-%Abschnitten wie 'Material und Methoden' und der 'Durchführung'
-%nicht zwingend an die Überschriften halten. 
-%
-%Wichtig ist nur, dass man eingehens die Mittel, Techniken,
-%Methoden, vielleicht das mathematische Instrumentarium 
-%oder den experimentelle Aufbau erwähnt, mit welchem man 
-%gearbeitet hat und was essentiell zum Verständnis sein könnte.
-%
-%Wenn Sie den Leser vorbereitet haben, was da kommt, dann können
-%Sie die große Synthese startet und ihr ganzes Setup mit allen
-%nötigen Parametern beschreiben, aus denen Sie letztendlich
-%die Ergebnisse generiert haben. Aus diesen Überlegungen heraus, 
-%sieht man bereits, dass die Grenzen zwischen den Bereichen 
-%'Material und Methoden' sowie 'Durchführung' und mitunter 
-%bis zu den 'Ergebnissen' verschwimmen können.
+\subsection*{Bedeutung der Abschnitte}
+
+In naturwissenschaftlichen Veröffentlichungen sollte immer 
+ein 'Abstract', eine 'Einleitung' und soetwas wie 'Ergebnisse und
+Diskussion' vorhanden sein. Andererseits muss man sich bei den
+Abschnitten wie 'Material und Methoden' und der 'Durchführung'
+nicht zwingend an die Überschriften halten. 
+
+Wichtig ist nur, dass man eingehens die Mittel, Techniken,
+Methoden, vielleicht das mathematische Instrumentarium 
+oder den experimentelle Aufbau erwähnt, mit welchem man 
+gearbeitet hat und was essentiell zum Verständnis sein könnte.
+
+Wenn Sie den Leser vorbereitet haben, was da kommt, dann können
+Sie die große Synthese startet und ihr ganzes Setup mit allen
+nötigen Parametern beschreiben, aus denen Sie letztendlich
+die Ergebnisse generiert haben. Aus diesen Überlegungen heraus, 
+sieht man bereits, dass die Grenzen zwischen den Bereichen 
+'Material und Methoden' sowie 'Durchführung' und mitunter 
+bis zu den 'Ergebnissen' verschwimmen können.
 
 %\subsection*{Ideen zum Lesen aus der Sicht eines Massenkonsumenten}
 %
@@ -323,7 +323,7 @@ Des Weiteren verwendet die Simulation bisher nur die unmittelbare Nachbarschaft.
 An dieser Stelle könnte man zusätzlich eine Art Gauß-Filter verwenden, um auch die Distanz bei der Gewichtung mit einfließen zu lassen. Die Zellen im unmittelbaren Umkreis hätten somit einen größeren Einfluss als diejenigen, die weiter entfernt liegen.
 Dafür könnte man 
 \begin{center}
- $A = 
+\\ $A = 
 \begin{bmatrix}
 b & b & b & b & b \\
 b & a & a & a & b \\
@@ -332,7 +332,7 @@ b & a & a & a & b \\
 b & b & b & b & b \\
 \end{bmatrix}
 $ als Faltungsmatrix
-\end{center} verwenden, um die Distanz mit Faktoren $a,b$ zu gewichten. Beispielsweise könnte man die unmittelbare Nachbarschaft also $a=1$ und die Nachbarschaft mit dem Radius 2 mit $b=\frac{2}{3}$ bewerten. Ebenso könnte man die Diagonale aufgrund höherer Distanz zusätzlich geringer gewichten.
+\end{center} \\ verwenden, um die Distanz mit Faktoren $a,b$ zu gewichten. Beispielsweise könnte man die unmittelbare Nachbarschaft also $a=1$ und die Nachbarschaft mit dem Radius 2 mit $b=\frac{2}{3}$ bewerten. Ebenso könnte man die Diagonale aufgrund höherer Distanz zusätzlich geringer gewichten.
 
 %Was Sie hier finden sollten, findet sich leider schon in den vorangegangenen
 %Textpassagen und Abschnitten und ich mag Sie nicht mit Wiederholungen
