@@ -306,10 +306,12 @@ Das Problem der Inkubationszeiten lässt sich lösen, indem die Krankheiten weit
 
 Die Zellen, die schon als Objekte existieren, könnten durch weitere Attribute sinnvoll ergänzt werden, damit sie die Realität besser abbilden.
 Vor allem Alterung spielt hier ein zentrale Rolle. Das junge widerstandsfähiger als ältere Zellen sind gilt für die meisten Krankheiten, jedoch nicht unbedingt für alle und hängt auch von weiteren Faktoren ab.Das je nachdem bestimmte Zellen anfälliger sind berücksichtigt unser Modell jedoch noch nicht. Ein Lösungsansatz für diese Problem wäre zum einem ein Alter für die Zelle einzuführen als auch die Krankheit mit verschiedenen Wahrscheinlichkeiten für die jeweilige Zielgruppe zu modellieren. 
-Durch die Alterung ist  ebenfalls das Problem gelöst, dass Zellen theoretisch ewig leben können, wenn sie keiner Krankheit zum Opfer fallen. Dies gilt allerdings nur, wenn zusätzlich eine weitere Voraussetzung erfüllt ist. Die Simulation benötigt eine gewisse Lebenserwartung der Zellen. Diese kann je nach Region oder bisherigen Iterationen variieren und sorgt dafür, dass Zellen nicht ewig leben können.
+Durch die Alterung ist  ebenfalls das Problem gelöst, dass Zellen theoretisch ewig leben können, wenn sie keiner Krankheit zum Opfer fallen. 
+
+Dies gilt allerdings nur, wenn zusätzlich eine weitere Voraussetzung erfüllt ist. Die Simulation benötigt eine gewisse Lebenserwartung der Zellen. Diese kann je nach Region oder bisherigen Iterationen variieren und sorgt dafür, dass Zellen nicht ewig leben können.
 Zeitgleich wirft diese Lösung ein neues Problem in den Raum und zwar, dass es keine Reproduktion der Zellen gibt. Die Population stürbe auf lange Sicht gesehen aus. Ein möglicher Lösungsansatz wäre hier, mit jeder Iteration eine gewisse Anzahl von neuen Zellen zu erzeugen. Allerdings ist diese Berechnung keineswegs trivial, weil verschiedene Faktoren wie Geschlechterverhältnis, Krankheitsübertragungen während der Schwangerschaft, Überbevölkerung und weitere diese beeinflussen.
 
-Bisher verwendet die Simulation nur die unmittelbare Nachbarschaft. Betrachtet man nun Ballungsgebiete wie New York, Peking oder Tokio ist unmittelbare Nachbarschaft nicht unbedingt ausreichend. Die Wahrscheinlichkeit mit einer Infizierten Person in Kontakt zukommen ist größer als in ländlichen Regionen. Deshalb wäre eine Lösung die Nachbarschaft auszudehnen, so dass weitere Zellen für die Zustände verantwortlich sind. Beispielsweise wie in Abbildung \ref{fig:ewnachbar} gezeigt. Die gesunde Zelle in der Mitte hat nun 2 Infizierte Zellen, die für die Berechnung des neuen Zustandes relevant sind.
+Des Weiteren verwendet die Simulation bisher nur die unmittelbare Nachbarschaft. Betrachtet man nun Ballungsgebiete wie New York, Peking oder Tokio ist unmittelbare Nachbarschaft nicht unbedingt ausreichend. Die Wahrscheinlichkeit mit einer Infizierten Person in Kontakt zukommen ist größer als in ländlichen Regionen. Deshalb wäre eine Lösung die Nachbarschaft auszudehnen, so dass weitere Zellen für die Zustände verantwortlich sind. Beispielsweise wie in Abbildung \ref{fig:ewnachbar} gezeigt. Die Moore-Nachbarschaft wird nur auf den Radius 2 erhöht. Die gesunde Zelle in der Mitte hat nun 2 Infizierte Zellen, die für die Berechnung des neuen Zustandes relevant sind. 
 
 \begin{figure}[H]
 	\centering
@@ -317,6 +319,19 @@ Bisher verwendet die Simulation nur die unmittelbare Nachbarschaft. Betrachtet m
 	\caption{Augmentierte Nachbarschaft}
 	\label{fig:ewnachbar}
 \end{figure}
+An dieser Stelle könnte man zusätzlich eine Art Gauß-Filter verwenden, um auch die Distanz bei der Gewichtung mit einfließen zu lassen. Die Zellen im unmittelbaren Umkreis hätten somit einen größeren Einfluss als diejenigen, die weiter entfernt liegen.
+Dafür könnte man 
+\begin{center}
+\\ $A = 
+\begin{bmatrix}
+b & b & b & b & b \\
+b & a & a & a & b \\
+b & a & 0 & a & b \\
+b & a & a & a & b \\
+b & b & b & b & b \\
+\end{bmatrix}
+$ als Faltungsmatrix
+\end{center} \\ verwenden. Um die Distanz mit Faktoren $a,b$ zu gewichten. Beispielsweise könnte man die unmittelbare Nachbarschaft also $a=1$ und die Nachbarschaft mit dem Radius 2 mit $b=\frac{2}{3}$ bewerten. Ebenso könnte man die Diagonale aufgrund höherer Distanz zusätzlich geringer gewichten.
 
 %Was Sie hier finden sollten, findet sich leider schon in den vorangegangenen
 %Textpassagen und Abschnitten und ich mag Sie nicht mit Wiederholungen
@@ -394,7 +409,7 @@ Des Weiteren möchten wir uns bei unseren Ausbildungsbetrieben der \emph{SAP SE}
 	Chronik-Verlag, Seite 15
 	
 	
-\bibitem{Spon:2014}Spiegel Online{\it Die Chronologie der BSE-Krise}, 2000, \url{
+\bibitem{Spon:2014}Spiegel Online {\it Die Chronologie der BSE-Krise}, 2000, \url{
 	http://www.spiegel.de/politik/ausland/rinderseuche-die-chronologie-der-bse-krise-a-105210.html
 	}, Einsichtnahmen 22.11.2014 10:24
 \bibitem{Weisstein:2014}E. Weisstein {\it Moore Neighborhood}, 2014 \url{http://mathworld.wolfram.com/MooreNeighborhood.html}, Einsichtnahme 22.11.2014 09:14
