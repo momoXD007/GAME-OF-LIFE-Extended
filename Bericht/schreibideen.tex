@@ -253,13 +253,13 @@ Dieser soll anhand eines konkreten Testszenarios angewandt werden, bei dem beide
 Der Vergleich soll eine Einschätzung der Repräsentativität, des dem Projekt zugrunde liegenden Programms ermöglichen und Schwächen und Stärken der beiden Modelle herausstellen.\\
 Dazu wird zunächst das Testszenario vorgestellt und dann in beiden Modellen angewandt.
 Auf einer kurze Vorstellung der Ergebnisse in den Modellen folgt zu guter Letzt eine GegenÜBERSTELLUNG MUHUHUHU der beiden Resultate.
-Für die Visualisierung der Daten des SIR-Modells wurde im Nachfolgenden die SIR-Simulation von Hans Nesse benutzt.\cite{•}
+Für die Visualisierung der Daten des SIR-Modells wurde im Nachfolgenden die SIR-Simulation von Hans Nesse benutzt.%\cite{XXX}
 
 \subparagraph{Szenario}
 Das Testszenario spielt in einem kleinen Dorf mit 10150 Einwohnern zur Zeit des Mittelalters.\\
 Damals hat die Pest, oft bezeichnet als "Schwarzer Tod" von 1347 bis 1353 ein Drittel des europäischen Bevölkerung das Leben gekostet. Die Diagnose Pest war damals gleichzusetzen mit dem Todesurteil, da nur ein sehr geringer Teil der Bevölkerung diese Krankheit mit den medizinischen Stand überleben konnte. Während einige Landstriche komplett entvölkert wurden blieben einige Gebiete verschont. In Italien starb fast jeder 5. an der Krankheit, in Deutschland hingegen jeder 10.\\
 Aufgrund der regionalen Unterschiede und der wenigen verlässlichen Daten ist es besonders schwer die die Kennzahlen von Krankheiten möglichst Realitätsnah wiederzugeben, insbesondere wenn die Krankheit tödlich ist.\\
-Für den Vergleich wird angenommen, dass die Krankheit eine Infektionsrate von 33\% hat, da die Heilungschancen sehr gering sind und ein Drittel an der tödlichen Krankheit gestorben ist.\cite{•} Zudem stirbt ein erkranktes Individuum pro Runde zu 70\% an seiner Krankheit. Die Wahrscheinlichkeit zu genesen oder sogar Resistent zu werden liegt jeweils nur bei 2\%.\cite{•}\\
+Für den Vergleich wird angenommen, dass die Krankheit eine Infektionsrate von 33\% hat, da die Heilungschancen sehr gering sind und ein Drittel an der tödlichen Krankheit gestorben ist.\cite{} Zudem stirbt ein erkranktes Individuum pro Runde zu 70\% an seiner Krankheit. Die Wahrscheinlichkeit zu genesen oder sogar Resistent zu werden liegt jeweils nur bei 2\%.\cite{}\\
 Hier muss zwischen den Eingabedaten für das SIR-Modell und denen des Programms unterschieden werden:
 
 \section*{Ergebnisse}
@@ -349,8 +349,8 @@ $ als Faltungsmatrix
 
 In der vorliegenden Version bewegen sich alle Zellen vollkommen zufällig. Da aber Menschen als auch Tiere sich meist zielgerichtet bewegen, wäre es realistischer anzunehmen dass Zellen einen Zielpunkt auf dem Raster haben oder sich zumindest nicht nach einem Schritt wieder direkt zu ihrer alten Position zurück bewegen. Hier bietet sich beispielsweise das sogenannte \glqq{}Correlated random walks\grqq{}. Bei dem davon ausgegangen wird dass eine Reihe von aufeinanderfolgenden Bewgungen tendziell immer in die Gleiche Richtung geht der Einfluss der vorherigen Bewegungen aber immer weiter abnimmt umso länger sie zurückliegen\cite{Codling:2008}.
 
-Eine weitere Schwachstelle der Implementation ist die Verwendung eines Generators von Zufallszahlen. Dieser kann nur pseudo-Zufallszahlen erzeugen welche von einem sogenannten Seed und der Aufrufe des Generators abhängen\cite{https://docs.oracle.com/javase/6/docs/api/java/util/Random.html}. Sollte es vorkommen dass zwei Simulationen einen Zufallsgenerator mit gleichem Seed nutzen und auch ansonsten die gleichen Aufrufe des Zufallsgenerators ausführen, so werden die exakt gleichen Zufallszahlen erzeugt und die Simulation wird zum exakt gleichem Ergebnis führen.
-
+Eine weitere Schwachstelle der Implementation ist die Verwendung eines Generators von Zufallszahlen. Dieser kann nur pseudo-Zufallszahlen erzeugen welche von der Uhrzeit der Initialisierung in Nanosekunden und der Aufrufe des Generators abhängen\cite{Oracle:2014}. Sollte es also vorkommen das zwei Simulationen zur exakt gleichen Uhrzeit mit den komplett gleichen Parametern gestartet werden, werden sie identische Ergebnisse liefern.\\
+Dies könnte man verhindern indem man echte Zufallszahlen aus natürlichen zufälligen Ereignissen ermittelt. Dies tut zum Beispiel die Website \url{http://www.random.org}, diese ermittelt Zufallszahlen aus dem Hintergrundrauschen der Atmosphäre. Eine Einbindung dieses oder eines ähnlichen Services würde obiges beseitigen. Allerdings ist es fraglich ob es bei der Seltenheit bei der das Problem auftritt, überhaupt notwendig ist, sich mit dieser Problematik weiter zu befassen.
 
 
 
@@ -413,7 +413,7 @@ Chronik-Verlag, Seite 15
 \bibitem{Codling:2008}E.A. Codling, M.J. Plank und S. Benhamou {\it Random walk models in biology}, 2008; Journal of The Royal Society Interface S. 813-834
 \bibitem{WikiKugel:2014}Wikipedia {\it Kugel}, \url{http://de.wikipedia.org/wiki/Kugel}, Einsichtnahme 22.11.2014 11:22, mit Änderung übernommen
 
-
+\bibitem{Oracle:2014}Oracle  {\it Java Dokumentation: Random},2011; \url{https://docs.oracle.com/javase/6/docs/api/java/util/Random.html}, Einsichtnahme 22.11.2014 19:02
 \end{thebibliography}
 
 \end{document}
