@@ -251,13 +251,16 @@ Mannheim, November 2014
 Da die mathematische Beschreibung, sowie das Programm beide den Verlauf von Krankheiten simulieren, liegt ein Vergleich der beiden Herangehensweisen nahe. 
 Dieser soll anhand eines konkreten Testszenarios angewandt werden, bei dem beide Modelle mit denselben Daten eine Prognose über die Entwicklung einer Krankheit liefern sollen.\\
 Der Vergleich soll eine Einschätzung der Repräsentativität, des dem Projekt zugrunde liegenden Programms ermöglichen und Schwächen und Stärken der beiden Modelle herausstellen.\\
-Bevor das Szenario mit beiden Herangehensweisen vorgestellt wird, wird in diesem Abschnitt das SIR-Modell erläutert. Anschließend wird darauf aufbauend erklärt warum wir uns gerade für den Vergleich des dem Projekt zugrunde liegendem Programm mit diesem Modell entschieden haben.
+Dazu wird zunächst das Testszenario vorgestellt und dann in beiden Modellen angewandt.
+Auf einer kurze Vorstellung der Ergebnisse in den Modellen folgt zu guter Letzt eine GegenÜBERSTELLUNG MUHUHUHU der beiden Resultate.
+Für die Visualisierung der Daten des SIR-Modells wurde im Nachfolgenden die SIR-Simulation von Hans Nesse benutzt.\cite{•}
 
 \subparagraph{Szenario}
 Das Testszenario spielt in einem kleinen Dorf mit 10150 Einwohnern zur Zeit des Mittelalters.\\
 Damals hat die Pest, oft bezeichnet als "Schwarzer Tod" von 1347 bis 1353 ein Drittel des europäischen Bevölkerung das Leben gekostet. Die Diagnose Pest war damals gleichzusetzen mit dem Todesurteil, da nur ein sehr geringer Teil der Bevölkerung diese Krankheit mit den medizinischen Stand überleben konnte. Während einige Landstriche komplett entvölkert wurden blieben einige Gebiete verschont. In Italien starb fast jeder 5. an der Krankheit, in Deutschland hingegen jeder 10.\\
 Aufgrund der regionalen Unterschiede und der wenigen verlässlichen Daten ist es besonders schwer die die Kennzahlen von Krankheiten möglichst Realitätsnah wiederzugeben, insbesondere wenn die Krankheit tödlich ist.\\
-Für den Vergleich wird angenommen, dass die Krankheit eine Infektionsrate von 33\% hat, da die Heilungschancen sehr gering sind und ein Drittel an der tödlichen Krankheit gestorben ist.\cite{•} Zudem stirbt ein erkranktes Individuum pro Runde zu 70\% an seiner Krankheit. Die Wahrscheinlichkeit zu genesen oder sogar Resistent zu werden liegt jeweils nur bei 2\%.\cite{•}
+Für den Vergleich wird angenommen, dass die Krankheit eine Infektionsrate von 33\% hat, da die Heilungschancen sehr gering sind und ein Drittel an der tödlichen Krankheit gestorben ist.\cite{•} Zudem stirbt ein erkranktes Individuum pro Runde zu 70\% an seiner Krankheit. Die Wahrscheinlichkeit zu genesen oder sogar Resistent zu werden liegt jeweils nur bei 2\%.\cite{•}\\
+Hier muss zwischen den Eingabedaten für das SIR-Modell und denen des Programms unterschieden werden:
 
 \section*{Ergebnisse}
 Grundsätzlich lässt sich sagen, dass die Pest in beiden Modellen komplett ausstirbt. Beim SIR Modell liegt dies trivialerweise daran, dass die sich die gesamte Population im R-Zustand befindet. Betrachtet man nun das vorgestellte Modell lassen sich so leicht keine Aussagen treffen, weil das vorgestellt Modell nicht deterministisch ist, deshalb lassen sich bei nur einmaliger Ausführung nicht wirklich repräsentative Ergebnisse ermitteln. Aus diesem Grund wurde tausend mal mit den selben Parametern simuliert, um eine Abschätzung der Ergebnisse zu ermöglichen. Die Ergebnisse zu den zu erwartenden Werten mit den entsprechenden Zuständen, entweder Tod oder Lebendig, befinden sich in der Tabelle \ref{tab:ergebnisse}.
