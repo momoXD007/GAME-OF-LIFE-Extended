@@ -1,8 +1,7 @@
 \section*{Durchführung}
-In diesem Abschnitt geht es darum das im Rahmen der Projektarbeit entstandene Programm und seine Funktionsweise zu erörtern. \\
-Das erstellte Programm dient dabei zur graphischen und numerischen Simulation der Krankheitsausbreitung auf einem gegebenem abgeschlossenem  rechteckigem Gebiet. Auf diesem \glqq{}Raster\grqq{} welcher einem Schachbrett ähnelt lassen sich an jeder $ x,y $ Position Zellen positionieren. In Kontext dieser Simulation kann eine Zelle entweder ein Mensch oder ein Tier sein.\\
-Da sich die Zellen nahezu beliebig auf dem Raster verteilen können, kann es Zellen geben welche sehr viele Nachbarn haben aber auch Zellen welche gar keinen Nachbar haben. Einen exemplarischen Raster sieht man in  Abbildung \ref{fig:Raster}. Auf diesem 3x3 Raster befinden sich aktuell drei Zellen theoretisch ist es aber auch möglich diesen Raster mit bis zu 9 Zellen zu besiedeln. So können auch extreme Situationen realistisch dargestellt werden wie zum Beispiel sehr dünn besiedelte Gegenden oder aber auch mittelalterliche Städte in denen in einem Haushalt durchaus 20 Personen lebten.\\
-%Quelle recherchieren
+In diesem Abschnitt geht es darum die Funktionsweise des im Rahmen der Projektarbeit entstandenem Programms zu erörtern. \\
+Das erstellte Programm dient dabei zur graphischen und numerischen Simulation der Krankheitsausbreitung auf einem gegebenem abgeschlossenem  rechteckigem Gebiet. Auf diesem \glqq{}Raster\grqq{} welcher einem Schachbrett ähnelt lassen sich an jeder $ x,y $ Position Zellen positionieren. Im Kontext dieser Simulation kann eine Zelle entweder ein Mensch oder ein Tier sein. Dies dient dazu auch Wirtsbeziehungen simulieren zu können und wird später noch detailliert erläutert.\\
+Da sich die Zellen nahezu beliebig auf dem Raster verteilen können, kann es Zellen geben welche sehr viele Nachbarn haben aber auch Zellen welche gar keinen Nachbar haben. Einen exemplarischen Raster sieht man in  Abbildung \ref{fig:Raster}. Auf diesem 3x3 Raster befinden sich aktuell drei Zellen, theoretisch ist es aber auch möglich diesen Raster mit bis zu 9 Zellen zu besiedeln. So können auch extreme Situationen realistisch dargestellt werden wie zum Beispiel sehr dünn besiedelte Gegenden oder aber auch eng besiedelte Gebiete wie Großstädte.
 
 \begin{figure}[t]
 \centering
@@ -12,16 +11,17 @@ Da sich die Zellen nahezu beliebig auf dem Raster verteilen können, kann es Zel
 \end{figure}
 
 \subsection*{Zelluläre Automaten}
-Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert.Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. Dabei kann sich die Zelle in jeder Phase der Simulation nur in genau einem der folgenden Zustände befinden:
+Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert. %Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. 
+Dabei kann sich die Zelle in jeder Phase der Simulation nur in genau einem der folgenden Zustände befinden:
 \begin{enumerate}
 \item{\emph{Anfällig}\\
-Eine anfällige Zelle kann nur von infizierten Zellen in ihrem direkten Umfeld welches durch eine Moore-Nachbarschaft \cite{Weisstein:2014} des Radius 1 charakterisiert wird angesteckt werden. Daraus folgt, dass eine Zelle auf dem rechteckigen Raster nur von den Zellen links über ihr, direkt über ihr, rechts über ihr, links und rechts neben ihr und links neben ihr, links unter ihr, direkt unter ihr und rechts unter ihr angesteckt werden kann.Dies sind im inneren des Spielfeldes maximal acht Zellen wie man am Beispiel der roten Zelle in Abbildung \ref{fig:Raster} gut sehen kann.\\
+Eine anfällige Zelle kann nur von infizierten Zellen in ihrem direkten Umfeld welches durch eine Moore-Nachbarschaft \cite{Weisstein:2014} des Radius 1 charakterisiert wird angesteckt werden. Daraus folgt, dass eine Zelle auf dem rechteckigen Raster nur von den Zellen links über ihr, direkt über ihr, rechts über ihr, links und rechts neben ihr und links neben ihr, links unter ihr, direkt unter ihr und rechts unter ihr angesteckt werden kann. Dies sind im inneren des Spielfeldes maximal acht Zellen wie man am Beispiel der roten Zelle in Abbildung \ref{fig:Raster} gut sehen kann.\\
 Des Weiteren wird auch betrachtet ob die Krankheit auch von jeder Zelle auf jede übertragbar ist oder ob zum Beispiel nur eine Übertragung von Mensch auf Tier aber nicht von Mensch auf Mensch möglich ist.\\
-Angenommen die rote Zelle in Abbildung \ref{fig:Raster} ist ein infizierter Mensch und  die grüne Zelle ein gesundes Tier und die simulierte Krankheit lässt sich nicht von Mensch auf Tier übertragen. Demzufolge ist die grüne Zelle zu diesem Zeitpunkt vollkommen sicher, da sich in ihrer Nachbarschaft keine für sie potentiell gefährlichen Zellen befinden. 
+Angenommen die rote Zelle in Abbildung \ref{fig:Raster} ist ein infizierter Mensch und  die grüne Zelle ein gesundes Tier und die simulierte Krankheit lässt sich nicht von Mensch auf Tier übertragen. Demzufolge ist die grüne Zelle in der gezeigten Situation vollkommen sicher, da sich in ihrer Nachbarschaft keine für sie potentiell gefährlichen Zellen befinden. 
 }
 \item{\emph{Infiziert}\\
 Eine infizierte Zelle kann an ihrer Krankheit sterben, heilen und damit in den ersten Zustand übergehen, eine Resistenz bilden und damit in den dritten Zustand übergehen oder sie bleibt weiterhin infiziert.\\
-All dies geschieht unter Berücksichtigung der für die simulierte Krankheit eingegebenen Werte.\\
+All dies geschieht unter Berücksichtigung der für die simulierte Krankheit angenommen Werte.\footnote{Diese Werte werden nicht vom Programm berechnet und müssen anderweitig ermittelt werden.}\\
 Des Weiteren kann sie natürlich alle gesunden Zellen in ihrem Umfeld infizieren, auch dies geschieht unter Berücksichtigung der Werte die für die aktuelle Krankheit gelten.
 }
 \item{\emph{Resistent}\\
@@ -30,7 +30,7 @@ Sie werden jedoch trotzdem betrachtet, da sie im Kontext der Simulation interess
 }
 
 \item{\emph{Tot}\\
-Eine Zelle in diesem Zustand, ist für die weitere Simulation nicht relevant. Naheliegenderweise kann sie sich nicht mehr eigenständig bewegen und auch kann sie keine anderen Zellen mehr infizieren. Es mag zwar durchaus Krankheiten geben welche auch nach dem Tot des Wirtes infektiös, an dieser Stelle wird in der Simulation davon ausgegangen dass die Zelle sich in einem intaktem Umfeld befindet in dem Tote entweder isoliert werden, dass sie keinen Kontakt mehr zu lebendigen Individuen haben. 
+Eine Zelle in diesem Zustand, ist für die weitere Simulation nicht relevant, da sie sich naheliegenderweise nicht mehr eigenständig bewegen und auch keine anderen Zellen mehr infizieren kann. Es mag zwar durchaus Krankheiten geben welche auch nach dem Tot des Wirtes infektiös sind, an dieser Stelle wird in der Simulation allerdings davon ausgegangen dass die Zelle sich in einem \glqq{}intaktem\grqq{} Umfeld befindet in dem Tote entweder isoliert werden, sodass sie keinen Kontakt mehr zu lebendigen Individuen haben oder aber in einer Form beerdigt werden in der sie nicht mehr ansteckend sind. 
 }
 \end{enumerate}
 
@@ -47,7 +47,7 @@ Dies ermöglicht es zu simulieren was passiert wenn man versucht Krankheiten wie
 
 \subsection*{Bevölkerungsdichte}
 Im Rahmen dieses Modell ist es möglich zu simulieren wie sich eine Krankheit bei verschiedener Bevölkerungsdichte verhält. So ist es möglich dass es auf einem gegebenem Raster $x\cdot y$ für die gilt $ x,y \in \mathbb{N}$ zwischen $1$ und $x\cdot y$ Zellen zu platzieren.\\
-Dabei ist auch das Verhältnis von Menschen zu Tieren vollkommen beliebig wählbar. So lassen sich die Auswirkungen der Bevölkerungsdichte auf die Entwicklung simulieren.
+Dabei ist auch das Verhältnis von Menschen zu Tieren vollkommen beliebig wählbar. So lassen sich  sowohl die Auswirkungen der Bevölkerungsdichte als auch der Einfluss des Mensch-Tier-Verhältnis auf die Simulation zeigen.
 
 \subsection*{Nicht deterministisch}
 Ob eine Zelle in einen bestimmten Zustand übergeht hängt einerseits von ihrem eigenem Zustand und den Zuständen ihrer Nachbarn, andererseits von einer krankheitstypischen Wahrscheinlichkeit ab. Sollte eine Zelle infiziert sein und bei der simulierten Krankheit besteht die Wahrscheinlichkeit zu sterben bei 25\% so wird der Wert 0.25 mit einer zufälligen Zahl zwischen 0 und 1 verglichen. Sollte diese Zufallszahl größer sein als die Übergangswahrscheinlichkeit geht die Zelle in den entsprechenden Zustand über.\\
