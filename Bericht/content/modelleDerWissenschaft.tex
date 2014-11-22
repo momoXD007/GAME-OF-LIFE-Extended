@@ -36,13 +36,13 @@ Damit die Verteilung sinnvoll berechnet werden kann, werden Kennzahlen über die
 \begin{equation} \label{eq:b}
 b = ( \lambda * X ) / N
 \end{equation}
-Dabei ist die Anzahl X der Kontakte pro Zeiteinheit je nach Krankheitsübertragungsweg zu unterscheiden. Bei Krankheiten die über Tröpfcheninfektion übertragen werden, reicht Hände schütteln, die Übergabe von Geld oder sogar das Zusammensein in einem Raum zur Infektion. In diesem Szenario wird ein Durchschnittswert von 8 Menschen am Tag genommen.
+Dabei ist die Anzahl \textbf{X} der Kontakte pro Zeiteinheit je nach Krankheitsübertragungsweg zu unterscheiden. Bei Krankheiten die über Tröpfcheninfektion übertragen werden, reicht Hände schütteln, die Übergabe von Geld oder sogar das Zusammensein in einem Raum zur Infektion. In diesem Szenario wird ein Durchschnittswert von 8 Menschen am Tag genommen.
 Bei Krankheiten mit anderen Übertragungswegen z.B. AIDS muss der Austausch von Körperflüssigkeiten zur Infektion stattfinden, d.h. \textbf{X} zeigt den durchschnittlichen Austausch von Körperflüssigkeiten in einem Zeitabschnitt. In diesem Fall ist \textbf{X} im Durchschnitt natürlich deutlich geringer als bei Tröpfcheninfektion.\\
 Über die Ansteckungs-Kontakt-Rate kann die Basisreproduktionsrate \ref{eq:R0} ermittelt werden. Diese beschreibt die Anzahl der Erwarteten Ansteckungen durch einen zusätzlichen Infizierten.
 \begin{equation}\label{eq:R0}
 R_0 = \frac{ b * N }{ \gamma }
 \end{equation}
-Hat man die beiden Größen ermittelt, können die Funktionen für die drei Zustände S, I und R über einen Zeitraum ermittelt werden. 
+Hat man die beiden Größen ermittelt, können die Funktionen für die drei Zustände \textbf{S}, \textbf{I} und \textbf{R} über einen Zeitraum ermittelt werden. 
 Es gilt:
 \begin{equation}
 \frac{ \delta S }{ \delta t } = -R_0 \cdot \frac{S * I}{N}
@@ -72,6 +72,6 @@ Die Mittelalterpest war im 14. Jahrhundert gleichzusetzen mit einem Todesurteil.
 Mit einem anderen Szenario wäre es sinnvoll gewesen ein anderes Modell zu betrachten. 
 Andere Modelle, die in der mathematischen Biologie angewendet werden sind z.B. das SI-Modell oder SIS-Modell.\\
 Das Zustandsmodell im SIS-Modell ist im Gegensatz zum SIR-Modell zyklisch. Es gibt nur zwei Zustände: Anfällig und Infiziert. Anfällige Individuen können infiziert werden und dann wieder genesen und sich erneut infizieren, wie im Bild \ref{fig:sis}. Sind sie genesen können sie wiederum infiziert werden. Damit ist das SIS-Modell vor allem geeignet für bakterielle Erkrankungen wie z.B. Tuberkulose, bei der Individuen wieder genesen, aber keine Immunität entwickeln. \\
-Das SI-Modell hat ebenfalls die beiden Zustände Anfällig und Infiziert, aber ist nicht zyklisch. Es können lediglich Individuen Infiziert werden. Diese bleiben endgültig im Zustand I.\\ 
+Das SI-Modell hat ebenfalls die beiden Zustände Anfällig und Infiziert, aber ist nicht zyklisch. Es können lediglich Individuen Infiziert werden. Diese bleiben endgültig im Zustand \textbf{I}.\\ 
 Das SI-Modell ist also sinnvoll, wenn Individuen lediglich an einer Krankheit erkranken und nicht wieder genesen, aber auch nicht sterben. Das entsprechende Szenario, wäre also ein Virus, der ein Individuum auf Lebzeiten oder sogar darüber hinaus. Ein mögliches Szenario wäre ein aus Hollywood bekanntes Filmszenario der berühmten Zombie-Apokalypse.\\
 Damit wird der erste Vorteil der Herangehensweise im Programm sichtbar: Während bei der mathematischen berechnen für jede Infektionskrankheit ein anderes Modell gewählt werden muss, um möglichst nah an der Realität zu bleiben, ist das Programm auf mehrere Szenarien mit Heilung, Toten, Resistenten etc. anwendbar.
