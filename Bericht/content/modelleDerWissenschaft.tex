@@ -1,18 +1,17 @@
-\section*{Modelle in der Wissenschaft}
+\subsection{Modelle in der Wissenschaft}
 Ein Ansatz zur mathematischen Betrachtung der Krankheitsausbreitung ist das SIR-Modell von William O. Kernack und Anderson Gray McKendrick.\\
 Es ist 1927 mit dem Zweck die Verbreitung Krankheiten sowie den Folgen von Gegenmaßnahmen von gesundheitsbezogenen Zuständen und Ereignissen in Bevölkerungen oder Populationen zu untersuchen.\\
 In diesem Abschnitt wird zunächst die Idee hinter dem SIR-Modell vorgestellt, dann die Mathematik hinter dem SIR-Modells erklärt und abschließend aufbauend darauf die Frage beantwortet, warum gerade dieses Modell für den Vergleich des Projektes mit bekannten Methoden aus der Wissenschaft gewählt wurde.
-\subsection*{Theorie des SIR-Modells}
+\subparagraph{Theorie des SIR-Modells}
 \begin{figure}
-	\centering
 \includegraphics[width= 0.3\textwidth]{./images/SIR-Modell.jpg}\caption{Zustandsmodell des SIR-Modells}\label{fig:SIR}
 \end{figure}
 Das SIR-Modell ist eine mathematische Herangehensweise, bei der der Krankheitsverlauf statisch über feste Funktionsterme errechnet wird. \\
 Dazu wird eine geschlossene Gruppe \textbf{N} an Individuen betrachtet. Die Anzahl \textbf{N} ist die Gesamtgröße der Bevölkerung. Die Bevölkerung setzt sich aus gesunden, kranken und \glqq R\grqq-Individuen zusammen, sodass gilt:
-\begin{equation}
+\begin{equation}\label{eq:N}
 N = S + I + R
 \end{equation}
-Das heißt: Die Bevölkerung wird in drei Zuständen klassifiziert:
+Das heißt, die Bevölkerung wird in drei Zuständen klassifiziert:
 \begin{itemize}
 \item \textbf{S (Susceptible)} Anfällige Individuen, die innerhalb der Bevölkerung Infiziert werden können.
 \item \textbf{I (Infected)} Infizierte Individuen, die Anfällige anstecken  oder in den \glqq R\grqq -Zustand übergehen können.
@@ -23,21 +22,20 @@ Zur Visualisierung des Krankheitsverlauf in einer Bevölkerung kann geeigneter W
 Für jede Zustandsgruppe wird ein Graph in das Koordinatensystem gezeichnet, sodass ablesbar wie viele Individuen zu einem Zeitpunkt krank, gesund oder im \glqq R\grqq-Zustand sind.\\
 Die Verteilung der Individuen in die jeweiligen Zustandsklassen ändert sich mit dem Fortschritt der Zeit \textbf{t}, ist die Krankheit nicht ausgestorben, die Infektionsrate oder \glqq R\grqq-Übergangsrate größer null und nicht alle Individuen im \glqq R\grqq-Zustand.
 Für jeden Zeitschritt wird die Anzahl der Individuen in den Zustandsklassen neu berechnet.\\
-Beispielsweise könnten nach einem Zeitschritt drei neue Individuen erkranken und ein Mensch stirbt. Damit nimmt die Gruppe  \textbf{S} um drei Individuen ab, die Gruppe \textbf{I} wächst entsprechend um drei und gibt gleichzeitig ein Individuum an die Gruppe \textbf{R} ab, sodass sich die Verteilung nach einem Zeitschritt wie in Bild \ref{SIR} ändert.
-\subsection*{Berechnung der Entwicklung mit dem SIR-Modell}
+Beispielsweise könnten nach einem Zeitschritt drei neue Individuen erkranken und ein Mensch stirbt. Damit nimmt die Gruppe  \textbf{S} um drei Individuen ab, die Gruppe \textbf{I} wächst entsprechend um drei und gibt gleichzeitig ein Individuum an die Gruppe \textbf{R} ab, sodass sich die Verteilung nach einem Zeitschritt wie in Bild \ref{fig:sch} ändert.
+\subparagraph{Berechnung der Entwicklung mit dem SIR-Modell}
 \begin{figure}
-	\centering
 \includegraphics[width= 0.3\textwidth]{./images/SIR-Berechnung.jpg}\caption{Möglicher Zustandswechsel nach einem Zeitschritt}\label{fig:sch}
 \end{figure}
 Damit die Verteilung sinnvoll berechnet werden kann, werden Kennzahlen über die Krankheit benötigt, die das Krankheitsprofil widerspiegeln. Dabei wird für das SIR-Modell die Infektionsstärke und die \grqq R\glqq{}-Übergangsrate benötigt.
-Über die Infektionsstärke $\lambda$ wird die Ansteckung-Kontakt-Rate \textbf{b} ermittelt. Diese ist die Wahrscheinlichkeit mit der ein Individuum, dass mit \textbf{X} Individuen pro Zeitschritt Kontakt hat, erkranken kann.
-\begin{equation}
+Über die Infektionsstärke $\lambda$ wird die Ansteckung-Kontakt-Rate \textbf{b} ermittelt \ref{eq:b}. Diese ist die Wahrscheinlichkeit mit der ein Individuum, dass mit \textbf{X} Individuen pro Zeitschritt Kontakt hat, erkranken kann.
+\begin{equation} \label{eq:b}
 b = ( \lambda * X ) / N
 \end{equation}
-Dabei ist die Anzahl X der Kontakte pro Zeiteinheit je nach Krankheitsübertragungsweg zu unterscheiden. Bei Krankheiten die über Tröpfcheninfektion übertragen werden, reicht Hände schütteln, die Übergabe von Geld oder sogar das Zusammensein in einem Raum zur Infektion. In diesem Szenario wird oft ein Durchschnittswert von 8 Menschen am Tag genommen.%\cite{}
+Dabei ist die Anzahl X der Kontakte pro Zeiteinheit je nach Krankheitsübertragungsweg zu unterscheiden. Bei Krankheiten die über Tröpfcheninfektion übertragen werden, reicht Hände schütteln, die Übergabe von Geld oder sogar das Zusammensein in einem Raum zur Infektion. In diesem Szenario wird ein Durchschnittswert von 8 Menschen am Tag genommen.
 Bei Krankheiten mit anderen Übertragungswegen z.B. AIDS muss der Austausch von Körperflüssigkeiten zur Infektion stattfinden, d.h. \textbf{X} zeigt den durchschnittlichen Austausch von Körperflüssigkeiten in einem Zeitabschnitt. In diesem Fall ist \textbf{X} im Durchschnitt natürlich deutlich geringer als bei Tröpfcheninfektion.\\
-Über die Ansteckungs-Kontakt-Rate kann die Basisreproduktionsrate ermittelt werden. Diese beschreibt die Anzahl der Erwarteten Ansteckungen durch einen zusätzlichen Infizierten.
-\begin{equation}
+Über die Ansteckungs-Kontakt-Rate kann die Basisreproduktionsrate \ref{eq:R0} ermittelt werden. Diese beschreibt die Anzahl der Erwarteten Ansteckungen durch einen zusätzlichen Infizierten.
+\begin{equation}\label{eq:R0}
 R_0 = \frac{ b * N }{ \gamma }
 \end{equation}
 Hat man die beiden Größen ermittelt, können die Funktionen für die drei Zustände S, I und R über einen Zeitraum ermittelt werden. 
@@ -55,10 +53,9 @@ Diese Funktion berrechnet die Anzahl der Neuinfizierten von der Menge der Infizi
 \end{equation}
 Die Anzahl der Individuen im R-Zustand wächst um einen Anteil $\gamma$ von den Infizierten. Das Heißt Einige Infizierte werden der Menge I abgeführt und wandern in Zustand R über. Von diesem Überstand ist kein anderer Zustand erreichbar, d.h. Diese Menge wächst stetig wenn $\gamma$ 0 und die Baisisreproduktionsrate größer null sind.
 
-\subsection*{Wahl des SIR-Modells als Referenzmodell}
+\subparagraph{Wahl des SIR-Modells als Referenzmodell}
 \begin{figure}
-	\centering
-\includegraphics[width= 0.3\textwidth]{./images/SIS-Modell.jpg}\caption{Zuständsmodell des SIS-Modells}\label{sis}
+\includegraphics[width= 0.3\textwidth]{./images/SIS-Modell.jpg}\caption{Zuständsmodell des SIS-Modells}\label{fig:sis}
 \end{figure}
 Bei dem Vergleich mit bekannten Modellen aus der Wissenschaft drängt sich zunächst die Frage auf warum im Rahmen des Projektes gerade der Vergleich mit dem SIR-Modell angestellt wird und nicht mit einem anderen Modell zur Darstellung eines Krankheitsverlauf.\\
 Wie genau ein mathematisches Modell die Krankheitsausbreitung in einer Gesellschaft beschreibt, hängt sehr davon ab, wie viel Realismus und damit wie viele Annahmen hineingesteckt werden.\\
@@ -69,7 +66,7 @@ Im Rahmen unserer Projektes wurde sich für die Mittelalterpest entschieden.\\
 Die Mittelalterpest war im 14. Jahrhundert gleichzusetzen mit einem Todesurteil. Beinahe jedes Individuum erlag nach einiger Zeit seiner Krankheit. Aus diesem Grund passt die Natur des Modells sehr gut zum vorgegebenen Szenario und dem Krankheitsprofil der Pest: Ein gesundes Individuum kann infiziert werden und dann sterben. In diesem Fall bildet der \glqq R\grqq-Zustand, die Anzahl der verstorbenen Individuen ab.\\
 Mit einem anderen Szenario wäre es sinnvoll gewesen ein anderes Modell zu betrachten. 
 Andere Modelle, die in der mathematischen Biologie angewendet werden sind z.B. das SI-Modell oder SIS-Modell.\\
-Das Zustandsmodell im SIS-Modell ist im Gegensatz zum SIR-Modell zyklisch. Es gibt nur zwei Zustände: Anfällig und Infiziert. Anfällige Individuen können infiziert werden und dann wieder genesen und sich erneut infizieren, wie im Bild \ref{sis}. Sind sie genesen können sie wiederum infiziert werden. Damit ist das SIS-Modell vor allem geeignet für bakterielle Erkrankungen wie z.B. Tuberkulose, bei der Individuen wieder genesen, aber keine Immunität entwickeln. \\
+Das Zustandsmodell im SIS-Modell ist im Gegensatz zum SIR-Modell zyklisch. Es gibt nur zwei Zustände: Anfällig und Infiziert. Anfällige Individuen können infiziert werden und dann wieder genesen und sich erneut infizieren, wie im Bild \ref{fig:sis}. Sind sie genesen können sie wiederum infiziert werden. Damit ist das SIS-Modell vor allem geeignet für bakterielle Erkrankungen wie z.B. Tuberkulose, bei der Individuen wieder genesen, aber keine Immunität entwickeln. \\
 Das SI-Modell hat ebenfalls die beiden Zustände Anfällig und Infiziert, aber ist nicht zyklisch. Es können lediglich Individuen Infiziert werden. Diese bleiben endgültig im Zustand I.\\ 
 Das SI-Modell ist also sinnvoll, wenn Individuen lediglich an einer Krankheit erkranken und nicht wieder genesen, aber auch nicht sterben. Das entsprechende Szenario, wäre also ein Virus, der ein Individuum auf Lebzeiten oder sogar darüber hinaus. Ein mögliches Szenario wäre ein aus Hollywood bekanntes Filmszenario der berühmten Zombie-Apokalypse.\\
 Damit wird der erste Vorteil der Herangehensweise im Programm sichtbar: Während bei der mathematischen berechnen für jede Infektionskrankheit ein anderes Modell gewählt werden muss, um möglichst nah an der Realität zu bleiben, ist das Programm auf mehrere Szenarien mit Heilung, Toten, Resistenten etc. anwendbar.
