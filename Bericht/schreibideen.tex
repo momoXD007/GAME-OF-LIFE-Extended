@@ -336,6 +336,9 @@ $ als Faltungsmatrix
 
 In der vorliegenden Version bewegen sich alle Zellen vollkommen zufällig. Da aber Menschen als auch Tiere sich meist zielgerichtet bewegen, wäre es realistischer anzunehmen dass Zellen einen Zielpunkt auf dem Raster haben oder sich zumindest nicht nach einem Schritt wieder direkt zu ihrer alten Position zurück bewegen. Hier bietet sich beispielsweise das sogenannte \glqq{}Correlated random walks\grqq{}. Bei dem davon ausgegangen wird dass eine Reihe von aufeinanderfolgenden Bewgungen tendziell immer in die Gleiche Richtung geht der Einfluss der vorherigen Bewegungen aber immer weiter abnimmt umso länger sie zurückliegen\cite{Codling:2008}.
 
+Eine weitere Schwachstelle der Implementation ist die Verwendung eines Generators von Zufallszahlen. Dieser kann nur pseudo-Zufallszahlen erzeugen welche von einem sogenannten Seed und der Aufrufe des Generators abhängen\cite{https://docs.oracle.com/javase/6/docs/api/java/util/Random.html}. Sollte es vorkommen dass zwei Simulationen einen Zufallsgenerator mit gleichem Seed nutzen und auch ansonsten die gleichen Aufrufe des Zufallsgenerators ausführen, so werden die exakt gleichen Zufallszahlen erzeugt und die Simulation wird zum exakt gleichem Ergebnis führen.
+
+
 
 
 \section*{Danksagung}
