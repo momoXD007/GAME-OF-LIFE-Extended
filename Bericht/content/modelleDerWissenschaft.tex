@@ -16,7 +16,7 @@ Das heißt, die Bevölkerung wird in drei Zuständen klassifiziert:
 \begin{itemize}
 \item \textbf{S (Susceptible)} Anfällige Individuen, die innerhalb der Bevölkerung Infiziert werden können.
 \item \textbf{I (Infected)} Infizierte Individuen, die Anfällige anstecken  oder in den \glqq R\grqq -Zustand übergehen können.
-\item \textbf{R (Recovered)} Individuen im \glqq R\grqq -Zustand. Ein infiziertes Individuum, was in den \glqq R\grqq -Zustand übergeht, bleibt im R-Zustand. Es gibt keinen Übergang aus dem \glqq R\grqq -Zustand zurück in einen der anderen Zustände. Der \glqq R\grqq -Zustand kann von daher Individuen beschreiben, die aus Epidemiologischer Sicht keinen Einfluss mehr auf den Rest der Gesellschaft haben. Dies könnten z.B. immunisierte, tote oder isolierte Personen sein.
+\item \textbf{R (Recovered)} Individuen im \glqq R\grqq -Zustand. Ein infiziertes Individuum, was in den \glqq R\grqq -Zustand übergeht, bleibt im R-Zustand. Es gibt keinen Übergang aus dem \glqq R\grqq -Zustand zurück in einen der anderen Zustände. Der \glqq R\grqq -Zustand kann von daher Individuen beschreiben, die aus Epidemiologischer Sicht keinen Einfluss mehr auf den Rest der Gesellschaft haben. Dies könnten zum Beispiel immunisierte, tote oder isolierte Personen sein.
 \end{itemize}
 Die Abbildung \ref{fig:SIR} zeigt das entsprechende Zustandsübergangsmodell zu den drei Bevölkerungsgruppen.\\
 Zur Visualisierung des Krankheitsverlauf in einer Bevölkerung kann geeigneter Weise ein Koordinatensystem benutzt werden, dass die Anzahl der Individuen in Relation zur Zeit setzt.
@@ -32,7 +32,7 @@ Beispielsweise könnten nach einem Zeitschritt drei neue Individuen erkranken un
 \subsection*{Berechnung der Entwicklung mit dem SIR-Modell}
 
 Damit die Verteilung sinnvoll berechnet werden kann, werden Kennzahlen über die Krankheit benötigt, die das Krankheitsprofil widerspiegeln. Dabei wird für das SIR-Modell die Infektionsstärke und die \glqq R\grqq{}-Übergangsrate benötigt.
-Über die Infektionsstärke $\lambda$ wird die Ansteckung-Kontakt-Rate \textbf{b} ermittelt \ref{eq:b}. Diese ist die Wahrscheinlichkeit mit der ein Individuum, dass mit \textbf{X} Individuen pro Zeitschritt Kontakt hat, erkranken kann.
+Über die Infektionsstärke $\lambda$ wird die Ansteckung-Kontakt-Rate \textbf{b} ermittelt mittels Gleichung \ref{eq:b}. Diese ist die Wahrscheinlichkeit mit der ein Individuum, dass mit \textbf{X} Individuen pro Zeitschritt Kontakt hat, erkranken kann.
 \begin{equation} \label{eq:b}
 b = ( \lambda * X ) / N
 \end{equation}
@@ -55,7 +55,7 @@ Diese Funktion berrechnet die Anzahl der Neuinfizierten von der Menge der Infizi
 \begin{equation}
 \frac{\delta R }{\delta t} = \gamma \cdot I
 \end{equation}
-Die Anzahl der Individuen im R-Zustand wächst um einen Anteil $\gamma$ von den Infizierten. Das Heißt Einige Infizierte werden der Menge I abgeführt und wandern in Zustand R über. Von diesem Überstand ist kein anderer Zustand erreichbar, d.h. Diese Menge wächst stetig wenn $\gamma$ 0 und die Baisisreproduktionsrate größer null sind.
+Die Anzahl der Individuen im R-Zustand wächst um einen Anteil $\gamma$ von den Infizierten. Das Heißt Einige Infizierte werden der Menge I abgeführt und wandern in Zustand R über. Von diesem Überstand ist kein anderer Zustand erreichbar, das heißt diese Menge wächst stetig wenn $\gamma$ 0 und die Baisisreproduktionsrate größer null sind.
 
 \subsection*{Wahl des SIR-Modells als Referenzmodell}
 
@@ -76,8 +76,8 @@ Das Zustandsmodell im SIS-Modell ist im Gegensatz zum SIR-Modell zyklisch. Es gi
 \end{figure}
 Das SI-Modell hat ebenfalls die beiden Zustände Anfällig und Infiziert, aber ist nicht zyklisch. Es können lediglich Individuen Infiziert werden. Diese bleiben endgültig im Zustand I.\\ 
 
-Das Zustandsmodell im SIS-Modell ist im Gegensatz zum SIR-Modell zyklisch. Es gibt nur zwei Zustände: Anfällig und Infiziert. Anfällige Individuen können infiziert werden und dann wieder genesen und sich erneut infizieren, wie im Bild \ref{fig:sis}. Sind sie genesen können sie wiederum infiziert werden. Damit ist das SIS-Modell vor allem geeignet für bakterielle Erkrankungen wie z.B. Tuberkulose, bei der Individuen wieder genesen, aber keine Immunität entwickeln. \\
-Das SI-Modell hat ebenfalls die beiden Zustände Anfällig und Infiziert, aber ist nicht zyklisch. Es können lediglich Individuen Infiziert werden. Diese bleiben endgültig im Zustand \textbf{I}.\\ 
+Das Zustandsmodell im SIS-Modell ist im Gegensatz zum SIR-Modell zyklisch. Es gibt nur zwei Zustände: Anfällig und Infiziert. Anfällige Individuen können infiziert werden und dann wieder genesen und sich erneut infizieren, wie in Abbildung \ref{fig:sis}. Sind sie genesen können sie wiederum infiziert werden. Damit ist das SIS-Modell vor allem geeignet für bakterielle Erkrankungen wie zum Beispiel Tuberkulose, bei der Individuen wieder genesen, allerdings keine Immunität entwickeln. \\
+Das SI-Modell hat ebenfalls die beiden Zustände Anfällig und Infiziert, demgegenüber ist es jedoch nicht zyklisch. Es können lediglich Individuen Infiziert werden. Diese bleiben endgültig im Zustand \textbf{I}.\\ 
 
 Das SI-Modell ist also sinnvoll, wenn Individuen lediglich an einer Krankheit erkranken und nicht wieder genesen, aber auch nicht sterben. Das entsprechende Szenario, wäre also ein Virus, der ein Individuum auf Lebzeiten oder sogar darüber hinaus. Ein mögliches Szenario wäre ein aus Hollywood bekanntes Filmszenario der berühmten Zombie-Apokalypse.\\
 Damit wird der erste Vorteil der Herangehensweise im Programm sichtbar: Während bei der mathematischen berechnen für jede Infektionskrankheit ein anderes Modell gewählt werden muss, um möglichst nah an der Realität zu bleiben, ist das Programm auf mehrere Szenarien mit Heilung, Toten, Resistenten etc. anwendbar.
