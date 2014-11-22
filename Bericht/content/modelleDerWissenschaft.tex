@@ -1,9 +1,10 @@
-\subsection{Modelle in der Wissenschaft}
+\section*{Modelle in der Wissenschaft}
 Ein Ansatz zur mathematischen Betrachtung der Krankheitsausbreitung ist das SIR-Modell von William O. Kernack und Anderson Gray McKendrick.\\
 Es ist 1927 mit dem Zweck die Verbreitung Krankheiten sowie den Folgen von Gegenmaßnahmen von gesundheitsbezogenen Zuständen und Ereignissen in Bevölkerungen oder Populationen zu untersuchen.\\
 In diesem Abschnitt wird zunächst die Idee hinter dem SIR-Modell vorgestellt, dann die Mathematik hinter dem SIR-Modells erklärt und abschließend aufbauend darauf die Frage beantwortet, warum gerade dieses Modell für den Vergleich des Projektes mit bekannten Methoden aus der Wissenschaft gewählt wurde.
-\subparagraph{Theorie des SIR-Modells}
+\subsection*{Theorie des SIR-Modells}
 \begin{figure}
+	\centering
 \includegraphics[width= 0.3\textwidth]{./images/SIR-Modell.jpg}\caption{Zustandsmodell des SIR-Modells}\label{fig:SIR}
 \end{figure}
 Das SIR-Modell ist eine mathematische Herangehensweise, bei der der Krankheitsverlauf statisch über feste Funktionsterme errechnet wird. \\
@@ -11,7 +12,7 @@ Dazu wird eine geschlossene Gruppe \textbf{N} an Individuen betrachtet. Die Anza
 \begin{equation}
 N = S + I + R
 \end{equation}
-. Das heißt: Die Bevölkerung wird in drei Zuständen klassifiziert:
+Das heißt: Die Bevölkerung wird in drei Zuständen klassifiziert:
 \begin{itemize}
 \item \textbf{S (Susceptible)} Anfällige Individuen, die innerhalb der Bevölkerung Infiziert werden können.
 \item \textbf{I (Infected)} Infizierte Individuen, die Anfällige anstecken  oder in den \glqq R\grqq -Zustand übergehen können.
@@ -23,8 +24,9 @@ Für jede Zustandsgruppe wird ein Graph in das Koordinatensystem gezeichnet, sod
 Die Verteilung der Individuen in die jeweiligen Zustandsklassen ändert sich mit dem Fortschritt der Zeit \textbf{t}, ist die Krankheit nicht ausgestorben, die Infektionsrate oder \glqq R\grqq-Übergangsrate größer null und nicht alle Individuen im \glqq R\grqq-Zustand.
 Für jeden Zeitschritt wird die Anzahl der Individuen in den Zustandsklassen neu berechnet.\\
 Beispielsweise könnten nach einem Zeitschritt drei neue Individuen erkranken und ein Mensch stirbt. Damit nimmt die Gruppe  \textbf{S} um drei Individuen ab, die Gruppe \textbf{I} wächst entsprechend um drei und gibt gleichzeitig ein Individuum an die Gruppe \textbf{R} ab, sodass sich die Verteilung nach einem Zeitschritt wie in Bild \ref{SIR} ändert.
-\subparagraph{Berechnung der Entwicklung mit dem SIR-Modell}
+\subsection*{Berechnung der Entwicklung mit dem SIR-Modell}
 \begin{figure}
+	\centering
 \includegraphics[width= 0.3\textwidth]{./images/SIR-Berechnung.jpg}\caption{Möglicher Zustandswechsel nach einem Zeitschritt}\label{fig:sch}
 \end{figure}
 Damit die Verteilung sinnvoll berechnet werden kann, werden Kennzahlen über die Krankheit benötigt, die das Krankheitsprofil widerspiegeln. Dabei wird für das SIR-Modell die Infektionsstärke und die \grqq R\glqq{}-Übergangsrate benötigt.
@@ -53,8 +55,9 @@ Diese Funktion berrechnet die Anzahl der Neuinfizierten von der Menge der Infizi
 \end{equation}
 Die Anzahl der Individuen im R-Zustand wächst um einen Anteil $\gamma$ von den Infizierten. Das Heißt Einige Infizierte werden der Menge I abgeführt und wandern in Zustand R über. Von diesem Überstand ist kein anderer Zustand erreichbar, d.h. Diese Menge wächst stetig wenn $\gamma$ 0 und die Baisisreproduktionsrate größer null sind.
 
-\subparagraph{Wahl des SIR-Modells als Referenzmodell}
+\subsection*{Wahl des SIR-Modells als Referenzmodell}
 \begin{figure}
+	\centering
 \includegraphics[width= 0.3\textwidth]{./images/SIS-Modell.jpg}\caption{Zuständsmodell des SIS-Modells}\label{sis}
 \end{figure}
 Bei dem Vergleich mit bekannten Modellen aus der Wissenschaft drängt sich zunächst die Frage auf warum im Rahmen des Projektes gerade der Vergleich mit dem SIR-Modell angestellt wird und nicht mit einem anderen Modell zur Darstellung eines Krankheitsverlauf.\\
