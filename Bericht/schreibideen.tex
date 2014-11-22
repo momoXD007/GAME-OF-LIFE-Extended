@@ -323,7 +323,7 @@ Des Weiteren verwendet die Simulation bisher nur die unmittelbare Nachbarschaft.
 An dieser Stelle könnte man zusätzlich eine Art Gauß-Filter verwenden, um auch die Distanz bei der Gewichtung mit einfließen zu lassen. Die Zellen im unmittelbaren Umkreis hätten somit einen größeren Einfluss als diejenigen, die weiter entfernt liegen.
 Dafür könnte man 
 \begin{center}
-\\ $A = 
+ $A = 
 \begin{bmatrix}
 b & b & b & b & b \\
 b & a & a & a & b \\
@@ -332,7 +332,7 @@ b & a & a & a & b \\
 b & b & b & b & b \\
 \end{bmatrix}
 $ als Faltungsmatrix
-\end{center} \\ verwenden, um die Distanz mit Faktoren $a,b$ zu gewichten. Beispielsweise könnte man die unmittelbare Nachbarschaft also $a=1$ und die Nachbarschaft mit dem Radius 2 mit $b=\frac{2}{3}$ bewerten. Ebenso könnte man die Diagonale aufgrund höherer Distanz zusätzlich geringer gewichten.
+\end{center} verwenden, um die Distanz mit Faktoren $a,b$ zu gewichten. Beispielsweise könnte man die unmittelbare Nachbarschaft also $a=1$ und die Nachbarschaft mit dem Radius 2 mit $b=\frac{2}{3}$ bewerten. Ebenso könnte man die Diagonale aufgrund höherer Distanz zusätzlich geringer gewichten.
 
 %Was Sie hier finden sollten, findet sich leider schon in den vorangegangenen
 %Textpassagen und Abschnitten und ich mag Sie nicht mit Wiederholungen
