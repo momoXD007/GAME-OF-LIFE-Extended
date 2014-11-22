@@ -7,7 +7,7 @@ In diesem Abschnitt wird zunächst die Idee hinter dem SIR-Modell vorgestellt, d
 \begin{figure}
 \includegraphics[width= 0.3\textwidth]{./images/SIR-Modell.jpg}\caption{Zustandsmodell des SIR-Modells}
 \end{figure}
-Das SIR-Modell ist eine mathematische Herangehensweise, bei der der Krankheitsverlauf statisch auf über feste Funktionen errechnet wird. \\
+Das SIR-Modell ist eine mathematische Herangehensweise, bei der der Krankheitsverlauf statisch über feste Funktionen errechnet wird. \\
 Dazu wird eine geschlossene Gruppe \textbf{N} an Individuen betrachtet. Die Anzahl der Personen in \textbf{N} ist die Gesamtgröße der Bevölkerung. Die Bevölkerung setzt sich aus gesunden, kranken und \glqq R\grqq-Individuen zusammen, sodass gilt:
 \begin{equation}
 N = S + I + R
@@ -19,7 +19,7 @@ N = S + I + R
 \item \textbf{R (Recovered)} Der letzte Zustand ist der \glqq R\grqq-Zustand. Ein infiziertes Individuum, was in den \glqq R\grqq -Zustand übergeht, bleibt im R-Zustand. Es gibt keinen Übergang aus dem R-Zustand zurück in einen der anderen Zustände. Der R-Zustand kann von daher Individuen beschreiben, die aus Epidemiologischer Sicht keinen Einfluss mehr auf den Rest der Gesellschaft haben. Dies könnten z.B. immunisierte, tote oder isolierte Individuen sein.
 \end{itemize}
 Zur Visualisierung des Krankheitsverlauf in einer Bevölkerung kann geeigneter Weise ein Koordinatensystem benutzt werden, dass die Anzahl der Individuen in Relation zur Zeit setzt.
-Für jede Zustandsgruppe wird ein Graph in das Koordinatensystem gezeichnet, sodass ablesbar wie viele Individuen zu einem Zeitpunkt krank, gesund oder im \glqq R\grqq-Zustand sind.\\
+Für jede Zustandsgruppe wird ein Graph in das Koordinatensystem gezeichnet, sodass ablesbar wird wie viele Individuen zu einem Zeitpunkt krank, gesund oder im \glqq R\grqq-Zustand sind.\\
 Die Verteilung der Individuen in die jeweiligen Zustandsklassen ändert sich mit dem Fortschritt der Zeit \textbf{t}, ist die Krankheit nicht ausgestorben, die Infektionsrate oder \glqq R\grqq-Übergangsrate größer null und nicht alle Individuen im \glqq R\grqq-Zustand.
 Für jeden Zeitschritt wird die Anzahl der Individuen in den Zustandsklassen neu berechnet.\\
 Beispielsweise erkranken nach einem Zeitschritt drei neue Individuen und ein Individuum stirbt. Damit nimmt die Gruppe  \textbf{S} um drei Individuen ab, die Gruppe \textbf{I} wächst entsprechend um drei Individuen und gibt gleichzeitig ein Individuum an die Gruppe \textbf{R} ab, sodass sich die Verteilung von beispielsweise S = 5, R = 5 und I = 5 nach einem Zeitschritt zu S = 2, I = 7 und R = 6 ändert.
@@ -52,7 +52,7 @@ Diese Funktion berrechnet die Anzahl der Neuinfizierten von der Menge der Infizi
 Die Anzahl der Individuen im R-Zustand wächst um einen Anteil $\gamma$ von den Infizierten. Das Heißt Einige Infizierte werden der Menge I abgeführt und wandern in Zustand R über. Von diesem Überstand ist kein anderer Zustand erreichbar, d.h. Diese Menge wächst stetig wenn $\gamma$ 0 und die Baisisreproduktionsrate größer null sind.
 \subparagraph{Warum gerade das SIR-Modell?}
 Bei dem Vergleich mit bekannten Modellen aus der Wissenschaft drängt sich zunächst die Frage auf warum im Rahmen des Projektes gerade der Vergleich mit dem SIR-Modell angestellt wird und nicht mit einem anderen Modell zur Darstellung eines Krankheitsverlauf.\\
-Wie genau ein mathematisches Modell die Krankheitsausbreitung in einer Gesellschaft beschreibt, hängt sehr davon ab, wie viel Realismus und damit wie viele Annahmen hineingesteckt werden.\\
+Wie genau ein mathematisches Modell die Krankheitsausbreitung in einer Gesellschaft beschreibt, hängt sehr davon ab, wie viel Realismus und damit wie viele Annahmen getroffen werden.\\
 Da in der Medizin viele Einflüsse zunächst vernachlässigt werden müssen, nicht bekannt sind oder die Krankheit sich mit der Zeit durch mutierende Viren verändert, haben die Modelle sehr selten einen endgültigen Charakter. Darüber hinaus sind Krankheiten in ihrer Entwicklung so unterschiedlich, dass es sehr oft möglich und manchmal nötig ist, die Modelle weiter zu verfeinern und anzupassen, wobei unterschiedliche Krankheiten unterschiedliche Modelle erfordern können. 
 \cite{sebM}\\
 Mit anderen Worten: Eine Krankheit kann mit all ihren Eigenschaften sehr realitätsnah abgebildet werden, aber möglicherweise bei einer anderen Krankheit schon wieder versagen. Von daher ist nicht das Modell, sondern das zugrunde liegende Szenario entscheidend für die Wahl des Vergleichsmodells. Eine sinnvolle Vorgehensweise ist es daher erst ein Szenario zu erschaffen und dieses dann mit einem geeigneten Modell abzubilden.\\ 
