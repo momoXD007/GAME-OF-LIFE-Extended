@@ -41,12 +41,17 @@ Es gilt:
 \begin{equation}
 \frac{ \delta S }{ \delta t } = -R_0 * \frac{S * I}{N}
 \end{equation}
+Die erwartete Anzahl an Neuinfizierungen mal den Anteil der Gesunden und Infizierten Individuen von der Gesamtbevölkerung, ergibt die Anzahl der Gesunden, die diese Runde Infiziert werden. Die Menge der Anfälligen wird um die Menge der Neuinfizierten reduziert.
+
 \begin{equation}
 \frac{\delta I }{\delta t} = R_0 * \frac{S * I}{N}
 \end{equation}
+Diese Funktion berrechnet die Anzahl der Neuinfizierten von der Menge der Infizierten und der Anfälligen. Die Menge der Infizierten I wächst um die Menge der Anfälligen, die sich diese Runde infiziert haben.
 \begin{equation}
 \frac{\delta R }{\delta t} = \gamma * I
 \end{equation}
+Die Anzahl der Individuen im R-Zustand wächst um einen Anteil $\gamma$ von den Infizierten. Das Heißt Einige Infizierte werden der Menge I abgeführt und wandern in Zustand R über. Von diesem Überstand ist kein anderer Zustand erreichbar, d.h. Diese Menge wächst stetig wenn $\gamma$ 0 und die Baisisreproduktionsrate größer null sind.
+
 
 \subparagraph{Warum gerade das SIR-Modell?}
 Bei dem Vergleich mit bekannten Modellen aus der Wissenschaft drängt sich zunächst die Frage auf warum im Rahmen des Projektes gerade der Vergleich mit dem SIR-Modell angestellt wird und nicht mit einem anderen Modell zur Darstellung eines Krankheitsverlauf.\\
