@@ -1,5 +1,15 @@
-Wie bereits erläutert weißt das SIR-Modell einige Schwächen auf unter Anderem wird in dem Modell davon ausgegangen dass jeder Mensch im Schnitt acht Kontakte zu anderen Menschen hat. In unserem Programm wird dies dynamisch geregelt, dort gibt es einen Raster welcher einem Schachbrett ähnelt auf diesem beliebig großem rechteckigem \glqq{}Spielfeld \grqq{} lassen sich an jeder x,y Position Zellen positionieren. So kann es Zellen geben welche sehr viele Nachbarn haben aber auch Zellen welche gar keinen Nachbar haben. So können auch extreme Situationen realistisch dargestellt werden wie zum Beispiel sehr dünn besiedelte Gegenden oder aber auch mittelalterliche Städte in denen in einem Haushalt durchaus 20 Personen lebten.\\
+Wie bereits erläutert weißt das SIR-Modell einige Schwächen auf unter Anderem wird in dem Modell davon ausgegangen dass jeder Mensch im Schnitt acht Kontakte zu anderen Menschen hat. In unserem Programm wird dies dynamisch geregelt, dort gibt es einen Raster welcher einem Schachbrett ähnelt auf diesem beliebig großem rechteckigem \glqq{}Raster\grqq{} lassen sich an jeder x,y Position Zellen positionieren. So kann es Zellen geben welche sehr viele Nachbarn haben aber auch Zellen welche gar keinen Nachbar haben. Einen exemplarischen Raster sieht man in  Abbildung \ref{fig:Raster}. Auf diesem 3x3 Raster befinden sich aktuell drei Zellen theoretisch ist es aber auch möglich diesen Raster mit bis zu 9 Zellen zu besiedeln. So können auch extreme Situationen realistisch dargestellt werden wie zum Beispiel sehr dünn besiedelte Gegenden oder aber auch mittelalterliche Städte in denen in einem Haushalt durchaus 20 Personen lebten.\\
+
 %Quelle recherchieren
+
+\begin{figure}[t]
+\centering
+\includegraphics[width= 0.45\textwidth]{./images/nachbarn.png}
+\caption{Ein 3x3 Raster mit Zellen in drei verschiedenen Zuständen}
+\label{fig:Raster}
+\end{figure}
+
+
 
 
 %Verbesserungen gegenüber dem SIR-Modell
@@ -11,7 +21,8 @@ Wie bereits erläutert weißt das SIR-Modell einige Schwächen auf unter Anderem
 Die vorliegende Implementierung basiert auf zellulären Automaten. Das heißt das jede Zelle erst einmal für sich unabhängig von anderen Zellen existiert.Eine Zelle ist im Kontext dieser Arbeit ein Mensch oder ein Tier. Dabei kann sich die Zelle in jeder Phase der Simulation nur in genau einem der folgenden Zustände befinden:
 \begin{enumerate}
 \item{\emph{Anfällig}\\
-Eine anfällige Zelle kann von einer  infizierten Zelle in ihrem direkten Umfeld welche durch eine Moore-Nachbarschaft simuliert wird angesteckt wird. Das heißt dass eine Zelle auf dem rechteckigen Raster nur von den Zellen links über ihr, direkt über ihr, rechts über ihr, links und rechts neben ihr und links neben ihr, links unter ihr, direkt unter ihr und rechts unter ihr angesteckt werden kann. Des Weiteren wird auch betrachtet ob die Krankheit auch von jeder Zelle auf jede übertragbar ist oder ob zum Beispiel nur eine Übertragung von Mensch auf Tier aber nicht von Mensch auf Mensch möglich ist.
+Eine anfällige Zelle kann von einer  infizierten Zelle in ihrem direkten Umfeld welche durch eine Moore-Nachbarschaft simuliert wird angesteckt wird. Das heißt dass eine Zelle auf dem rechteckigen Raster nur von den Zellen links über ihr, direkt über ihr, rechts über ihr, links und rechts neben ihr und links neben ihr, links unter ihr, direkt unter ihr und rechts unter ihr angesteckt werden kann.Dies sind im inneren des Spielfeldes maximal acht Zellen wie man am Beispiel der roten Zelle in Abbildung \ref{fig:Raster} gut sehen kann.\\
+Des Weiteren wird auch betrachtet ob die Krankheit auch von jeder Zelle auf jede übertragbar ist oder ob zum Beispiel nur eine Übertragung von Mensch auf Tier aber nicht von Mensch auf Mensch möglich ist.
 %Bild von Moore-Nachbarschaft einbinden und Quelle hinzufügen
 }
 \item{\emph{Infiziert}\\
@@ -32,7 +43,8 @@ Eine Zelle in diesem Zustand, ist für die weitere Simulation nicht relevant. Na
 \subsection*{Bewegung}
 Zellen die sich in einem der ersten drei Zustände befinden können sich bewegen. Dabei wird in dieser Simulation davon ausgegangen dass die Zellen sich in einem geschlossenem Umfeld befinden. Es können also keine Zellen das Simulationsgebiert verlassen oder neu betreten.\\
 Des Weiteren handelt es sich um eine zwei dimensionale Simulation in der es nicht möglich ist dass sich mehrere Zellen auf einem Feld über- oder untereinander befinden.\\
-Die Zellen bewegen sich dabei dem Random-Walk entsprechend, dies bedeutet in dass sich eine Zelle zufällig in irgendeine Richtung bewegt. Dabei wird davon ausgegangen dass die Zellen grundsätzlich einen Drang zur Bewegung haben. Also sollte sich eine Zelle entscheiden sich in ein Feld zu bewegen indem schon eine andere Zelle ist, ist diese Bewegung nicht möglich und die Zelle muss sich neu entscheiden. Das Gleiche gilt für Zellen am Rand des Simulationsgebietes. Natürlich gibt es die Möglichkeit dass eine Zelle komplett \glqq umringt\grqq von anderen Zellen ist, in diesem Fall bleibt die Zelle zwangsweise an ihrer alten Position.
+Im allgemeinen Fall bewegen sich die Zellen dem Random-Walk entsprechend, dies bedeutet dass sich eine Zelle zufällig in irgendeine Richtung bewegt. Dabei wird davon ausgegangen dass die Zellen grundsätzlich einen Drang zur Bewegung haben. Also sollte sich eine Zelle entscheiden sich in ein Feld zu bewegen indem schon eine andere Zelle ist, ist diese Bewegung nicht möglich und die Zelle muss sich neu entscheiden. Das Gleiche gilt für Zellen am Rand des Simulationsgebietes. Natürlich gibt es die Möglichkeit dass eine Zelle komplett \glqq umringt\grqq von anderen Zellen ist, in diesem Fall bleibt die Zelle zwangsweise an ihrer alten Position.\\
+Dies bedeuted dass  zum Beispiel die grüne Zelle in Abbildung \ref{fig:Raster} nur zwei Möglichkeiten hat sich zu bewegen. Nämlich eine Bewegung nach unten oder nach rechts. Da über und links neben ihr keine Felder mehr sind und auf der Diagonale kann sie sich auch nicht bewegen da dort die rote Zelle das einzig mögliche Feld blockiert.\\
 %Quelle hier einbinden
 \subsection*{Wirtsbeziehungen}
 Die Simulation ist in der Lage einfache Wirtsbeziehungen zu simulieren, dadurch dass es zwei Arten von Zellen gibt(Menschen und Tiere), kann man krankheitsabhängig unterscheiden ob eine Krankheit jeweils von Mensch auf Mensch, von Mensch auf Tier, von Tier auf Mensch und von Tier auf Tier übertragbar ist, so kann schon eine beträchtliche Menge von Krankheiten simuliert werden.\\
@@ -45,7 +57,7 @@ Dabei ist auch das Verhältnis von Menschen zu Tieren vollkommen beliebig wählb
 
 \subsection*{nicht deterministisch}
 Ob eine Zelle in einen bestimmten Zustand übergeht hängt einerseits von ihrem Zustand beziehungsweise den Zuständen ihrer Nachbarn, andererseits von einer krankheitstypischen Wahrscheinlichkeit ab. Sollte eine Zelle infiziert sein und bei der simulierten Krankheit besteht die Wahrscheinlichkeit zu sterben bei 25\% so wird der Wert 0.25 mit einer zufälligen Zahl zwischen 0 und 1 verglichen. Sollte diese Zufallszahl größer sein als die Übergangswahrscheinlichkeit geht die Zelle in den entsprechenden Zustand über.\\
-Das bedeutet das selbst wenn man die Simulation mit exakt den selben Parametern mehrmals durchführt man unterschiedliche Ergebnisse bekommen kann. Das Modell ist also nicht deterministisch.
+Das bedeutet das selbst wenn man die Simulation mit exakt den selben Parametern mehrmals durchführt man unterschiedliche Ergebnisse erwarten kann. Das Modell ist also nicht deterministisch.
 
 
 %\begin{enumerate}
